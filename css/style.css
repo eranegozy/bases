@@ -1,0 +1,77 @@
+h1 {
+  text-align: center;  
+}
+
+h2 {
+  margin-left: -35px;
+  font-size: 20px
+}
+
+
+.main {
+    margin-left: 50px;
+}
+
+.student-info {
+    width: 100%;
+    padding-top: 30px;
+    text-align: center;
+}
+
+.indent-1 {
+  margin-left: 30px;  
+}
+
+.problem-short {
+  padding-left: 30px;
+  padding-top: 20px;
+  padding-top: 20px;
+}
+
+li.problem-short  {
+  padding-left: 60px;
+}
+
+.problem-long {
+  padding-left: 30px;
+  padding-bottom: 3cm;
+}
+
+.answer-block p {
+  padding-top: 20px;
+  padding-left: 30px;
+}
+
+/*table, td, th, tr {
+    border: 2px solid black;
+}
+*/
+
+
+.base-chart 
+{
+  border-collapse: collapse;
+  margin-left: 60px;
+}
+
+.base-chart tr:nth-child(2) { 
+  border-top: solid 2px;
+}
+
+.base-chart td {
+  text-align: center;
+  width: 50px;
+  border-left: solid 2px;
+  border-right: solid 2px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.no-line {
+  border-left: solid 0px !important; 
+  border-right: solid 0px !important; 
+}
+
+.series {
+  word-spacing: 10px;
+}

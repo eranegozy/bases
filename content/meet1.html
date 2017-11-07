@@ -1,0 +1,90 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script>
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League Bases</h1>
+<h2>Week 1</h2>
+
+<table class="student-info">
+ <tr>
+ <th>____________________________________________</th>
+ <th>_____________________</th>
+ <th>_____________________</th>
+ </tr>
+ <tr>
+ <th>Last Name, First Name</th>
+ <th>Grade</th>
+ <th>School</th>
+ </tr>
+</table>
+
+<div class="problem">
+  1) 
+  <span>\(
+    3232_{(4)} = \text{_______}_{(6)}
+  \)</span>
+  <p class="solution" data="var x = b10(3232,4); as_ml(x, 6);"></p>
+</div>
+
+<div class="problem">
+  2) Evaluate:
+  <span>\(
+    567_{(9)} \times 876_{(9)}
+  \)</span>
+  <p class="solution" data="var x = b10(567,9) * b10(876,9); as_ml(x, 9)"></p>
+</div>
+
+<div class="problem">
+  3) Evaluate the following and express your solution in base ten.
+  <span>\[
+    (11_{(2)} + 21_{(3)})^2 - 11_{(4)} \times 21_{(5)}
+    \over{
+    21_{(6)} + 21_{(7)} + 21_{(8)}
+    }
+  \]</span>
+
+  <p class="solution" 
+     data= "var a = (b10(11,2) + b10(21,3))**2 - b10(11,4) * b10(21,5);
+            var b = b10(21,6) + b10(21,7) + b10(21,8);
+            as_ml(a,10) + '/' + as_ml(b,10) + '=' + as_ml(a/b, 10);"></p>
+
+</div>
+
+<div class="answer-block">
+Answers:<br>
+
+<p>
+  1. 
+  <span class="math">\(
+    \text{___________}_{(6)}
+  \)</span>
+</p>
+
+<p>
+  2. 
+  <span class="math">\(
+    \text{___________}_{(9)}
+  \)</span>
+</p>
+
+<p>
+  3. 
+  <span class="math">\(
+    \text{___________}_{(10)}
+  \)</span>
+</p>
+
+</div>
+
+</body>
+</html>
