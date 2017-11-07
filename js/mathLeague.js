@@ -4,44 +4,56 @@
 
 var ml = function () {
 
+  var gShowSolutions = false;
+
   var init = function() {
+
     window.onload = function() {
-      var els;
+      document.addEventListener("click", function() {
+        gShowSolutions = ! gShowSolutions;
+        console.log("Show Solutions:", gShowSolutions);
+        updateContent();
+        MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
+      });
+    }
 
-      els = document.getElementsByClassName('student-info');
-      for (var i = 0; i < els.length; i++) {
-        setupStudentInfo(els[i]);
-      }
+    updateContent();
+  }
 
-      els = document.getElementsByClassName('solution');
-      for (var i = 0; i < els.length; i++) {
-        processSolution(els[i]);
-      }
+  var updateContent = function() {
+    var els;
 
-      els = document.getElementsByClassName('base-chart');
-      for (var i = 0; i < els.length; i++) {
-        processBaseChart(els[i]);
-      }
+    els = document.getElementsByClassName('student-info');
+    for (var i = 0; i < els.length; i++) {
+      setupStudentInfo(els[i]);
+    }
 
-      els = document.getElementsByClassName('series');
-      for (var i = 0; i < els.length; i++) {
-        processSeries(els[i]);
-      }
+    els = document.getElementsByClassName('solution');
+    for (var i = 0; i < els.length; i++) {
+      processSolution(els[i]);
+    }
+
+    els = document.getElementsByClassName('base-chart');
+    for (var i = 0; i < els.length; i++) {
+      processBaseChart(els[i]);
+    }
+
+    els = document.getElementsByClassName('series');
+    for (var i = 0; i < els.length; i++) {
+      processSeries(els[i]);
     }
   }
 
   var setupStudentInfo = function(elem) {
-    elem.innerHTML = 
-    `<tr>
-       <td>____________________________________________</td>
-       <td>_____________________</td>
-       <td>_____________________</td>
-     </tr>
-     <tr>
-       <td>Last Name, First Name</td>
-       <td>Grade</td>
-       <td>School</td>
-     </tr>`;
+    if (gShowSolutions)
+      elem.innerHTML = "<h1>SOLUTIONS</h1>";
+    else
+      elem.innerHTML = 
+      `<tr>
+         <td>____________________________________________<br>Last Name, First Name</td>
+         <td>_____________________<br>Grade</td>
+         <td>_____________________<br>School</td>
+       </tr>`;
   }
 
 
@@ -58,14 +70,12 @@ var ml = function () {
     var func = Function("n", "return " + j.value);
     var display = j.display;
 
-    var solve = false;
-
     var txt = "";
     for (var n = 0; n < len; n++) {
       var val = func(n);
       if (display) 
         txt += display.replace('n', n);
-      if (solve)
+      if (gShowSolutions)
         txt += String(val);
       else
         txt += '_____';
@@ -73,7 +83,7 @@ var ml = function () {
       if (n < len - 1)
         txt += ', ';
     };
-    elem.innerHTML += txt;
+    elem.innerHTML = txt;
   }
 
   // creates a baseX to base-10 solving chart.
