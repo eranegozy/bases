@@ -57,7 +57,7 @@ var ml = function () {
   }
 
   var evalExpression = function(exp) {
-    if (exp == undefined)
+    if (exp == undefined || exp == '')
       return '';
 
     if (exp[0] == '!') {
@@ -75,24 +75,26 @@ var ml = function () {
 
     // this is to allow "relaxed JSON", where strings do not have to quoted.
     var fixedData = data.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
-
     var j = JSON.parse(fixedData);
-    var len = j.len;
-    var ansFunc = Function("n", "return " + j.ans);
 
-    var txt = "";
-    for (var n = 0; n < len; n++) {
-      var ans = ansFunc(n);
-      if (j.exp) 
-        txt += j.exp.replace('n', n);
+    var txt = '';
+    for (var n = 0; n < j.len; n++) {
+      if (j.exp)
+        var exp = j.exp.replace('n', n);
+      if (j.ans)
+        var ans = j.ans.replace('n', n);
+
+      txt += '\\(' + evalExpression(exp);
       if (gShowSolutions)
-        txt += String(ans);
+        txt += evalExpression(ans);
       else
-        txt += '_____';
+        txt += ' \\text{_____} ';
+      txt += '\\)';
 
-      if (n < len - 1)
+      if (n < j.len - 1)
         txt += ', ';
-    };
+    }
+    
     elem.innerHTML = txt;
   }
 
