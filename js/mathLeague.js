@@ -33,7 +33,7 @@ var ml = function () {
     processClass('solution', processSolution);
     processClass('base-chart', processBaseChart);
     processClass('series', processSeries);
-    // processClass('equals', processEquals);
+    processClass('equals', processEquals);
   }
 
   var setupStudentInfo = function(elem) {
@@ -66,16 +66,15 @@ var ml = function () {
 
     var j = JSON.parse(fixedData);
     var len = j.len;
-    var func = Function("n", "return " + j.value);
-    var display = j.display;
+    var ansFunc = Function("n", "return " + j.ans);
 
     var txt = "";
     for (var n = 0; n < len; n++) {
-      var val = func(n);
-      if (display) 
-        txt += display.replace('n', n);
+      var ans = ansFunc(n);
+      if (j.exp) 
+        txt += j.exp.replace('n', n);
       if (gShowSolutions)
-        txt += String(val);
+        txt += String(ans);
       else
         txt += '_____';
 
@@ -162,6 +161,35 @@ var ml = function () {
   }
 
 
+  var evalExpression = function(exp) {
+    if (exp == undefined)
+      return '';
+
+    if (exp[0] == '!') {
+      exp = exp.substring(1, exp.length)
+      return Function("return " + exp)();
+    }
+    else
+      return exp;
+  }
+
+  var processEquals = function(elem) {
+    var data = elem.getAttribute("data");
+    if (data == undefined)
+      return;
+
+    // this is to allow "relaxed JSON", where strings do not have to quoted.
+    var fixedData = data.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');    
+    var j = JSON.parse(fixedData);
+    
+    var txt = '\\(' + evalExpression(j.exp) + ' = ';
+    if (gShowSolutions)
+      txt += evalExpression(j.ans);
+    else
+      txt += '\\text{__________}';
+    txt += '\\)';
+    elem.innerHTML = txt;
+  }
 
   // convert digits in base base to base 10
   var b10 = function(digits, base) {
