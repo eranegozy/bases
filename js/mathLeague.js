@@ -20,28 +20,20 @@ var ml = function () {
     updateContent();
   }
 
+
+  var processClass = function(name, func) {
+    var els = document.getElementsByClassName(name);
+    for (var i = 0; i < els.length; i++)
+      func(els[i]);
+  }
+
+
   var updateContent = function() {
-    var els;
-
-    els = document.getElementsByClassName('student-info');
-    for (var i = 0; i < els.length; i++) {
-      setupStudentInfo(els[i]);
-    }
-
-    els = document.getElementsByClassName('solution');
-    for (var i = 0; i < els.length; i++) {
-      processSolution(els[i]);
-    }
-
-    els = document.getElementsByClassName('base-chart');
-    for (var i = 0; i < els.length; i++) {
-      processBaseChart(els[i]);
-    }
-
-    els = document.getElementsByClassName('series');
-    for (var i = 0; i < els.length; i++) {
-      processSeries(els[i]);
-    }
+    processClass('student-info', setupStudentInfo);
+    processClass('solution', processSolution);
+    processClass('base-chart', processBaseChart);
+    processClass('series', processSeries);
+    // processClass('equals', processEquals);
   }
 
   var setupStudentInfo = function(elem) {
@@ -56,6 +48,13 @@ var ml = function () {
        </tr>`;
   }
 
+  var processSolution = function(elem) {
+    var data = elem.getAttribute("data");
+    console.log(data);
+    var result = eval(data);
+
+    elem.innerHTML = "\\(" + result + "\\)";
+  }
 
   var processSeries = function(elem) {
     var data = elem.getAttribute("data");
@@ -162,14 +161,6 @@ var ml = function () {
     elem.innerHTML = html;
   }
 
-
-  var processSolution = function(elem) {
-    var data = elem.getAttribute("data");
-    console.log(data);
-    var result = eval(data);
-
-    elem.innerHTML = "\\(" + result + "\\)";
-  }
 
 
   // convert digits in base base to base 10
