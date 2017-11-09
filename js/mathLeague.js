@@ -154,31 +154,31 @@ var ml = function () {
 
       // top part: exponent
       var exp_str = '&nbsp;<br>';
-      if (j.top == 'exponents' || j.top == 'both')
+      if (j.top == 'exponents' || j.top == 'both' || gShowSolutions)
         var exp_str = '\\(' + base + '^' + exp + '\\) <br>'
 
       // top part: place value
       var val_str = '&nbsp;';
-      if (j.top == 'values' || j.top == 'both')
+      if (j.top == 'values' || j.top == 'both' || gShowSolutions)
         var val_str = val;
 
       top += '<td>' + exp_str + val_str + '</td>';
 
       // bottom part: digit
       var digit_str = '&nbsp;<br>';
-      if (j.bottom == 'digits' || j.bottom == 'products' || j.bottom == 'answer')
+      if (j.bottom == 'digits' || j.bottom == 'products' || j.bottom == 'answer' || gShowSolutions)
         digit_str = digit + '<br>';
 
       // bottom part: product
       var product_str = '&nbsp;<br>';
-      if (j.bottom == 'products' || j.bottom == 'answer')
+      if (j.bottom == 'products' || j.bottom == 'answer' || gShowSolutions)
         product_str = '\\( ' + digit + ' \\times ' + val + ' = ' + prod + '\\)'
 
       bottom += '<td>' + digit_str + product_str + '</td>';
 
       // answer part:
       var answer_str = '';
-      if (j.bottom == 'answer') {
+      if (j.bottom == 'answer' || gShowSolutions) {
         var plus_sign = (i==0)? '' : '+';
         answer += '<td class="no-line"> \\(' + plus_sign + prod + '\\) </td>'
       }
@@ -186,6 +186,8 @@ var ml = function () {
 
     if (answer != '')
       answer = '<tr>' + answer + '<td class="no-line"> \\(= ' + sum + '\\) </td>' + '</tr>';
+    else
+      answer = '<tr> <td class="no-line"> &nbsp; </td> </tr>';
 
     var html = '<tr>' + top + '</tr><tr>' + bottom + '</tr>' + answer;
 
