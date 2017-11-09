@@ -56,6 +56,17 @@ var ml = function () {
     elem.innerHTML = "\\(" + result + "\\)";
   }
 
+  // convert data from "relaxed JSON string" into JSON
+  var strToJSON = function(str) {
+    if (str == undefined)
+      return undefined;
+
+    // this is to allow "relaxed JSON", where strings do not have to quoted.
+    var fixedData = str.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
+    var j = JSON.parse(fixedData);
+    return j;
+  }
+
   var evalExpression = function(exp) {
     if (exp == undefined || exp == '')
       return '';
@@ -69,13 +80,9 @@ var ml = function () {
   }
 
   var processSeries = function(elem) {
-    var data = elem.getAttribute("data");
-    if (data == undefined)
+    var j = strToJSON(elem.getAttribute("data"));
+    if (j == undefined)
       return;
-
-    // this is to allow "relaxed JSON", where strings do not have to quoted.
-    var fixedData = data.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
-    var j = JSON.parse(fixedData);
 
     var txt = '';
     for (var n = 0; n < j.len; n++) {
@@ -99,13 +106,9 @@ var ml = function () {
   }
 
   var processEquals = function(elem) {
-    var data = elem.getAttribute("data");
-    if (data == undefined)
+    var j = strToJSON(elem.getAttribute("data"));
+    if (j == undefined)
       return;
-
-    // this is to allow "relaxed JSON", where strings do not have to quoted.
-    var fixedData = data.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');    
-    var j = JSON.parse(fixedData);
     
     var txt = '\\(' + evalExpression(j.exp) + ' = ';
     if (gShowSolutions)
@@ -123,16 +126,9 @@ var ml = function () {
   // bottom: "none" | "digits" | "products" | "answer"
   // 
   var processBaseChart = function(elem) {
-    var data = elem.getAttribute("data");
-    console.log('base-chart', data);
-    if (data == undefined)
+    var j = strToJSON(elem.getAttribute("data"));
+    if (j == undefined)
       return;
-
-    // this is to allow "relaxed JSON", where strings do not have to quoted.
-    var fixedData = data.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
-
-    var j = JSON.parse(fixedData);
-    console.log(j.base, j.len);
 
     var number = j.num.split('_');
 
