@@ -84,21 +84,27 @@ var ml = function () {
     if (j == undefined)
       return;
 
+    // default values
+    var hints = j.hints || []
+    var blank = j.blank ? '_'.repeat(j.blank) : '___';
+    var len = j.len || 1;
+    var baseTxt = j.base ? '_{(' + j.base + ')} ': ' ';
     var txt = '';
-    for (var n = 0; n < j.len; n++) {
+    for (var n = 0; n < len; n++) {
       if (j.exp)
         var exp = j.exp.replace('n', n);
       if (j.ans)
         var ans = j.ans.replace('n', n);
 
       txt += '\\(' + evalExpression(exp);
-      if (gShowSolutions)
+
+      if (hints == 'all' || hints.includes(n) || gShowSolutions)
         txt += evalExpression(ans);
       else
-        txt += ' \\text{_____} ';
+        txt += ' \\text{' + blank + '}' + baseTxt;
       txt += '\\)';
 
-      if (n < j.len - 1)
+      if (n < len - 1)
         txt += ', ';
     }
     
