@@ -11,7 +11,6 @@ var ml = function () {
     window.onload = function() {
       document.addEventListener("click", function() {
         gShowSolutions = ! gShowSolutions;
-        console.log("Show Solutions:", gShowSolutions);
         updateContent();
         MathJax.Hub.Queue(["Typeset", MathJax.Hub]);
       });
@@ -61,10 +60,16 @@ var ml = function () {
     if (str == undefined)
       return undefined;
 
-    // this is to allow "relaxed JSON", where strings do not have to quoted.
-    var fixedData = str.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
-    var j = JSON.parse(fixedData);
-    return j;
+    try {
+      // this is to allow "relaxed JSON", where strings do not have to quoted.
+      var fixedData = str.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
+      var j = JSON.parse(fixedData);
+      return j;
+    }
+    catch(err) {
+      console.log("Error Parsing:", str);
+      console.log(err);
+    }
   }
 
   var evalExpression = function(exp) {
