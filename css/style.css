@@ -8,6 +8,20 @@ h2 {
   font-size: 20px;
 }
 
+ol {
+  margin-left: -40px;
+}
+
+li {
+  padding-top: 15px;
+}
+
+p {
+  padding-top: 15px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
 
 .main {
     margin-left: 50px;
@@ -27,10 +41,6 @@ h2 {
   padding-left: 30px;
   padding-top: 20px;
   padding-top: 20px;
-}
-
-li.problem-short  {
-  padding-left: 60px;
 }
 
 .problem-long {
