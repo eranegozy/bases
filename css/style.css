@@ -10,10 +10,18 @@ h2 {
 
 ol {
   margin-left: -40px;
+  counter-reset: item;
+  list-style-type: none;
+}
+
+ol li:before {
+  content: counter(item) ') ';
+  counter-increment: item;
 }
 
 li {
   padding-top: 15px;
+  margin-left: -20px;  
 }
 
 p {
