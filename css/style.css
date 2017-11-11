@@ -10,13 +10,13 @@ h2 {
 
 ol {
   margin-left: -40px;
-  counter-reset: item;
-  list-style-type: none;
+  list-style: none;
+  counter-reset: mycounter start;
 }
 
 ol li:before {
-  content: counter(item) ') ';
-  counter-increment: item;
+  counter-increment: mycounter;
+  content: counter(mycounter) ') ';
 }
 
 li {
