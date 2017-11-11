@@ -91,7 +91,7 @@ var ml = function () {
 
     // default values
     var hints = j.hints || []
-    var blank = j.blank ? '_'.repeat(j.blank) : '___';
+    var blank = j.blank ? '_'.repeat(j.blank) : '____';
     var len = j.len || 1;
     var baseTxt = j.base ? '_{(' + j.base + ')} ': ' ';
     var txt = '';
@@ -121,11 +121,14 @@ var ml = function () {
     if (j == undefined)
       return;
     
+    var baseTxt = j.base ? '_{(' + j.base + ')} ': ' ';
+    var blank = j.blank ? '_'.repeat(j.blank) : '____';
+
     var txt = '\\(' + evalExpression(j.exp) + ' = ';
     if (gShowSolutions)
       txt += evalExpression(j.ans);
     else
-      txt += '\\text{__________}';
+      txt += ' \\text{' + blank + '}' + baseTxt;
     txt += '\\)';
     elem.innerHTML = txt;
   }
