@@ -84,6 +84,21 @@ var ml = function () {
       return exp;
   }
 
+  // parses a string in the format "digits_base" into:
+  // { 'digits': "digits", base: base, value: num } 
+  // where base is a number and value is the base10 value
+  var parseBaseNum = function(str) {
+    var parts = str.split('_');
+
+    var out = {};
+    out.digits = parts[0];
+    out.base = Number(parts[1]);
+    out.val = b10(out.digits, out.base);
+    
+    return out;
+  }
+
+
   var processSeries = function(elem) {
     var j = strToJSON(elem.getAttribute("data"));
     if (j == undefined)
@@ -144,11 +159,8 @@ var ml = function () {
     if (j == undefined)
       return;
 
-    var number = j.num.split('_');
-
-    var digits = number[0];
-    var len = digits.length;
-    var base = Number(number[1]);
+    var num = parseBaseNum(j.num);
+    var len = num.digits.length;
 
     var top = '';
     var bottom = '';
@@ -157,15 +169,15 @@ var ml = function () {
 
     for (var i = 0; i < len; i++) {
       var exp = len - i - 1;
-      var val = base ** exp;
-      var digit = digits[i];
+      var val = num.base ** exp;
+      var digit = num.digits[i];
       var prod = Number(digit) * val;
       sum += prod;
 
       // top part: exponent
       var exp_str = '&nbsp;<br>';
       if (j.top == 'exponents' || j.top == 'both' || gShowSolutions)
-        var exp_str = '\\(' + base + '^' + exp + '\\) <br>'
+        var exp_str = '\\(' + num.base + '^' + exp + '\\) <br>'
 
       // top part: place value
       var val_str = '&nbsp;';
@@ -220,6 +232,11 @@ var ml = function () {
         d -= 48;
       else
         d -= 55;
+      if (d >= base) {
+        var txt = "Error converting " + digits + '_' + base + ". Illegal digit";
+        console.log(txt);
+        alert(txt);
+      }
       val += (base ** power) * d
     }
     return val;
