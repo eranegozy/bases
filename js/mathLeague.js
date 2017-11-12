@@ -81,7 +81,6 @@ var ml = function () {
       if (item != null)
         out[key] = item;
     };
-    console.log(out);
     return out;
   }
 
