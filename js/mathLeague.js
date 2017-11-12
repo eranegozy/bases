@@ -32,6 +32,7 @@ var ml = function () {
     processClass('solution', processSolution);
     processClass('series', processSeries);
     processClass('equals', processEquals);
+    processClass('equation', processEquation);
     processClass('base-chart', processBaseChart);
   }
 
@@ -70,6 +71,18 @@ var ml = function () {
       console.log("Error Parsing:", str);
       console.log(err);
     }
+  }
+
+  var attribsToDictionary = function(elem, attribs) {
+    var out = {}
+    for (var i = 0; i < attribs.length; i++) {
+      var key = attribs[i];
+      var item = elem.getAttribute(key);
+      if (item != null)
+        out[key] = item;
+    };
+    console.log(out);
+    return out;
   }
 
   var evalExpression = function(exp) {
@@ -147,6 +160,24 @@ var ml = function () {
     txt += '\\)';
     elem.innerHTML = txt;
   }
+
+
+  var processEquation = function(elem) {
+    var j = attribsToDictionary(elem, ['exp', 'ans', 'base', 'blank']);
+
+    var baseTxt = j.base ? '_{(' + j.base + ')} ': ' ';
+    var blank = j.blank ? '_'.repeat(j.blank) : '____';
+
+    var txt = '\\(' + evalExpression(j.exp) + ' = ';
+    if (gShowSolutions)
+      txt += evalExpression(j.ans);
+    else
+      txt += ' \\text{' + blank + '}' + baseTxt;
+    txt += '\\)';
+    elem.innerHTML = txt;
+  }
+
+
 
   // creates a baseX to base-10 solving chart.
   // configured by JSON with params:
