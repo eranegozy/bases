@@ -33,6 +33,7 @@ var ml = function () {
     processClass('series', processSeries);
     processClass('equals', processEquals);
     processClass('equation', processEquation);
+    processClass('expression', processExpression);
     processClass('base-chart', processBaseChart);
   }
 
@@ -177,6 +178,83 @@ var ml = function () {
   }
 
 
+  var tokenizeExpression = function(txt) {
+    var re = /(\w+)|(\()|(\))|[^\(\)\w]+/g;
+    
+    var out = [];
+    var match;
+    while ((match = re.exec(txt)) != null) {
+      // find token and type:
+      var token = match[0];
+      var type;
+      if (match[1] != undefined)
+        type = 'name';
+      else if (match[2] != undefined)
+        type = 'left';
+      else if (match[3] != undefined)
+        type = 'right';
+      else
+        type = 'other';
+
+      out.push( [type, token] );
+    }
+    return out;
+  }
+
+  var processExpression = function(elem) {
+    var txt = elem.getAttribute("exp");
+    var vars = elem.getAttribute("vars");
+
+    var tokens = tokenizeExpression(txt);
+    var inFunction = false;
+    var parenCount = 0;
+    var newtxt = '';
+    var functxt = '';
+
+    for (var i = 0; i < tokens.length; i++) {
+      var type = tokens[i][0];
+      var token = tokens[i][1];
+
+      if (i+1 < tokens.length) {
+        var nextType  = tokens[i+1][0];
+        var nextToken = tokens[i+1][1];
+      }
+      else {
+        var nextType  = null;
+        var nextToken = null;
+      }
+
+      // start a function?
+      if (type == 'name' && nextType == 'left' && inFunction == false) {
+        inFunction = true;
+        functxt += token;
+      }
+      // inside a function?
+      else if (inFunction) {
+        functxt += token;
+
+        if (type == 'left')
+          parenCount += 1;
+        if (type == 'right')
+          parenCount -= 1;
+
+        // end of function?
+        if (parenCount == 0) {
+          inFunction = false;
+          var result = new Function(vars + " return " + functxt)();
+          newtxt += result;
+          functxt = '';
+        }
+      }
+      // non-function token
+      else {
+        newtxt += token;
+      }
+    }
+    var html = '\\( ' + newtxt + ' \\)';
+    console.log(html);
+    elem.innerHTML = html;
+  }
 
   // creates a baseX to base-10 solving chart.
   // configured by JSON with params:
@@ -328,5 +406,7 @@ var mult = ml.mult;
 var b10 = ml.b10;
 var as = ml.as;
 var as_ml = ml.as_ml;
+var prn = ml.as_ml;
+var ans = prn;
 
 
