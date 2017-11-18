@@ -5,6 +5,8 @@
 // global functions:
 var prn;
 var val;
+var echo;
+var sub;
 
 var ml = function () {
 
@@ -36,7 +38,7 @@ var ml = function () {
   var updateContent = function() {
     processClass('student-info', setupStudentInfo);
     processClass('solution', processSolution);
-    processClass('series', processSeries);
+    processClass('series', processSeries2);
     processClass('equals', processEquals);
     processClass('equation', processEquation);
     processClass('expression', processExpression);
@@ -101,6 +103,23 @@ var ml = function () {
     }
     else
       return exp;
+  }
+
+  var processSeries2 = function(elem) {
+    var len = elem.getAttribute("len") || 1;
+    var hints = JSON.parse( elem.getAttribute("hints") ) || [];
+    var txt = elem.getAttribute("exp");
+
+    var output = '';
+    for (var n = 0; n < len; n++) {
+      var vars = "n=" + n + "; ";
+      var html = renderExpression(txt, vars);
+      output += html;
+
+      if (n < len - 1)
+        output += ', ';
+    }
+    elem.innerHTML = output;     
   }
 
 
@@ -197,6 +216,13 @@ var ml = function () {
     var txt = elem.getAttribute("exp");
     var vars = elem.getAttribute("vars") || '';
 
+    var html = renderExpression(txt, vars);
+    // console.log(html);
+    elem.innerHTML = html;
+  }
+
+
+  var renderExpression = function(txt, vars) {
     var tokens = tokenizeExpression(txt);
 
     var inFunction = false;
@@ -255,9 +281,9 @@ var ml = function () {
       }
     }
     var html = '\\( ' + newtxt + ' \\)';
-    console.log(html);
-    elem.innerHTML = html;
+    return html;
   }
+
 
   // creates a baseX to base-10 solving chart.
   // configured by JSON with params:
@@ -410,11 +436,19 @@ var ml = function () {
     return obj.value;    
   }
 
+  var echoString = function(str) {
+    return str;
+  }
+
+  var substituteN = function(str, n) {
+    return str.replace('$', n);
+  }
+
   // print a number in mathjax format
   var printNumInBase = function(num, base) {
     // console.log('printNumInBase', num, base);
     var obj = parseBaseNum(num);
-    console.log(obj);
+    // console.log(obj);
 
     if (typeof base == 'undefined')
       return String(obj.value);
@@ -485,6 +519,8 @@ var ml = function () {
   // global functions
   prn = printNumInBase;
   val = valueofNum;
+  echo = echoString;
+  sub = substituteN;
 
   return { init:init }
 }()

@@ -29,11 +29,9 @@
 
 <p class="expression" vars="a='10_5'; b='20_5';" exp="prn(a,5) + prn(b,5) = prn(val(a)+val(b),10)" ></p>
 
+<p class="series" len=12 hints=[0,4,7] exp="prn(n,3)"></p> 
 
-<!-- <p class="series" len=12 hints=[0,4,7] exp="prn(n,3)"></p> 
-
-<p class="series" len=5 exp="3^{n} = prn(3**n)"></p>
- -->
+<p class="series" len=5 exp="sub('3^{$}', n) = prn(3**n)"></p>
 
 
 <p class="equals" data='{ exp:"!prn(55, 7)" , ans:"55_{(10)}" , base:10 }'></p>
