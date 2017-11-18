@@ -12,7 +12,8 @@ var ml = function () {
 
   var gIsBlank = false;
   var gShowSolutions = false;
-  var gBlankLength = 4;
+  var gDefaultBlankLength = 4
+  var gBlankLength = gDefaultBlankLength;
 
   var init = function() {
 
@@ -111,12 +112,13 @@ var ml = function () {
     var len = elem.getAttribute("len") || 1;
     var hints = JSON.parse( elem.getAttribute("hints") ) || [];
     var txt = elem.getAttribute("exp");
+    gBlankLength = elem.getAttribute("blank") || gDefaultBlankLength;
 
     var output = '';
     for (var n = 0; n < len; n++) {
       // check for hints - meaning show solutions all the time.
       var oldShowSolutions = gShowSolutions;
-      gShowSolutions = (hints == 'all' || hints.includes(n) || gShowSolutions);
+      gShowSolutions = (hints.includes(n) || gShowSolutions);
 
       var vars = "n=" + n + "; ";
       var html = renderExpression(txt, vars);
@@ -224,6 +226,7 @@ var ml = function () {
   var processExpression = function(elem) {
     var txt = elem.getAttribute("exp");
     var vars = elem.getAttribute("vars") || '';
+    gBlankLength = elem.getAttribute("blank") || gDefaultBlankLength;
 
     var html = renderExpression(txt, vars);
     // console.log(html);
