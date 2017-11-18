@@ -63,24 +63,6 @@ var ml = function () {
     elem.innerHTML = "\\(" + result + "\\)";
   }
 
-  // convert data from "relaxed JSON string" into JSON
-  var strToJSON = function(str) {
-    if (str == undefined)
-      return undefined;
-
-    try {
-      // this is to allow "relaxed JSON", where strings do not have to quoted.
-      var fixedData = str.replace(/(['"])?([a-z0-9A-Z_]+)(['"])?:/g, '"$2": ');
-      var j = JSON.parse(fixedData);
-      return j;
-    }
-    catch(err) {
-      console.log("Error Parsing:", str);
-      console.log(err);
-    }
-  }
-
-
   var processExpression = function(elem) {
     var len = elem.getAttribute("len") || 1;
     var hints = JSON.parse( elem.getAttribute("hints") ) || [];
@@ -203,60 +185,62 @@ var ml = function () {
 
 
   // creates a baseX to base-10 solving chart.
-  // configured by JSON with params:
-  // num: "digits_B" - the number in some base format
-  // top: "exponents" | "values" | "both" | "none"
-  // bottom: "none" | "digits" | "products" | "answer"
+  // configured with these attributes:
+  // num: digits_B - the number in some base format
+  // top: exponents | values | both | none
+  // bottom: none | digits | products | answer
   // 
   var processBaseChart = function(elem) {
-    var j = strToJSON(elem.getAttribute("data"));
-    if (j == undefined)
-      return;
+    var num = elem.getAttribute("num");
+    var top = elem.getAttribute("top");
+    var bottom = elem.getAttribute("bottom");
 
-    var num = parseBaseNum(j.num);
-    var len = num.digits.length;
+    var obj = parseBaseNum(num);
+    var len = obj.digits.length;
+    var base = obj.base;
+    var digits = obj.digits;
 
-    var top = '';
-    var bottom = '';
+    var topRowTxt = '';
+    var bottomRowTxt = '';
     var answer = '';
     var sum = 0;
 
     for (var i = 0; i < len; i++) {
       var exp = len - i - 1;
-      var val = num.base ** exp;
-      var digit = num.digits[i];
+      var val = base ** exp;
+      var digit = digits[i];
       var prod = Number(digit) * val;
       sum += prod;
 
       // top part: exponent
-      var exp_str = '&nbsp;<br>';
-      if (j.top == 'exponents' || j.top == 'both' || gShowSolutions)
-        var exp_str = '\\(' + num.base + '^' + exp + '\\) <br>'
+      var expStr = '&nbsp;<br>';
+      if (top == 'exponents' || top == 'both' || gShowSolutions)
+        var expStr = '\\(' + base + '^' + exp + '\\) <br>'
 
       // top part: place value
-      var val_str = '&nbsp;';
-      if (j.top == 'values' || j.top == 'both' || gShowSolutions)
-        var val_str = val;
+      var valStr = '&nbsp;';
+      if (top == 'values' || top == 'both' || gShowSolutions)
+        var valStr = val;
 
-      top += '<td>' + exp_str + val_str + '</td>';
+      topRowTxt += '<td>' + expStr + valStr + '</td>';
 
       // bottom part: digit
-      var digit_str = '&nbsp;<br>';
-      if (j.bottom == 'digits' || j.bottom == 'products' || j.bottom == 'answer' || gShowSolutions)
-        digit_str = digit + '<br>';
+      var digitStr = '&nbsp;<br>';
+      if (bottom == 'digits' || bottom == 'products' || bottom == 'answer' || gShowSolutions)
+        digitStr = digit + '<br>';
 
       // bottom part: product
-      var product_str = '&nbsp;<br>';
-      if (j.bottom == 'products' || j.bottom == 'answer' || gShowSolutions)
-        product_str = '\\( ' + digit + ' \\times ' + val + ' = ' + prod + '\\)'
+      var productStr = '&nbsp;<br>';
+      if (bottom == 'products' || bottom == 'answer' || gShowSolutions)
+        productStr = '\\( ' + digit + ' \\times ' + val + ' = ' + prod + '\\)'
 
-      bottom += '<td>' + digit_str + product_str + '</td>';
+      bottomRowTxt += '<td>' + digitStr + productStr + '</td>';
 
       // answer part:
-      var answer_str = '';
-      if (j.bottom == 'answer' || gShowSolutions) {
-        var plus_sign = (i==0)? '' : '+';
-        answer += '<td class="no-line"> \\(' + plus_sign + prod + '\\) </td>'
+      var answerStr = '';
+      if (bottom == 'answer' || gShowSolutions) {
+        var plusSign = (i==0)? '' : '+';
+        answer += '<td class="no-line"> \\(' + plusSign + prod + '\\) </td>'
       }
     }
 
@@ -265,7 +249,7 @@ var ml = function () {
     else
       answer = '<tr> <td class="no-line"> &nbsp; </td> </tr>';
 
-    var html = '<tr>' + top + '</tr><tr>' + bottom + '</tr>' + answer;
+    var html = '<tr>' + topRowTxt + '</tr><tr>' + bottomRowTxt + '</tr>' + answer;
 
     elem.innerHTML = html;
   }

@@ -17,24 +17,25 @@
 <table class="student-info"></table>
 <div class="main">
 
-<h2>Steps for converting a number from a <em>different Base</em> to <em>Base 10</em></h2>
+<h2>Steps for Converting a Number from a <em>Different Base</em> to <em>Base 10</em></h2>
 
-<p class="instruct"> Example: Convert \(  213_{(4)} \) to Base 10</p>
+<p class="instruct"> Example: Convert \( 213_{(4)} \) to Base 10</p>
 
-<p><strong>Step1:</strong> Draw a "Base 4 Conversion Table" with exponents on top.<br>In this case, we make 3 columns because \(  213_{(4)} \) is a 3-digit number.</p>
-<table class="base-chart" data = '{num: "213_4", top: "exponents"}'> </table>
+<p><strong>Step1:</strong> Draw a "Base 4 Conversion Table" with exponents on top.<br>
+    In this case, we make 3 columns because \( 213_{(4)} \) is a 3-digit number.</p>
+<table class="base-chart"  num=213_4 top=exponents ></table>
 
 <p><strong>Step2:</strong> Calculate the exponents. These are the <em>place values</em> . </p>
-<table class="base-chart" data = '{num: "213_4", top: "both"}'> </table>
+<table class="base-chart"  num=213_4 top=both ></table>
 
 <p><strong>Step3:</strong> Put in the digits of the number. In this example they are 2, 1, and 3. </p>
-<table class="base-chart" data = '{num: "213_4", top: "both", bottom:"digits"}'> </table>
+<table class="base-chart"  num=213_4 top=both bottom=digits ></table>
 
 <p><strong>Step4:</strong> Multiply each digit by its place value.</p>
-<table class="base-chart" data = '{num: "213_4", top: "both", bottom:"products"}'> </table>
+<table class="base-chart"  num=213_4 top=both bottom=products ></table>
 
 <p><strong>Step5:</strong> Add these products together.</p>
-<table class="base-chart" data = '{num: "213_4", top: "both", bottom:"answer"}'> </table>
+<table class="base-chart"  num=213_4 top=both bottom=answer ></table>
 
 <p>The answer in Base 10 is: 39.</p>
 <p>Or: \( 213_{(4)} = 39_{(10)}  \)</p>
@@ -43,39 +44,42 @@
 <h2>Practice</h2>
 <ol>
 <li>Convert \( 212_{(3)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "212_3", top: "both"}'> </table>
+<table class="base-chart" num=212_3 top=both ></table>
 
 <li>Convert \( 423_{(5)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "423_5", top: "both"}'> </table>
+<table class="base-chart" num=423_5 top=both ></table>
 
 <li>Convert \( 100_{(6)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "100_6", top: "both"}'> </table>
+<table class="base-chart" num=100_6 top=both ></table>
 
 <li>Convert \( 11011_{(2)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "11011_2", top: "both"}'> </table>
+<table class="base-chart" num=11011_2 top=both ></table>
 
 <li>Convert \( 1232_{(4)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "1232_4", top: "both"}'> </table>
+<table class="base-chart" num=1232_4 top=both ></table>
 
 <li>Convert \( 4241_{(5)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "4241_5", top: "exponents"}'> </table>
+<table class="base-chart" num=4241_5 top=exponents ></table>
 
 <li>Convert \( 325_{(7)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "325_7", top: "exponents"}'> </table>
+<table class="base-chart" num=325_7 top=exponents ></table>
 
 <li>Convert \( 702_{(8)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "702_8", top: "exponents"}'> </table>
+<table class="base-chart" num=702_8 top=exponents ></table>
 
 <li>Convert \( 55_{(9)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "55_9", top: "exponents"}'> </table>
+<table class="base-chart" num=55_9 top=exponents ></table>
 
 <li>Convert \( 1101101_{(2)} \) to Base 10</li>
-<table class="base-chart" data = '{num: "1101101_2", top: "none"}'> </table>
+<table class="base-chart" num=1101101_2 top=none ></table>
 </ol>
 
 <h2>More Practice</h2>
-<p class="equals" data='{ exp:"!as_ml(55, 7)" , ans:"55_{(10)}" , base:10 }'></p>
+<ol>
+<li class="expression" exp="prn(55, 7) = _prn(55,10)" ></li>
+</ol>
 
 </div>
+
 </body>
 </html>
