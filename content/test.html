@@ -20,7 +20,7 @@
 
 <p>Test Cases</p>
 
-<p class="expression" exp="prn('20', 6) = @prn(20)" ></p>
+<p class="expression" exp="prn(20, 6) = @prn(20)" ></p>
 
 <p class="expression" vars="v=10;" exp="prn(v, 5) = @prn(v, 10)" blank=10></p>
 
@@ -29,10 +29,9 @@
 
 <p class="expression" vars="a='10_5'; b='20_5';" exp="prn(a,5) + @prn(b,5) = prn(val(a)+val(b),10)" ></p>
 
-<p class="series" len=12 hints=[0,4,7] exp="@prn(n,3)"></p> 
+<p class="expression" len=12 hints=[0,4,7] exp="@prn(n,3)"></p> 
 
-<p class="series" len=5 exp="sub('3^{$}', n) = @prn(3**n)"></p>
-
+<p class="expression" len=5 vars="x=3;" exp="sub(x+'^{$}', n) = @prn(x**n)"></p>
 
 <p class="expression" exp="prn(55, 7) = @prn(55, 10)"></p>
 

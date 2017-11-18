@@ -30,20 +30,15 @@ var ml = function () {
 
   }
 
-
   var processClass = function(name, func) {
     var els = document.getElementsByClassName(name);
     for (var i = 0; i < els.length; i++)
       func(els[i]);
   }
 
-
   var updateContent = function() {
     processClass('student-info', setupStudentInfo);
     processClass('solution', processSolution);
-    processClass('series', processSeries2);
-    processClass('equals', processEquals);
-    processClass('equation', processEquation);
     processClass('expression', processExpression);
     processClass('base-chart', processBaseChart);
   }
@@ -85,33 +80,12 @@ var ml = function () {
     }
   }
 
-  var attribsToDictionary = function(elem, attribs) {
-    var out = {}
-    for (var i = 0; i < attribs.length; i++) {
-      var key = attribs[i];
-      var item = elem.getAttribute(key);
-      if (item != null)
-        out[key] = item;
-    };
-    return out;
-  }
 
-  var evalExpression = function(exp) {
-    if (exp == undefined || exp == '')
-      return '';
-
-    if (exp[0] == '!') {
-      exp = exp.substring(1, exp.length)
-      return Function("return " + exp)();
-    }
-    else
-      return exp;
-  }
-
-  var processSeries2 = function(elem) {
+  var processExpression = function(elem) {
     var len = elem.getAttribute("len") || 1;
     var hints = JSON.parse( elem.getAttribute("hints") ) || [];
     var txt = elem.getAttribute("exp");
+    var vars = elem.getAttribute("vars") || '';
     gBlankLength = elem.getAttribute("blank") || gDefaultBlankLength;
 
     var output = '';
@@ -120,8 +94,8 @@ var ml = function () {
       var oldShowSolutions = gShowSolutions;
       gShowSolutions = (hints.includes(n) || gShowSolutions);
 
-      var vars = "n=" + n + "; ";
-      var html = renderExpression(txt, vars);
+      var vars2 = vars + "; n=" + n + "; ";
+      var html = renderExpression(txt, vars2);
       gShowSolutions = oldShowSolutions;
 
       output += html;
@@ -130,72 +104,6 @@ var ml = function () {
         output += ', ';
     }
     elem.innerHTML = output;     
-  }
-
-
-  var processSeries = function(elem) {
-    var j = strToJSON(elem.getAttribute("data"));
-    if (j == undefined)
-      return;
-
-    // default values
-    var hints = j.hints || []
-    var blank = j.blank ? '_'.repeat(j.blank) : '____';
-    var len = j.len || 1;
-    var baseTxt = j.base ? '_{(' + j.base + ')} ': ' ';
-    var txt = '';
-    for (var n = 0; n < len; n++) {
-      if (j.exp)
-        var exp = j.exp.replace('n', n);
-      if (j.ans)
-        var ans = j.ans.replace('n', n);
-
-      txt += '\\(' + evalExpression(exp);
-
-      if (hints == 'all' || hints.includes(n) || gShowSolutions)
-        txt += evalExpression(ans);
-      else
-        txt += ' \\text{' + blank + '}' + baseTxt;
-      txt += '\\)';
-
-      if (n < len - 1)
-        txt += ', ';
-    }
-    
-    elem.innerHTML = txt;
-  }
-
-  var processEquals = function(elem) {
-    var j = strToJSON(elem.getAttribute("data"));
-    if (j == undefined)
-      return;
-    
-    var baseTxt = j.base ? '_{(' + j.base + ')} ': ' ';
-    var blank = j.blank ? '_'.repeat(j.blank) : '____';
-
-    var txt = '\\(' + evalExpression(j.exp) + ' = ';
-    if (gShowSolutions)
-      txt += evalExpression(j.ans);
-    else
-      txt += ' \\text{' + blank + '}' + baseTxt;
-    txt += '\\)';
-    elem.innerHTML = txt;
-  }
-
-
-  var processEquation = function(elem) {
-    var j = attribsToDictionary(elem, ['exp', 'ans', 'base', 'blank']);
-
-    var baseTxt = j.base ? '_{(' + j.base + ')} ': ' ';
-    var blank = j.blank ? '_'.repeat(j.blank) : '____';
-
-    var txt = '\\(' + evalExpression(j.exp) + ' = ';
-    if (gShowSolutions)
-      txt += evalExpression(j.ans);
-    else
-      txt += ' \\text{' + blank + '}' + baseTxt;
-    txt += '\\)';
-    elem.innerHTML = txt;
   }
 
 
@@ -221,16 +129,6 @@ var ml = function () {
     }
     // console.log(out);
     return out;
-  }
-
-  var processExpression = function(elem) {
-    var txt = elem.getAttribute("exp");
-    var vars = elem.getAttribute("vars") || '';
-    gBlankLength = elem.getAttribute("blank") || gDefaultBlankLength;
-
-    var html = renderExpression(txt, vars);
-    // console.log(html);
-    elem.innerHTML = html;
   }
 
 
@@ -450,8 +348,8 @@ var ml = function () {
   }
 
 
-  // convert a base10 number into base base.
-  // return as string
+  // convert a base10 value into a base.
+  // return result as a string
   var valuetoBase = function(value, base) {
     var out = '';
 
@@ -487,6 +385,9 @@ var ml = function () {
   }
 
 
+  // based on global variables gIsBlank, gShowSolutions, and gBlankLength
+  // return a blank space with an optional base subscript
+  // or return "" if the space should not be blank (ie, should have the answer)
   var createBlankText = function(base) {
     if (!gIsBlank || gShowSolutions)
       return "";
