@@ -20,24 +20,24 @@
 
 <p>Test Cases</p>
 
-<p class="expression" exp="prn(20, 6) = @prn(20)" ></p>
+<p class="expression" exp="prn(20, 6) = _prn(20)" ></p>
 
-<p class="expression" vars="v=10;" exp="prn(v, 5) = @prn(v, 10)" blank=10></p>
+<p class="expression" vars="v=10;" exp="prn(v, 5) = _prn(v, 10)" blank=10></p>
 
 <p class="expression" vars="a=16; b=20; c=4;" 
-   exp="\cfrac{ (prn(a,5) + prn(b,5)) }{ prn(c,5) } = @prn((a+b)/c,10)" ></p>
+   exp="\cfrac{ (prn(a,5) + prn(b,5)) }{ prn(c,5) } = _prn((a+b)/c,10)" ></p>
 
-<p class="expression" vars="a='10_5'; b='20_5';" exp="prn(a,5) + @prn(b,5) = prn(val(a)+val(b),10)" ></p>
+<p class="expression" vars="a='10_5'; b='20_5';" exp="prn(a,5) + _prn(b,5) = prn(val(a)+val(b),10)" ></p>
 
-<p class="expression" len=12 hints=[0,4,7] exp="@prn(n,3)"></p> 
+<p class="expression" len=12 hints=[0,4,7] exp="_prn(n,3)"></p> 
 
-<p class="expression" len=5 vars="x=3;" exp="sub(x+'^{$}', n) = @prn(x**n)"></p>
+<p class="expression" len=5 vars="x=3;" exp="sub(x+'^{$}', n) = _prn(x**n)"></p>
 
-<p class="expression" exp="prn(55, 7) = @prn(55, 10)"></p>
+<p class="expression" exp="prn(55, 7) = _prn(55, 10)"></p>
 
-<p class="expression" exp="7^3 = @prn(7**3)"></p>
+<p class="expression" exp="7^3 = _prn(7**3)"></p>
 
-<p class="expression" exp="prn(2**8) = @echo('2^8') \text{ or } @echo('4^4')"></p>
+<p class="expression" exp="prn(2**8) = _echo('2^8') \text{ or } _echo('4^4')"></p>
 
 
 

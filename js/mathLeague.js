@@ -108,7 +108,7 @@ var ml = function () {
 
 
   var tokenizeExpression = function(txt) {
-    var re = /(@?\w+)|(\()|(\))|[^\(\)\w@]+/g;
+    var re = /(\w+)|(\()|(\))|[^\(\)\w]+/g;
     
     var out = [];
     var match;
@@ -172,8 +172,8 @@ var ml = function () {
         if (parenCount == 0) {
           inFunction = false;
 
-          // handl @ decorator:
-          if (functxt[0] =='@') {
+          // handle _ decorator:
+          if (functxt[0] =='_') {
             gIsBlank = true;
             functxt = functxt.substring(1);
           }
