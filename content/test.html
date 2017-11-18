@@ -20,27 +20,27 @@
 
 <p>Test Cases</p>
 
-<p class="expression" exp="prn('20_6'), prn(20, 10)" ></p>
+<p class="expression" exp="prn('20', 6) = @prn(20)" ></p>
 
-<p class="expression" vars="v=10;" exp="prn(v,5) = prn(v, 10)" ></p>
+<p class="expression" vars="v=10;" exp="prn(v, 5) = @prn(v, 10)" ></p>
 
 <p class="expression" vars="a=16; b=20; c=4;" 
-   exp="\cfrac{ (prn(a,5) + prn(b,5)) }{ prn(c,5) } = prn((a+b)/c,10)" ></p>
+   exp="\cfrac{ (prn(a,5) + prn(b,5)) }{ prn(c,5) } = @prn((a+b)/c,10)" ></p>
 
-<p class="expression" vars="a='10_5'; b='20_5';" exp="prn(a,5) + prn(b,5) = prn(val(a)+val(b),10)" ></p>
+<p class="expression" vars="a='10_5'; b='20_5';" exp="prn(a,5) + @prn(b,5) = prn(val(a)+val(b),10)" ></p>
 
-<p class="series" len=12 hints=[0,4,7] exp="prn(n,3)"></p> 
+<p class="series" len=12 hints=[0,4,7] exp="@prn(n,3)"></p> 
 
-<p class="series" len=5 exp="sub('3^{$}', n) = prn(3**n)"></p>
+<p class="series" len=5 exp="sub('3^{$}', n) = @prn(3**n)"></p>
 
 
-<p class="equals" data='{ exp:"!prn(55, 7)" , ans:"55_{(10)}" , base:10 }'></p>
+<p class="expression" exp="prn(55, 7) = @prn(55, 10)"></p>
 
-<p class="equals" data='{ exp:"7^3", ans:"!7**3" }'></p>
+<p class="expression" exp="7^3 = @prn(7**3)"></p>
 
-<p class="equals" data='{ exp:"!2**8", ans:"2^8 \\text{ or } 4^4", blank:8 }'></p>
+<p class="expression" exp="prn(2**8) = @echo('2^8') \text{ or } @echo('4^4')"></p>
 
-<p class="equation" exp=!2**8 ans="2^8 \text{ or } 4^4" blank=8> </p>
+
 
 \(  
 2 + { 4_{(2)} \over 34_{(3)}} =  

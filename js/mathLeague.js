@@ -10,7 +10,9 @@ var sub;
 
 var ml = function () {
 
+  var gIsBlank = false;
   var gShowSolutions = false;
+  var gBlankLength = 4;
 
   var init = function() {
 
@@ -112,8 +114,14 @@ var ml = function () {
 
     var output = '';
     for (var n = 0; n < len; n++) {
+      // check for hints - meaning show solutions all the time.
+      var oldShowSolutions = gShowSolutions;
+      gShowSolutions = (hints == 'all' || hints.includes(n) || gShowSolutions);
+
       var vars = "n=" + n + "; ";
       var html = renderExpression(txt, vars);
+      gShowSolutions = oldShowSolutions;
+
       output += html;
 
       if (n < len - 1)
@@ -190,7 +198,7 @@ var ml = function () {
 
 
   var tokenizeExpression = function(txt) {
-    var re = /(\w+)|(\()|(\))|[^\(\)\w]+/g;
+    var re = /(@?\w+)|(\()|(\))|[^\(\)\w@]+/g;
     
     var out = [];
     var match;
@@ -209,6 +217,7 @@ var ml = function () {
 
       out.push( [type, token] );
     }
+    // console.log(out);
     return out;
   }
 
@@ -262,6 +271,12 @@ var ml = function () {
         if (parenCount == 0) {
           inFunction = false;
 
+          // handl @ decorator:
+          if (functxt[0] =='@') {
+            gIsBlank = true;
+            functxt = functxt.substring(1);
+          }
+
           var ftxt = vars + " return " + functxt;
           try { 
             var result = new Function(ftxt)(); 
@@ -270,6 +285,7 @@ var ml = function () {
             console.log("Error in funciton", ftxt);
             console.log(err);
           }
+          gIsBlank = false;
 
           newtxt += result;
           functxt = '';
@@ -431,31 +447,6 @@ var ml = function () {
   }
 
 
-  var valueofNum = function(num, base) {
-    var obj = parseBaseNum(num, base);
-    return obj.value;    
-  }
-
-  var echoString = function(str) {
-    return str;
-  }
-
-  var substituteN = function(str, n) {
-    return str.replace('$', n);
-  }
-
-  // print a number in mathjax format
-  var printNumInBase = function(num, base) {
-    // console.log('printNumInBase', num, base);
-    var obj = parseBaseNum(num);
-    // console.log(obj);
-
-    if (typeof base == 'undefined')
-      return String(obj.value);
-    else
-      return valuetoBase(obj.value, base) + '_{(' + base + ')}';
-  }
-
   // convert a base10 number into base base.
   // return as string
   var valuetoBase = function(value, base) {
@@ -493,6 +484,51 @@ var ml = function () {
   }
 
 
+  var createBlankText = function(base) {
+    if (!gIsBlank || gShowSolutions)
+      return "";
+
+    var baseTxt = base ? '_{(' + base + ')} ': ' ';
+    var blankTxt = '_'.repeat(gBlankLength);
+
+    return ' \\text{' + blankTxt + '}' + baseTxt;
+  }
+
+
+  // print a number in mathjax format
+  var printNumInBase = function(num, base) {
+    var blank = createBlankText(base);
+    if (blank)
+      return blank;
+
+    var obj = parseBaseNum(num);
+    if (typeof base == 'undefined')
+      return String(obj.value);
+    else
+      return valuetoBase(obj.value, base) + '_{(' + base + ')}';
+  }
+
+  var printString = function(str) {
+    var blank = createBlankText();
+    if (blank)
+      return blank;
+
+    return str;
+  }
+
+  var printWithSubstitution = function(str, n) {
+    var blank = createBlankText();
+    if (blank)
+      return blank;
+
+    return str.replace('$', n);
+  }
+
+  var valueofNum = function(num, base) {
+    var obj = parseBaseNum(num, base);
+    return obj.value;    
+  }
+
 
   var testModule = function() {
     console.log( "parseBaseNum" );
@@ -518,9 +554,9 @@ var ml = function () {
 
   // global functions
   prn = printNumInBase;
+  echo = printString;
+  sub = printWithSubstitution;
   val = valueofNum;
-  echo = echoString;
-  sub = substituteN;
 
   return { init:init }
 }()
