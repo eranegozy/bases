@@ -2,11 +2,18 @@
 
 "use strict";
 
+// global functions:
+var prn;
+var val;
+
 var ml = function () {
 
   var gShowSolutions = false;
 
   var init = function() {
+
+    // testModule();
+    updateContent();
 
     window.onload = function() {
       document.addEventListener("click", function() {
@@ -16,7 +23,6 @@ var ml = function () {
       });
     }
 
-    updateContent();
   }
 
 
@@ -95,20 +101,6 @@ var ml = function () {
     }
     else
       return exp;
-  }
-
-  // parses a string in the format "digits_base" into:
-  // { 'digits': "digits", base: base, value: num } 
-  // where base is a number and value is the base10 value
-  var parseBaseNum = function(str) {
-    var parts = str.split('_');
-
-    var out = {};
-    out.digits = parts[0];
-    out.base = Number(parts[1]);
-    out.val = b10(out.digits, out.base);
-    
-    return out;
   }
 
 
@@ -203,15 +195,17 @@ var ml = function () {
 
   var processExpression = function(elem) {
     var txt = elem.getAttribute("exp");
-    var vars = elem.getAttribute("vars");
+    var vars = elem.getAttribute("vars") || '';
 
     var tokens = tokenizeExpression(txt);
+
     var inFunction = false;
     var parenCount = 0;
     var newtxt = '';
     var functxt = '';
 
     for (var i = 0; i < tokens.length; i++) {
+
       var type = tokens[i][0];
       var token = tokens[i][1];
 
@@ -241,7 +235,16 @@ var ml = function () {
         // end of function?
         if (parenCount == 0) {
           inFunction = false;
-          var result = new Function(vars + " return " + functxt)();
+
+          var ftxt = vars + " return " + functxt;
+          try { 
+            var result = new Function(ftxt)(); 
+          }
+          catch(err) {
+            console.log("Error in funciton", ftxt);
+            console.log(err);
+          }
+
           newtxt += result;
           functxt = '';
         }
@@ -324,11 +327,62 @@ var ml = function () {
     elem.innerHTML = html;
   }
 
-  // convert digits in base base to base 10
-  var b10 = function(digits, base) {
-    if (typeof digits === 'number') {
-      digits = String(digits);
+
+  // Try to convert just about anything into a dictionary describing the number
+  // options are (num, base)
+  // (17)
+  // (13, 4)  13 is converted to '13'
+  // ('17')
+  // ('14_5')
+  // ('23', 4)
+  // ('23', '4')
+  // ('23_6', 4) error - two bases given
+  // returns:
+  // { 'digits': "digits", base: base, value: num } 
+  // where base is a number and value is the base10 numberic value
+  var parseBaseNum = function(num, base) {
+    var out = {};
+
+    // handle base argument
+    if (typeof base == 'number') {
+      out.base = base;
     }
+    else if (typeof base == 'string') {
+      out.base = Number(base);
+    } 
+    else if (typeof base == 'undefined') {
+      out.base = 10;
+    }
+    else {
+      console.log('Error base', base, 'must be a number or string or undefined');
+      return;      
+    }
+
+    // handle num argument
+    if (typeof num == 'number') {
+      out.digits = String(num);
+    }
+    else if (typeof num == 'string') {
+      var parts = num.split('_');
+      if (parts.length == 1) {
+        out.digits = num;
+      }
+      else if (parts.length >= 2) {
+        out.digits = parts[0];
+        out.base = Number(parts[1]);
+      }
+    }
+    else {
+      console.log('Error num', num, 'must be a number or string');
+      return;      
+    }
+
+    out.value = base10Value(out.digits, out.base);    
+    return out;
+  }
+
+  // convert digits in base base to base 10
+  var base10Value = function(digits, base) {
     var val = 0;
 
     // TODO - handle errors in this conversion
@@ -341,7 +395,7 @@ var ml = function () {
       else
         d -= 55;
       if (d >= base) {
-        var txt = "Error converting " + digits + '_' + base + ". Illegal digit";
+        var txt = "Error converting " + digits + ',' + base + ". Illegal digit";
         console.log(txt);
         alert(txt);
       }
@@ -351,15 +405,39 @@ var ml = function () {
   }
 
 
-  var as_ml = function(num, base) {
-    var txt = as(num, base);
-    return txt + '_{(' + base + ')}';
+  var valueofNum = function(num, base) {
+    var obj = parseBaseNum(num, base);
+    return obj.value;    
+  }
+
+  // print a number in mathjax format
+  var printNumInBase = function(num, base) {
+    // console.log('printNumInBase', num, base);
+    var obj = parseBaseNum(num);
+    console.log(obj);
+
+    if (typeof base == 'undefined')
+      return String(obj.value);
+    else
+      return valuetoBase(obj.value, base) + '_{(' + base + ')}';
   }
 
   // convert a base10 number into base base.
-  var as = function(num, base) {
+  // return as string
+  var valuetoBase = function(value, base) {
     var out = '';
 
+    if (typeof value != 'number') {
+      console.log("Error, value", value, "must be a number");
+      return 'err';
+    }
+    if (typeof base != 'number') {
+      console.log("Error, base", base, "must be a number");
+      return 'err';
+    }
+
+    var num = value;
+    var cnt = 0;
     while (true) {
       var rem = num % base;
       var num = Math.floor(num / base);
@@ -370,43 +448,45 @@ var ml = function () {
       out = String(rem) + out
       if (num == 0)
           break;
+
+      cnt += 1;
+      if (cnt > 30) {
+        console.log("Problem with valuetoBase:", value, base)
+        return;
+      }
     }
     return out;
   }
 
 
-  // multiply 2 numbers
-  var mult = function(a, b) {
-    return N(a.value * b.value, 10);
+
+  var testModule = function() {
+    console.log( "parseBaseNum" );
+    console.log( parseBaseNum(17) );
+    console.log( parseBaseNum(13, 4) );
+    console.log( parseBaseNum('17') );
+    console.log( parseBaseNum('14_5') );
+    console.log( parseBaseNum('23', 4) );
+    console.log( parseBaseNum('23', '4') );
+    console.log( parseBaseNum('23_6', 4) );
+    console.log( parseBaseNum('23_6', '4') );
+    console.log( parseBaseNum('23_6', 'hi') );
+
+
+    console.log( "valuetoBase" );
+    console.log( valuetoBase(50, 4));
+    console.log( valuetoBase(50, 10));
+    console.log( valuetoBase('50', 4));
+    console.log( valuetoBase(0, 4));
+    console.log( valuetoBase(50, 0));
+    console.log( valuetoBase(50));
   }
 
-  // factory to create a number
-  var N = function(digits, base) {
-    return new Num(digits, base);
-  }
+  // global functions
+  prn = printNumInBase;
+  val = valueofNum;
 
-  // number class
-  var Num = function(digits, base) {
-    this.value = b10(digits, base);
-    console.log(digits, base, '=', this.value);
-  }
-
-  // convert to the given base and return as string
-  Num.prototype.base = function(base) {
-    console.log('base', base);
-    console.log('value', this.value);
-    return as(this.value, base);
-  }
-
-  return { init:init, N:N, mult:mult, b10:b10, as:as, as_ml:as_ml }
+  return { init:init }
 }()
-
-var N = ml.N;
-var mult = ml.mult;
-var b10 = ml.b10;
-var as = ml.as;
-var as_ml = ml.as_ml;
-var prn = ml.as_ml;
-var ans = prn;
 
 
