@@ -255,44 +255,26 @@ var ml = function () {
   }
 
 
-  // Try to convert just about anything into a dictionary describing the number
-  // options are (num, base)
-  // (17)
-  // (13, 4)  13 is converted to '13'
-  // ('17')
-  // ('14_5')
-  // ('23', 4)
-  // ('23', '4')
-  // ('23_6', 4) error - two bases given
+  // Parse a number in some base into a dictionary that describes what is going on.
+  // 17
+  // '17'
+  // '14_5'
   // returns:
   // { 'digits': "digits", base: base, value: num } 
   // where base is a number and value is the base10 numberic value
-  var parseBaseNum = function(num, base) {
+  var parseBaseNum = function(num) {
     var out = {};
-
-    // handle base argument
-    if (typeof base == 'number') {
-      out.base = base;
-    }
-    else if (typeof base == 'string') {
-      out.base = Number(base);
-    } 
-    else if (typeof base == 'undefined') {
-      out.base = 10;
-    }
-    else {
-      console.log('Error base', base, 'must be a number or string or undefined');
-      return;      
-    }
 
     // handle num argument
     if (typeof num == 'number') {
       out.digits = String(num);
+      out.base = 10;
     }
     else if (typeof num == 'string') {
       var parts = num.split('_');
       if (parts.length == 1) {
         out.digits = num;
+        out.base = 10;
       }
       else if (parts.length >= 2) {
         out.digits = parts[0];
@@ -412,8 +394,8 @@ var ml = function () {
     return str.replace('$', n);
   }
 
-  var valueofNum = function(num, base) {
-    var obj = parseBaseNum(num, base);
+  var valueOfNum = function(num) {
+    var obj = parseBaseNum(num);
     return obj.value;    
   }
 
@@ -421,14 +403,11 @@ var ml = function () {
   var testModule = function() {
     console.log( "parseBaseNum" );
     console.log( parseBaseNum(17) );
-    console.log( parseBaseNum(13, 4) );
+    console.log( parseBaseNum(13) );
     console.log( parseBaseNum('17') );
     console.log( parseBaseNum('14_5') );
-    console.log( parseBaseNum('23', 4) );
-    console.log( parseBaseNum('23', '4') );
-    console.log( parseBaseNum('23_6', 4) );
-    console.log( parseBaseNum('23_6', '4') );
-    console.log( parseBaseNum('23_6', 'hi') );
+    console.log( parseBaseNum('23') );
+    console.log( parseBaseNum('23_6') );
 
 
     console.log( "valuetoBase" );
