@@ -1,0 +1,85 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League Bases: Addition</h1>
+
+<table class="student-info"></table>
+<div class="main">
+
+<h2>Adding in Base 10</h2>
+
+<p>Adding in Bases is like adding in Base 10. For example, try this:</p>
+<p class="expression indent1" exp="longadd([345, 142])"></p>
+
+<p>That was easy. The next one a bit harded. You need to "carry the one":</p>
+<p class="expression indent1" exp="longadd([374, 768])"></p>
+
+<h2>Adding in Other Bases</h2>
+
+In other Bases, the easy problems are exactly the same:
+<p class="expression indent1" exp="longadd(['12_4', '21_4'], 4)"></p>
+<p class="expression indent1" exp="longadd(['31_8', '123_8', '410_8'], 8)"></p>
+
+<p>The "carry one" rule happens in other bases too. How do you solve this:</p>
+<p class="expression indent1" exp="prn(3, 5) + prn(3, 5) = ?"></p>
+<p>There is no "6" in Base 5. So the answer must be \( 11_{(5)} \).</p>
+
+<p>Here is a two digit Base 5 addition, where you "carry the one" from the \( 11_{(5)} \).</p>
+<p class="indent1">
+\( \begin{align} 1 \phantom{0_{(5)}} \\ 13_{(5)} \\ \underline{+ \quad 23_{(5)}} \\ 41_{(5)} \end{align} \)
+</p>
+
+<p>Try one yourself. This one has two carries.</p>
+<p class="expression indent1" exp="longadd(['123_5', '124_5'], 5)"></p>
+
+<h2>Practice</h2>
+
+<p>Some basic addition problems</p>
+
+<table style='width:100%'><tr>
+<td><p class="expression" exp="longadd([13, 6], 5)"></p></td>
+<td><p class="expression" exp="longadd([12, 9], 5)"></p></td>
+<td><p class="expression" exp="longadd(['134_5', '143_5'], 5)"></p></td>
+<td><p class="expression" exp="longadd(['124_5', '434_5'], 5)"></p></td>
+</tr><tr>
+<td><p class="expression" exp="longadd([15, 10], 4)"></p></td>
+<td><p class="expression" exp="longadd([25, 14], 4)"></p></td>
+<td><p class="expression" exp="longadd([45, 37], 4)"></p></td>
+<td><p class="expression" exp="longadd([59, 47], 4)"></p></td>
+</tr><tr>
+<td><p class="expression" exp="longadd([28, 20], 6)"></p></td>
+<td><p class="expression" exp="longadd([35, 14], 6)"></p></td>
+<td><p class="expression" exp="longadd([45, 37], 7)"></p></td>
+<td><p class="expression" exp="longadd([59, 48], 7)"></p></td>
+</tr></table>
+
+<p>Lots of digits in low bases</p>
+
+<table style='width:100%'><tr>
+<td><p class="expression" exp="longadd([6, 13], 2)"></p></td>
+<td><p class="expression" exp="longadd([12, 9], 2)"></p></td>
+<td><p class="expression" exp="longadd([15, 13], 2)"></p></td>
+<td><p class="expression" exp="longadd([37, 52], 2)"></p></td>
+</tr><tr>
+<td><p class="expression" exp="longadd([17, 10], 3)"></p></td>
+<td><p class="expression" exp="longadd([26, 26], 3)"></p></td>
+<td><p class="expression" exp="longadd([49, 37], 3)"></p></td>
+<td><p class="expression" exp="longadd([89, 147], 3)"></p></td>
+</tr></table>
+
+<h2>Challenge Problems</h2>
+
+</div>
+</body>
+</html>
