@@ -1,0 +1,104 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League Bases: Converting from Base 10</h1>
+
+<table class="student-info"></table>
+<div class="main">
+
+<h2>Steps for Converting a Number from <em>Base 10</em> to a <em>Different Base</em></h2>
+
+<p class="instruct"> Example: Convert \( 67_{(10)} \) to Base 5.</p>
+
+<p><strong>Step1:</strong> Draw a "Base 5 Conversion Table".<br>
+<table class="base-chart" num=232_5 top=both demo=true></table>
+
+<p><strong>Step2:</strong> Look at the highest place value (25) and ask "How many 25s fit into 67?" </p>
+<p class="indent1">The Answer is <span class="expression" exp="_echo(2)"></span> because
+    <span class="expression" exp="_echo(2) \times 25 = 50"></span>.</p>
+    <p class="indent1">Now put that number and the product in the chart:</p>
+
+<table class="base-chart"  num=232_5 top=both bottom=2 demo=true></table>
+
+<p><strong>Step3:</strong> Subtract 50 from 67:</p>
+<p><span class="expression indent1" exp="67 - 50 = _echo(67-50)"></span>. This is the <em>remainder</em>.</p>
+
+<p><strong>Step4:</strong> Look at the next place value (5) and ask "How many 5s fit into this reminder (17)?" </p>
+<p class="indent1">The Answer is <span class="expression" exp="_echo(3)"></span> because
+    <span class="expression" exp="_echo(3) \times 5 = 15"></span>.</p>
+    <p class="indent1">Now put that number and the product in the chart:</p>
+
+<table class="base-chart"  num=232_5 top=both bottom=21 demo=true></table>
+
+<p><strong>Step5:</strong> Subtract 15 from 17:</p>
+<p><span class="expression indent1" exp="17 - 15 = _echo(17-15)"></span>. 
+    This is the last remainder.</p>
+
+<p><strong>Step6:</strong> When you get to the last place value (1), you are done.</p>
+<table class="base-chart"  num=232_5 top=both bottom=210 demo=true></table>
+
+<p>The answer in Base 5 is: \( 232_{(5)} \).</p>
+<p>Or: \( 67_{(10)} = 232_{(5)}  \)</p>
+
+
+<h2>Practice</h2>
+<ol>
+<li class="expression" exp="prn(89,10) = _prn(89,5)" ></li>
+<table class="base-chart" num=89:5 top=both ></table>
+
+<li class="expression" exp="prn(34,10) = _prn(34,4)" ></li>
+<table class="base-chart" num=34:4 top=both ></table>
+
+<li class="expression" exp="prn(65,10) = _prn(65,7)" ></li>
+<table class="base-chart" num=65:7 top=both ></table>
+
+<li class="expression" exp="prn(37,10) = _prn(37,6)" ></li>
+<table class="base-chart" num=37:6 top=exponents ></table>
+
+<li class="expression" exp="prn(23,10) = _prn(23,3)" ></li>
+<table class="base-chart" num=23:3 top=exponents ></table>
+
+<li class="expression" exp="prn(14,10) = _prn(14,2)" ></li>
+<table class="base-chart" num=14:2 top=exponents ></table>
+
+<li class="expression" exp="prn(100,10) = _prn(100,9)" ></li>
+<table class="base-chart" num=100:9 top=none ></table>
+
+<li class="expression" exp="prn(100,10) = _prn(100,8)" ></li>
+<table class="base-chart" num=100:8 top=none ></table>
+
+<li class="expression" exp="prn(71,10) = _prn(71,4)" ></li>
+<table class="base-chart" num=71:4 top=none ></table>
+
+<li class="expression" exp="prn(80,10) = _prn(80,6)" ></li>
+<table class="base-chart" num=80:6 top=none ></table>
+</ol>
+
+<h2>More Practice</h2>
+<p>Convert from Base 10.</p>
+
+<ol>
+<li class="expression" exp="prn(55, 10) = _prn(55, 7)" blank=8 ></li>
+</ol>
+
+<p>Convert from Base 10. These are a bit harder.</p>
+
+<ol>
+<li class="expression" exp="prn(484, 10) = _prn(484, 6)" blank=8 ></li>
+</ol>
+
+</div>
+
+</body>
+</html>
