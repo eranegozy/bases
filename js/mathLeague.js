@@ -193,8 +193,9 @@ var ml = function () {
   // 
   var processBaseChart = function(elem) {
     var num = elem.getAttribute("num");
-    var top = elem.getAttribute("top");
-    var bottom = elem.getAttribute("bottom");
+    var top = elem.getAttribute("top") || '';
+    var bottom = elem.getAttribute("bottom") || '';
+    var demo = elem.getAttribute("demo")? true : false;
 
     var obj = parseBaseNum(num);
     var len = obj.digits.length;
@@ -215,33 +216,33 @@ var ml = function () {
 
       // top part: exponent
       var expStr = '&nbsp;<br>';
-      if (top == 'exponents' || top == 'both' || gShowSolutions)
+      if (top == 'exponents' || top == 'both' || (gShowSolutions && !demo))
         var expStr = '\\(' + base + '^' + exp + '\\) <br>'
 
       // top part: place value
       var valStr = '&nbsp;';
-      if (top == 'values' || top == 'both' || gShowSolutions)
+      if (top == 'values' || top == 'both' || (gShowSolutions && !demo))
         var valStr = val;
 
       topRowTxt += '<td>' + expStr + valStr + '</td>';
 
       // bottom part: digit
       var digitStr = '&nbsp;<br>';
-      if (bottom == 'digits' || bottom == 'products' || bottom == 'answer' || gShowSolutions)
+      if (bottom.includes('d') || bottom.includes(exp) || (gShowSolutions && !demo))
         digitStr = digit + '<br>';
 
       // bottom part: product
       var productStr = '&nbsp;<br>';
-      if (bottom == 'products' || bottom == 'answer' || gShowSolutions)
-        productStr = '\\( ' + digit + ' \\times ' + val + ' = ' + prod + '\\)'
+      if (bottom.includes('p') || bottom.includes(exp) || (gShowSolutions && !demo))
+        productStr = '\\( ' + digit + ' \\times ' + val + ' = ' + prod + '\\)';
 
       bottomRowTxt += '<td>' + digitStr + productStr + '</td>';
 
       // answer part:
       var answerStr = '';
-      if (bottom == 'answer' || gShowSolutions) {
+      if (bottom.includes('s') || (gShowSolutions && !demo)) {
         var plusSign = (i==0)? '' : '+';
-        answer += '<td class="no-line"> \\(' + plusSign + prod + '\\) </td>'
+        answer += '<td class="no-line"> \\(' + plusSign + prod + '\\) </td>';
       }
     }
 
@@ -260,6 +261,7 @@ var ml = function () {
   // 17
   // '17'
   // '14_5'
+  // '19:5'  19_10 converted to base 5
   // returns:
   // { 'digits': "digits", base: base, value: num } 
   // where base is a number and value is the base10 numberic value
@@ -271,16 +273,22 @@ var ml = function () {
       out.digits = String(num);
       out.base = 10;
     }
-    else if (typeof num == 'string') {
+    // string with _  like '15_7'
+    else if (typeof num == 'string' && num.includes('_')) {
       var parts = num.split('_');
-      if (parts.length == 1) {
-        out.digits = num;
-        out.base = 10;
-      }
-      else if (parts.length >= 2) {
-        out.digits = parts[0];
-        out.base = Number(parts[1]);
-      }
+      out.digits = parts[0];
+      out.base = Number(parts[1]);
+    }
+    // string with :  like '20:4'
+    else if (typeof num == 'string' && num.includes(':')) {
+      var parts = num.split(':');
+      var value = Number(parts[0]);
+      out.base = Number(parts[1]);
+      out.digits = valuetoBase(value, out.base);
+    }
+    else if (typeof num == 'string') {
+      out.digits = num;
+      out.base = 10;
     }
     else {
       console.log('Error num', num, 'must be a number or string');
