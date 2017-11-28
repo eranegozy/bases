@@ -66,6 +66,24 @@ p {
 }
 */
 
+.grid {
+  border-collapse: collapse;
+  display: inline-block;
+  margin: 10px;
+}
+
+.grid tr {
+  border-top: solid 1px;  
+  border-bottom: solid 1px;  
+}
+
+.grid td {
+  border-left: solid 1px;
+  border-right: solid 1px;
+  padding: 0px;
+  width: 20px;
+  height: 20px;
+}
 
 .base-chart 
 {

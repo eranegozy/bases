@@ -42,6 +42,7 @@ var ml = function () {
     processClass('solution', processSolution);
     processClass('expression', processExpression);
     processClass('base-chart', processBaseChart);
+    processClass('grids', processGrids);
   }
 
   var setupStudentInfo = function(elem) {
@@ -256,6 +257,40 @@ var ml = function () {
     elem.innerHTML = html;
   }
 
+  var processGrids = function(elem) {
+    var num = elem.getAttribute("num");
+
+    var obj = parseBaseNum(num);
+    var len = obj.digits.length;
+    var base = obj.base;
+    var digits = obj.digits;
+
+    var html = ''
+    for (var d = 0; d < len; d++) {
+      var cnt = Number(digits[d]);
+      for (var c = 0; c < cnt; c++) {
+        var ny = (len-d) > 1 ? base : 1;
+        var nx = (len-d) > 2 ? base : 1;
+        html += createGrid(nx, ny);
+      }
+    }
+
+    elem.innerHTML = html;
+  }
+
+  var createGrid = function(nx, ny) {
+    var txt = '<table class="grid">\n';
+    for (var y = 0; y < ny; y++) {
+      txt += '<tr>';
+      for (var x = 0; x < nx; x++) {
+        txt += '<td>&nbsp;</td>';
+      }
+      txt += '</tr>\n';
+    }
+    txt += '</table>\n';
+    return txt;
+  }
+
 
   // Parse a number in some base into a dictionary that describes what is going on.
   // 17
@@ -428,7 +463,7 @@ var ml = function () {
 
   var valueOfNum = function(num) {
     var obj = parseBaseNum(num);
-    return obj.value;    
+    return obj.value;
   }
 
 
