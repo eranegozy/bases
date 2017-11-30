@@ -31,6 +31,12 @@ p {
   margin-bottom: 0px;
 }
 
+@media print {
+  .page-break { 
+    page-break-before: always;
+  }
+}
+
 .main {
     margin-left: 50px;
 }
