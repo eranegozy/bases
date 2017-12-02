@@ -4,12 +4,13 @@ h1 {
 }
 
 h2 {
-  margin-left: -35px;
+  margin: 15px 0px 1px -35px;
   font-size: 20px;
+
 }
 
 ol {
-  margin-left: -40px;
+  margin: 0px 0px 0px -40px;
   list-style: none;
   counter-reset: mycounter start;
 }
@@ -20,12 +21,12 @@ ol li:before {
 }
 
 li {
-  padding-top: 15px;
+  padding-top: 20px;
   margin-left: -20px;  
 }
 
 p {
-  padding-top: 15px;
+  padding-top: 20px;
   padding-bottom: 0px;
   margin-top: 0px;
   margin-bottom: 0px;
@@ -50,6 +51,15 @@ p {
 .indent1 {
   margin-left: 30px;  
 }
+
+.vspace1 {
+  margin-top: 18px;  
+}
+
+.vspace2 {
+  margin-top: 50px;  
+}
+
 
 .problem-short {
   padding-left: 30px;
