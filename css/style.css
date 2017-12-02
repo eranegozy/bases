@@ -120,10 +120,20 @@ p {
   word-spacing: 10px;
 }
 
-.cal-box {
+.calendar {
   border-collapse: collapse;
+  margin: auto;
+}
+
+.cal-day {
   border: solid 2px;
-  width: 100px;
+  text-align: center;
+  font-weight: bold;    
+}
+
+.cal-box {
+  border: solid 2px;
+  width: 110px;
   padding: 0px;
   margin: 0px;
 }
@@ -150,6 +160,7 @@ p {
 }
 
 .cal-base {
-  padding: 2px;  
+  padding: 1px;
+  margin-right: 5px;  
   text-align: right;
 }

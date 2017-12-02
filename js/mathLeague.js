@@ -43,6 +43,7 @@ var ml = function () {
     processClass('expression', processExpression);
     processClass('base-chart', processBaseChart);
     processClass('grids', processGrids);
+    processClass('calendar', processCalendar);
   }
 
   var setupStudentInfo = function(elem) {
@@ -291,6 +292,40 @@ var ml = function () {
     return txt;
   }
 
+
+  // create a "Base-ic Calendar"
+  var processCalendar = function(elem) {
+    var bases = elem.getAttribute("bases").split(" ");
+    var html = '';
+
+    // create days of the week
+    var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Satuardy'];
+    html += '<tr>';
+    for (var i = 0; i < days.length; i++) {
+      html += '<td class="cal-day">' + days[i] + '</td>';
+    }
+
+    // create date boxes
+    html += '</tr>\n<tr>';
+    for (var i = 0; i < bases.length; i++) {
+      var value = i + 1;
+      var base = Number(bases[i]);
+      var digits = valuetoBase(value, base);
+      var answer = gShowSolutions ? base : '_____';
+
+      if (i % 7 == 0 && i != 0)
+        html += '</tr>\n<tr>';
+
+      html += '<td class="cal-box">'
+      html += '<p class="cal-value">' + value + '</p>'
+      html += '<p class="cal-digits">' + digits + '</p>'
+      html += '<p class="cal-base">Base ' + answer + '</p>'
+      html += "</td>"
+    };
+    html += "</tr>"
+
+    elem.innerHTML = html;
+  }
 
   // Parse a number in some base into a dictionary that describes what is going on.
   // 17
