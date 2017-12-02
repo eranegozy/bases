@@ -22,14 +22,14 @@
 <ol>
 <p>We first learned to count in Base 10.</p>
 <li>Fill in this sequence: 
-  <span class="expression" len=10 exp="_sub('$',n)" hints=[0,1,2,9] ></span></li>
+  <span class="expression series" len=10 exp="_sub('$',n)" hints=[0,1,2,9] ></span></li>
 
 <p>It is called "Base 10" because there are TEN symbols, or TEN different digit "shapes".</p>
 <li>Here are five symbols (or "shapes") in Base 10:
-  <span class="expression" len=5 exp="sub('$', [2,3,9,7,6][n])" ></span>
+  <span class="expression series" len=5 exp="sub('$', [2,3,9,7,6][n])" ></span>
 
 <p class="indent1"> What are the other five symbols?: 
-  <span class="expression" len=5 exp="_sub('$', [0,1,4,5,8][n])" ></span></p> </li>
+  <span class="expression series" len=5 exp="_sub('$', [0,1,4,5,8][n])" ></span></p> </li>
 
 <li>How many symbols (or "shapes") in the English Alphabet?
   <span class="expression" exp="_echo(26)" ></span></li>
@@ -53,7 +53,7 @@
 </li>
 
 <li>Fill in this Base 10 sequence:
-  <p class="expression indent1" len=17 exp="_sub('$',n)" hints=[3,4,12,16] ></p></li>
+  <p class="expression indent1 series" len=17 exp="_sub('$',n)" hints=[3,4,12,16] ></p></li>
 </ol>
 
 
@@ -61,22 +61,22 @@
 
 <ol>
 <p>In Base 5, there are only FIVE symbols or "shapes".
-  They are: <span class="expression" len=5 exp="sub('$', n)" ></span></p>
+  They are: <span class="expression series" len=5 exp="sub('$', n)" ></span></p>
 
 <li>Here are two Base 5 symbols (or "shapes"):
-  <span class="expression" len=2 exp="sub('$', [2,4][n])" ></span>
+  <span class="expression series" len=2 exp="sub('$', [2,4][n])" ></span>
 
 <p class="indent1"> What are the other three symbols?: 
-    <span class="expression" len=3 exp="_sub('$', [0,1,3][n])" ></span></p></li>
+    <span class="expression series" len=3 exp="_sub('$', [0,1,3][n])" ></span></p></li>
 
 <li>In Base 3, there are only <span class="expression" exp="_echo(3)" ></span> symbols. 
-  They are: <span class="expression" len=3 exp="_sub('$', n)" ></span></li> 
+  They are: <span class="expression series" len=3 exp="_sub('$', n)" ></span></li> 
 
 <li>In Base 8, there are only <span class="expression" exp="_echo(8)"></span> symbols. 
-  They are: <span class="expression" len=8 exp="_sub('$', n)" ></span></li> 
+  They are: <span class="expression series" len=8 exp="_sub('$', n)" ></span></li> 
 
 <li>In Base 2, there are only <span class="expression" exp="_echo(2)"></span> symbols. 
-  They are: <span class="expression" len=2 exp="_sub('$', n)" ></span></li> 
+  They are: <span class="expression series" len=2 exp="_sub('$', n)" ></span></li> 
 
 <li>Let's go back to Base 5. In Base 5, the largest number you can make with one digit is: 
   <span class="expression" exp="_echo(4)" ></span>.</li>
@@ -87,13 +87,13 @@
   It looks like TEN. But it means FIVE. To know we mean Base 5, we write \( 10_{(5)} \)</p>
 
 <li>Fill in this sequence using Base 5:</li>
-<p class="expression" len=10 exp="_prn(n,5)", hints=[0,1,4,6] ></p> 
+<p class="expression series" len=10 exp="_prn(n,5)", hints=[0,1,4,6] ></p> 
 
 <li>In Base 5, what number comes after \( 14_{(5)} \): 
   <span class="expression" exp="_prn('20_5', 5)" ></span>.</li>
 
 <li>Fill in this sequence using Base 5:</li>
-<p class="expression" len=11 exp="_prn(8+n,5)", hints=[1,4,5,9] ></p> 
+<p class="expression series" len=11 exp="_prn(8+n,5)", hints=[1,4,5,9] ></p> 
 
 <li>What comes after \( 44_{(5)} \)?
   <span class="expression" exp="_prn('100_5', 5)" ></span>. 
@@ -105,25 +105,25 @@
 
 <ol>
 <li>Fill in this sequence using Base 3:</li>
-<p class="expression" len=12 exp="_prn(n,3)" hints=[0,4,7] ></p> 
+<p class="expression series" len=12 exp="_prn(n,3)" hints=[0,4,7] ></p> 
 
 <li>Fill in this sequence using Base 7:</li>
-<p class="expression" len=12 exp="_prn(n+9,7)" hints=[2,5,9] ></p> 
+<p class="expression series" len=12 exp="_prn(n+9,7)" hints=[2,5,9] ></p> 
 
 <li>Fill in this sequence using Base 2:</li>
-<p class="expression" len=12 exp="_prn(n,2)" hints=[1,5,8] ></p> 
+<p class="expression series" len=12 exp="_prn(n,2)" hints=[1,5,8] ></p> 
 
 <li>Fill in this sequence using Base 6:</li>
-<p class="expression" len=12 exp="_prn(n+5,6)" hints=[1,5,8] ></p> 
+<p class="expression series" len=12 exp="_prn(n+5,6)" hints=[1,5,8] ></p> 
 
 <li>Fill in this sequence using Base 4:</li>
-<p class="expression" len=12 exp="_prn(n+15,4)" hints=[5,10] ></p> 
+<p class="expression series" len=12 exp="_prn(n+15,4)" hints=[5,10] ></p> 
 
 <li>Fill in this sequence using Base 8:</li>
-<p class="expression" len=12 exp="_prn(n+45,8)" hints=[2,10] ></p> 
+<p class="expression series" len=12 exp="_prn(n+45,8)" hints=[2,10] ></p> 
 
 <li>Fill in this sequence using Base 5:</li>
-<p class="expression" len=12 exp="_prn(n+29,5)" hints=[2,6] ></p> 
+<p class="expression series" len=12 exp="_prn(n+29,5)" hints=[2,6] ></p> 
 </ol>
 
 <h2 class="page-break">More Practice</h2>
@@ -131,28 +131,28 @@
 
 <ol>
 <li>Fill in this sequence using Base 10:</li>
-<p class="expression" len=12 exp="_prn(2*n,10)" hints=[2,4,7,11] ></p> 
+<p class="expression series" len=12 exp="_prn(2*n,10)" hints=[2,4,7,11] ></p> 
 
 <li>Fill in this sequence using Base 5:</li>
-<p class="expression" len=12 exp="_prn(2*n,5)" hints=[2,4,7,11] ></p> 
+<p class="expression series" len=12 exp="_prn(2*n,5)" hints=[2,4,7,11] ></p> 
 
 <li>Fill in this sequence using Base 3:</li>
-<p class="expression" len=12 exp="_prn(10+2*n,3)" hints=[2,4,7,11] blank=6></p> 
+<p class="expression series" len=12 exp="_prn(10+2*n,3)" hints=[2,4,7,11] blank=6></p> 
 
 <li>Fill in this sequence using Base 4:</li>
-<p class="expression" len=12 exp="_prn(3*n,4)" hints=[0,4,5,11] ></p> 
+<p class="expression series" len=12 exp="_prn(3*n,4)" hints=[0,4,5,11] ></p> 
 
 <li>Fill in this sequence using Base 2:</li>
-<p class="expression" len=9 exp="_prn(3*n,2)" hints=[0,3,4,8] blank=6></p> 
+<p class="expression series" len=9 exp="_prn(3*n,2)" hints=[0,3,4,8] blank=6></p> 
 
 <li>Fill in this sequence using Base 6:</li>
-<p class="expression" len=12 exp="_prn(3*n+6,6)" hints=[0,2,7,11] ></p> 
+<p class="expression series" len=12 exp="_prn(3*n+6,6)" hints=[0,2,7,11] ></p> 
 
 <li>Fill in this sequence using Base 7:</li>
-<p class="expression" len=12 exp="_prn(4*n,7)" hints=[2,4,7,11] ></p> 
+<p class="expression series" len=12 exp="_prn(4*n,7)" hints=[2,4,7,11] ></p> 
 
 <li>Fill in this sequence using Base 5:</li>
-<p class="expression" len=12 exp="_prn(4*n+8,5)" hints=[0,6,8,11] ></p> 
+<p class="expression series" len=12 exp="_prn(4*n+8,5)" hints=[0,6,8,11] ></p> 
 
 </ol>
 
