@@ -116,7 +116,8 @@ var ml = function () {
     return out;
   }
 
-
+  // tokenize and process txt, handling funtions inside txt.
+  // evaluate found functions with vars as context for the function.
   var renderExpression = function(txt, vars) {
     var tokens = tokenizeExpression(txt);
 
@@ -157,12 +158,14 @@ var ml = function () {
         if (parenCount == 0) {
           inFunction = false;
 
-          // handle _ decorator:
+          // handle _ decorator - used for inserting a blank or the solution
           if (functxt[0] =='_') {
             gIsBlank = true;
             functxt = functxt.substring(1);
           }
 
+          // construct environment to evaluate function:
+          // setup variables and return value.
           var ftxt = vars + " return " + functxt;
           try { 
             var result = new Function(ftxt)(); 
