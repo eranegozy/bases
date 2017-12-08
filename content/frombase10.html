@@ -21,10 +21,10 @@
 
 <p class="instruct"> Example: Convert \( 67_{(10)} \) to Base 5.</p>
 
-<p><strong>Step1:</strong> Draw a "Base 5 Conversion Table".<br>
-<table class="base-chart" num=232_5 top=both demo=true></table>
+<p><strong>Step1:</strong> Draw a "Base 5 Conversion Table". Calculate the exponent values:
+<table class="base-chart" num=232_5 top=exponents demo=true></table>
 
-<p><strong>Step2:</strong> Look at the highest place value (25) and ask "How many 25s fit into 67?" </p>
+<p><strong>Step2:</strong> Look at the highest place value (25) and ask "How many times does 25 fit into 67?" </p>
 <p class="indent1">The Answer is <span class="expression" exp="_echo(2)"></span> because
     <span class="expression" exp="_echo(2) \times 25 = 50"></span>, but 
     <span class="expression" exp="_echo(3) \times 25 = 75"></span> is too big.</p>
@@ -35,7 +35,7 @@
 <p><strong>Step3:</strong> Subtract 50 from 67:</p>
 <p><span class="expression indent1" exp="67 - 50 = _echo(67-50)"></span>. This is the <em>remainder</em>.</p>
 
-<p><strong>Step4:</strong> Look at the next place value (5) and ask "How many 5s fit into this reminder (17)?" </p>
+<p><strong>Step4:</strong> Look at the next place value (5) and ask "How many times does 5 fit into this reminder (17)?" </p>
 <p class="indent1">The Answer is <span class="expression" exp="_echo(3)"></span> because
     <span class="expression" exp="_echo(3) \times 5 = 15"></span>, but
     <span class="expression" exp="_echo(4) \times 5 = 20"></span> is too big.</p>
@@ -47,10 +47,10 @@
 <p><span class="expression indent1" exp="17 - 15 = _echo(17-15)"></span>. 
     This is the last remainder.</p>
 
-<p><strong>Step6:</strong> When you get to the last place value (1), you are done.</p>
+<p><strong>Step6:</strong> Now put that number in the chart. When you get to the last place value (1), you are done.</p>
 <table class="base-chart"  num=232_5 top=both bottom=210 demo=true></table>
 
-<p>The answer in Base 5 is: \( 232_{(5)} \).</p>
+<p>The answer in Base 5 is: <span class="expression" exp="_prn(67,5)"></span>.</p>
 <p>Or: \( 67_{(10)} = 232_{(5)}  \)</p>
 
 
