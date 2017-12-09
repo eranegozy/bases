@@ -19,16 +19,17 @@
 
 <h2>Numbers as Boxes</h2>
 
-<p>Let's think of numbers as groups of little boxes. For example, here is the number 23</p>
+<p>Let's think of numbers as groups of little boxes.</p>
 
 <p class="grids" num="23_10"></p>
 
-<p>There are 23 little boxes. Count them to be sure! They are arranged as:
+<p>Count the number of boxes. How many are there? <span class="expression" exp="_prn(23)"></span>.
+  <br>They are arranged as:</p>
 <ul>
 <li>2 groups of 10 and</li>
 <li>3 groups of 1</li>
 </ul>
-You could also write it as an equation: \( 2 \times 10 + 3 \times 1 = 23 \)
+</p>You could also write it as an equation: \( 2 \times 10 + 3 \times 1 = 23 \)
 </p>
 
 <p>Look at these boxes:</p>
@@ -42,17 +43,56 @@ You could also write it as an equation: \( 2 \times 10 + 3 \times 1 = 23 \)
 <p class="grids" num="152_10"></p>
 <p class="indent1">How many boxes? <span class="expression" exp="_prn(152)"></span></p>
 <p class="indent1">Write the equation for the number of boxes:
-<span class="expression" blank=30
+<span class="expression" blank=25
   exp="_echo('1 \\times 100 + 5 \\times 10 + 2 \\times 1 = 152')"></span></p>
 
-<p>This is all easy because it is in Base 10.</p>
+<p>All of these boxes are arranged in <strong>Base 10</strong> because they can be written as <em>exponents</em> of 10:</p>
 
-<h2>Numbers as Boxes in Other Bases</h2>
+<p><span class="grids" num="1_10"></span>
+  Number of Boxes: <span class="expression" exp="_prn(10**0)"></span>. 
+  Written as an exponent:  <span class="expression" exp="10^0"></span>
+</p>
+
+<p><span class="grids" num="10_10"></span>
+  Number of Boxes: <span class="expression" exp="_prn(10**1)"></span>. 
+  Written as an exponent:  <span class="expression" exp="_echo('10^1')"></span>
+</p>
+
+<p><span class="grids" num="100_10"></span>
+  Number of Boxes: <span class="expression" exp="_prn(10**2)"></span>. 
+  Written as an exponent:  <span class="expression" exp="_echo('10^2')"></span>
+</p>
+
+
+<h2 class="page-break">Numbers as Boxes in Other Bases</h2>
+
+<p>Now let's try <strong>Base 4</strong>:</p>
+
+<p><span class="grids" num="1_4"></span>
+  Number of Boxes: <span class="expression" exp="_prn(4**0)"></span>. 
+  Written as an exponent:  <span class="expression" exp="4^0"></span>
+</p>
+
+<p><span class="grids" num="10_4"></span>
+  Number of Boxes: <span class="expression" exp="_prn(4**1)"></span>. 
+  Written as an exponent:  <span class="expression" exp="_echo('4^1')"></span>
+</p>
+
+<p><span class="grids" num="100_4"></span>
+  Number of Boxes: <span class="expression" exp="_prn(4**2)"></span>. 
+  Written as an exponent:  <span class="expression" exp="_echo('4^2')"></span>
+</p>
+
 
 <p>Now look at these boxes:</p>
 <p class="grids" num="23_4"></p>
 <p class="indent1">How many boxes? <span class="expression" exp="_prn('23_4')"></span></p>
-<p class="indent1">The equation for this picture is: \( 2 \times 4 + 3 \times 1 = 11 \) because this is a Base 4 picture.</p>
+<p class="indent1">The equation for this picture is: 
+<span class="expression" exp="_prn(2) \times 4 + _prn(3) \times 1 = _prn('11')"></span>
+because this is a Base 4 picture.</p>
+<p class="indent1">Same equation, but with <em>exponents</em>: 
+<span class="expression" exp="_prn(2) \times 4^1 + _prn(3) \times 4^0 = _prn('11')"></span></p>
+
 
 <p>How about this:</p>
 <p class="grids" num="213_4"></p>
@@ -60,48 +100,78 @@ You could also write it as an equation: \( 2 \times 10 + 3 \times 1 = 23 \)
 <p class="indent1">Write the equation for the number of boxes:
 <span class="expression"
   exp="_prn(2) \times 16 + _prn(1) \times 4 + _prn(3) \times 1 = _prn('213_4')"></span></p>
-<p class="indent1">Notice the "2", the "1", and the "3". These are the "counters" for the box groups. <br>So the shorthand equation for this picture is: 
-  <span class="expression" vars="x='213_4';" exp="prn(x,4) = prn(x)"></span> </p>
+<p class="indent1">Write the same equation, but with <em>exponents</em>:
+<span class="expression"
+  exp="_prn(2) \times _echo('4^2') + _prn(1) \times 4^1 + _prn(3) \times _echo('4^0') = _prn('213_4')"></span></p>
 
-<h2>Practice</h2>
+
+<p class="indent1">Notice the "2", the "1", and the "3". These are the "counters" for the box groups. <br>So the shorthand equation for this picture is: 
+  <span class="expression" vars="x='213_4';" exp="prn(x,4) = prn(x)"></span></p>
+
+
+<h2 class="page-break">Practice</h2>
 <ol>
+
 <li>
-<p class="grids" num="311_4"></p>
+<span class="grids" num="311_4"></span>
 <p class="indent1">Equation for the number of boxes:
 <span class="expression"
-  exp="_prn(3) \times _prn(16) + _prn(1) \times _prn(4) + _prn(1) \times _prn(1) = _prn('311_4')"></span></p>
-<p class="indent1">The Base is <span class="expression" exp="_prn(4)"></span>
-  and the shorthand is <span class="expression" vars="x='311_4';" exp="_prn(x,4) = _prn(x)"></span></p>
+  exp="_prn(3) \times _prn(16) + _prn(1) \times _prn(4) + _prn(1) \times _prn(1) = _prn('311_4')">
+</span></p>
+<p class="indent1">The Base is <span class="expression" exp="_prn(4)"></span> and the shorthand is 
+<span class="expression" vars="x='311_4';" exp="_prn(x,4) = _prn(x)"></span></p>
 </li>
 
 <li>
-<p class="grids" num="42_7"></p>
+<span class="grids" num="42_7"></span>
 <p class="indent1">Equation for the number of boxes:
-<span class="expression" blank=30
-  exp="_echo('4 \\times 7 + 2 \\times 1 = ' + val('42_7'))"></span></p>
-<p class="indent1">The Base is <span class="expression" exp="_prn(7)"></span>
-  and the shorthand is <span class="expression" vars="x='42_7';" exp="_prn(x,7) = _prn(x)"></span></p>
+<span class="expression" blank=25 exp="_echo('4 \\times 7 + 2 \\times 1')"></span>
+<span class="expression" exp="= _prn('42_7')"></span></p>
+<p class="indent1">The Base is <span class="expression" exp="_prn(7)"></span> and the shorthand is 
+<span class="expression" vars="x='42_7';" exp="_prn(x,7) = _prn(x)"></span></p>
 </li>
 
 <li>
-<p class="grids" num="204_5"></p>
+<span class="grids" num="204_5"></span>
 <p class="indent1">Equation for the number of boxes:
-<span class="expression" blank=30
-  exp="_echo('2 \\times 25 + 0 \\times 5 + 4 \\times 1 = ' + val('204_5'))"></span></p>
-<p class="indent1">The Base is <span class="expression" exp="_prn(5)"></span>
-  and the shorthand is <span class="expression" vars="x='204_5';" exp="_prn(x,5) = _prn(x)"></span></p>
+<span class="expression" blank=25 exp="_echo('2 \\times 25 + 0 \\times 5 + 4 \\times 1')"></span>
+<span class="expression" exp="= _prn('204_5')"></span></p>
+<p class="indent1">The Base is <span class="expression" exp="_prn(5)"></span> and the shorthand is 
+<span class="expression" vars="x='204_5';" exp="_prn(x,5) = _prn(x)"></span></p>
+</li>
+
+<li>
+<span class="grids" num="325_6"></span>
+<p class="indent1">Equation for the number of boxes:
+<span class="expression" blank=25 exp="_echo('3 \\times 36 + 2 \\times 2 + 5 \\times 1')"></span>
+<span class="expression" exp="= _prn('325_6')"></span></p>
+<p class="indent1">The Base is <span class="expression" exp="_prn(6)"></span> and the shorthand is 
+<span class="expression" vars="x='325_6';" exp="_prn(x,6) = _prn(x)"></span></p>
 </li>
 </ol>
 
-<h2>Regrouping</h2>
 
-<p>Converting to different Bases is the same as regrouping boxes.</p>
-<p>Here is a Base 10 picture</p>
+<h2 class="page-break">Regrouping</h2>
+
+<p>Converting to different Bases is the same as <em>regrouping boxes</em>.</p>
+<p>Here is a <strong>Base 10</strong> picture</p>
 <p class="grids" num="13:10"></p>
-<p>This is the same number of boxes, re-grouped into Base 6</p>
+<p class="indent1">How many boxes? <span class="expression" exp="_prn(13)"></span>. Equation: 
+<span class="expression" blank=25 exp="_echo('1 \\times 10 + 3 \\times 1')"></span>
+<span class="expression" exp="= _prn(13)"></span></p>
+
+<p>This is the same number of boxes, re-grouped into <strong>Base 6</strong>.</p>
 <p class="grids" num="13:6"></p>
-<p>and into Base 3</p>
+<p class="indent1">How many boxes? <span class="expression" exp="_prn(13)"></span>. Equation: 
+<span class="expression" blank=25 exp="_echo('2 \\times 6 + 1 \\times 1')"></span>
+<span class="expression" exp="= _prn(13) = _prn(13,6)"></span></p>
+
+<p>and into <strong>Base 3</strong>.</p>
 <p class="grids" num="13:3"></p>
+<p class="indent1">How many boxes? <span class="expression" exp="_prn(13)"></span>. Equation: 
+<span class="expression" blank=25 exp="_echo('1 \\times 9 + 1 \\times 3 + 1 \\times 1')"></span>
+<span class="expression" exp="= _prn(13) = _prn(13, 3)"></span></p>
+
 
 <h2>Regrouping Practice</h2>
 
