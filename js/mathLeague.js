@@ -263,6 +263,7 @@ var ml = function () {
 
   var processGrids = function(elem) {
     var num = elem.getAttribute("num");
+    var hide = elem.getAttribute("hide") || false;
 
     var obj = parseBaseNum(num);
     var len = obj.digits.length;
@@ -280,6 +281,12 @@ var ml = function () {
     }
 
     elem.innerHTML = html;
+    if (hide && !gShowSolutions) {
+      elem.setAttribute('style', 'visibility:hidden');
+    }
+    else {
+      elem.setAttribute('style', 'visibility:visible');
+    }
   }
 
   var createGrid = function(nx, ny) {
