@@ -166,7 +166,15 @@ because this is a Base 4 picture.</p>
 <span class="expression" blank=25 exp="_echo('2 \\times 6 + 1 \\times 1')"></span>
 <span class="expression" exp="= _prn(13) = _prn(13,6)"></span></p>
 
-<p>and into <strong>Base 3</strong>.</p>
+<p>Into <strong>Base 3</strong>. <strong>Important Rule!</strong></p>
+<p>The number of items in a group must be smaller than the Base itself. For example: </p>
+<p>this:
+<span class="grids" num="20_3"></span><span class="grids" num="21_3"></span>
+is <strong>WRONG</strong> because you can't have
+<span class="expression" exp="_echo(4) \times 3 + 1 \times 1 = 13"></span>
+</p>
+
+<p>Instead, create the next group size: "3 squared" = \( 3^2 = 9 \), like this:</p>
 <p class="grids" num="13:3"></p>
 <p class="indent1">How many boxes? <span class="expression" exp="_prn(13)"></span>. Equation: 
 <span class="expression" blank=25 exp="_echo('1 \\times 9 + 1 \\times 3 + 1 \\times 1')"></span>
