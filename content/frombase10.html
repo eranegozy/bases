@@ -21,7 +21,7 @@
 
 <p class="instruct"> Example: Convert \( 67_{(10)} \) to Base 5.</p>
 
-<p><strong>Step1:</strong> Draw a "Base 5 Conversion Table". Calculate the exponent values:
+<p><strong>Step1:</strong> Draw a "Base 5 Conversion Table". Fill in the exponent values:
 <table class="base-chart" num=232_5 top=exponents demo=true></table>
 
 <p><strong>Step2:</strong> Look at the highest place value (25) and ask "How many times does 25 fit into 67?" </p>
@@ -43,7 +43,7 @@
 
 <table class="base-chart"  num=232_5 top=both bottom=21 demo=true></table>
 
-<p><strong>Step5:</strong> Subtract 15 from 17:</p>
+<p class="page-break"><strong>Step5:</strong> Subtract 15 from 17:</p>
 <p><span class="expression indent1" exp="17 - 15 = _echo(17-15)"></span>. 
     This is the last remainder.</p>
 
@@ -56,50 +56,82 @@
 
 <h2>Practice</h2>
 <ol>
-<li class="expression" exp="prn(89,10) = _prn(89,5)" ></li>
-<table class="base-chart" num=89:5 top=both ></table>
+<li class="expression" exp="prn(14,10) = _prn(14,6)" ></li>
+<table class="base-chart" num=14:6 top=both ></table>
 
-<li class="expression" exp="prn(34,10) = _prn(34,4)" ></li>
-<table class="base-chart" num=34:4 top=both ></table>
-
-<li class="expression" exp="prn(65,10) = _prn(65,7)" ></li>
-<table class="base-chart" num=65:7 top=both ></table>
-
-<li class="expression" exp="prn(37,10) = _prn(37,6)" ></li>
-<table class="base-chart" num=37:6 top=exponents ></table>
+<li class="expression" exp="prn(100,10) = _prn(100,9)" ></li>
+<table class="base-chart" num=100:9 top=both ></table>
 
 <li class="expression" exp="prn(23,10) = _prn(23,3)" ></li>
 <table class="base-chart" num=23:3 top=exponents ></table>
 
+<li class="expression" exp="prn(65,10) = _prn(65,7)" ></li>
+<table class="base-chart" num=65:7 top=exponents ></table>
+
+<li class="expression" exp="prn(89,10) = _prn(89,5)" ></li>
+<table class="base-chart" num=89:5 top=none ></table>
+
 <li class="expression" exp="prn(14,10) = _prn(14,2)" ></li>
-<table class="base-chart" num=14:2 top=exponents ></table>
-
-<li class="expression" exp="prn(100,10) = _prn(100,9)" ></li>
-<table class="base-chart" num=100:9 top=none ></table>
-
-<li class="expression" exp="prn(100,10) = _prn(100,8)" ></li>
-<table class="base-chart" num=100:8 top=none ></table>
+<table class="base-chart" num=14:2 top=none ></table>
 
 <li class="expression" exp="prn(71,10) = _prn(71,4)" ></li>
 <table class="base-chart" num=71:4 top=none ></table>
-
-<li class="expression" exp="prn(80,10) = _prn(80,6)" ></li>
-<table class="base-chart" num=80:6 top=none ></table>
 </ol>
 
 <h2>More Practice</h2>
-<p>Convert from Base 10.</p>
 
 <ol>
-<li class="expression" exp="prn(55, 10) = _prn(55, 7)" blank=8 ></li>
+<li class="expression vspace2" vars="x='123_4'" exp="prn(x, 10) = _prn(x, 4)" blank=8 ></li>
+<li class="expression vspace2" vars="x='234_5'" exp="prn(x, 10) = _prn(x, 5)" blank=8 ></li>
+<li class="expression vspace2" vars="x='345_6'" exp="prn(x, 10) = _prn(x, 6)" blank=8 ></li>
+<li class="expression vspace2" vars="x='1001_8'" exp="prn(x, 10) = _prn(x, 8)" blank=8 ></li>
+<li class="expression vspace2" vars="x='777_8'" exp="prn(x, 10) = _prn(x, 8)" blank=8 ></li>
+<li class="expression vspace2" vars="x='12121_3'" exp="prn(x, 10) = _prn(x, 3)" blank=8 ></li>
 </ol>
 
-<p>Convert from Base 10. These are a bit harder.</p>
+<h2 class="page-break">Review</h2>
 
 <ol>
-<li class="expression" exp="prn(484, 10) = _prn(484, 6)" blank=8 ></li>
+<p>Fill in the series:</p>
+<li class="expression series vspace1" len=12 exp="_prn(n+1,4)" hints=[0,1,4,11] ></li> 
+<li class="expression series vspace1" len=12 exp="_prn(14-n,3)" hints=[0,1,2,5,11] ></li> 
+<li class="expression series vspace1" len=8 exp="_prn(2*n+2,2)" hints=[0,1,2,7] blank=8></li> 
+
+<p >Calculate the exponent:</p>
+
+<li class="expression series vspace1" len=8 exp="sub('{$}^1', n+1) = _prn((n+1)**1)" ></li>
+<li class="expression series vspace1" len=8 exp="sub('{$}^2', n+1) = _prn((n+1)**2)" ></li>
+<li class="expression series vspace1" len=8 exp="sub('{$}^3', n+1) = _prn((n+1)**3)" ></li>
+
+<p >Convert to Base 10:</p>
+
+<li class="expression vspace2" vars="x=50" exp="prn(x, 8) = _prn(x, 10)" blank=8 ></li>
+<li class="expression vspace2" vars="x=60" exp="prn(x, 4) = _prn(x, 10)" blank=8 ></li>
+<li class="expression vspace2" vars="x=70" exp="prn(x, 5) = _prn(x, 10)" blank=8 ></li>
+
+<p >Convert:</p>
+
+<li class="expression vspace2" vars="x=30" exp="prn(x, 6) = _prn(x, 10) = _prn(x, 3)" blank=12 ></li>
+<li class="expression vspace2" vars="x=40" exp="prn(x, 5) = _prn(x, 10) = _prn(x, 7)" blank=12 ></li>
+<li class="expression vspace2" vars="x=80" exp="prn(x, 9) = _prn(x, 10) = _prn(x, 8)" blank=12 ></li>
 </ol>
 
+<h2>Challenge Problems</h2>
+<ol>
+
+<li class="expression series vspace2" len=7 exp="sub('{2}^{$}', 2*n) = _prn(2**(2*n))" ></li>
+<li class="expression vspace2" vars="x=343" exp="prn(x, 2) = _prn(x, 10) = _prn(x, 7)" blank=12 ></li>
+<li class="expression series vspace2" len=12 exp="_prn(24-2*n,4)" hints=[0,4,5,11] ></li> 
+<li class="expression series vspace2" len=7 exp="sub('{4}^{$}', n) = _prn(4**n)" ></li>
+<li class="expression vspace2" vars="x=157" exp="prn(x, 2) = _prn(x, 4)" blank=12 ></li>
+<li class="expression series vspace2" len=7 exp="sub('{3}^{$}', n) = _prn(3**n)" ></li>
+<li class="expression series vspace2" len=4 exp="sub('{9}^{$}', n) = _prn(9**n)" ></li>
+<li class="expression vspace2" vars="x='120122_3'" exp="prn(x, 3) = _prn(x, 9)" blank=12 ></li>
+<li class="expression vspace2" vars="x='345678_9'" exp="prn(x, 9) = _prn(x, 3)" blank=16 ></li>
+<li class="expression series vspace2" len=9 exp="_prn(2*n,n+2)" hints=[4,6,11] ></li> 
+<li class="expression vspace2" vars="x=4567" exp="prn(x, 5) = _prn(x, 7) = _prn(x, 10) = _prn(x, 9)" blank=12 ></li>
+
+</ol>
 </div>
 
 </body>
