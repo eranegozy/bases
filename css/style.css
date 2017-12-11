@@ -6,7 +6,6 @@ h1 {
 h2 {
   margin: 15px 0px 1px -35px;
   font-size: 20px;
-
 }
 
 ul {
@@ -42,6 +41,20 @@ p {
   }
 }
 
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
 .main {
   margin-left: 50px;
 }
@@ -53,7 +66,11 @@ p {
 }
 
 .indent1 {
-  margin-left: 30px;  
+  margin-left: 30px;
+}
+
+.indent2 {
+  margin-left: 60px;
 }
 
 .vspace1 {
@@ -64,21 +81,14 @@ p {
   margin-top: 50px;  
 }
 
-
-.problem-short {
-  padding-left: 30px;
-  padding-top: 20px;
-  padding-top: 20px;
+.meet-answers {
+  margin-bottom: 30px;
+  flex: 0 0 auto; 
 }
 
-.problem-long {
-  padding-left: 30px;
-  padding-bottom: 3cm;
-}
-
-.answer-block p {
-  padding-top: 20px;
-  padding-left: 30px;
+.meet-answers li {
+  margin-top: 18px;  
+  margin-left: 0px;  
 }
 
 /*table, td, th, tr {
