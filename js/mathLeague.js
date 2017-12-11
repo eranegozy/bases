@@ -11,10 +11,14 @@ var longadd;
 
 var ml = function () {
 
+  var gNumberAlphas = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 
+    'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen'];
+
   var gIsBlank = false;
   var gShowSolutions = false;
-  var gDefaultBlankLength = 4
+  var gDefaultBlankLength = 4;
   var gBlankLength = gDefaultBlankLength;
+  var gBaseFormat = 'normal'; // 'normal', 'simple', 'alpha'
 
   var init = function() {
 
@@ -72,6 +76,7 @@ var ml = function () {
     var txt = elem.getAttribute("exp");
     var vars = elem.getAttribute("vars") || '';
     gBlankLength = elem.getAttribute("blank") || gDefaultBlankLength;
+    gBaseFormat = elem.getAttribute("baseFormat") || "normal";
 
     var output = '';
     for (var n = 0; n < len; n++) {
@@ -88,7 +93,11 @@ var ml = function () {
       if (n < len - 1)
         output += ', ';
     }
-    elem.innerHTML = output;     
+    elem.innerHTML = output;
+
+    // restore globals to default values
+    gBlankLength = gDefaultBlankLength;
+    gBaseFormat = "normal";
   }
 
 
@@ -441,46 +450,42 @@ var ml = function () {
 
 
   // based on global variables gIsBlank, gShowSolutions, and gBlankLength
-  // return a blank space with an optional base subscript
-  // or return "" if the space should not be blank (ie, should have the answer)
-  var createBlankText = function(base) {
+  // return either the input txt value, or a blank that replaces it.
+  var blankify = function(txt) {
     if (!gIsBlank || gShowSolutions)
-      return "";
+      return txt;
 
-    var baseTxt = base ? '_{(' + base + ')} ': ' ';
     var blankTxt = '_'.repeat(gBlankLength);
-
-    return ' \\text{' + blankTxt + '}' + baseTxt;
+    return ' \\text{' + blankTxt + '}';
   }
 
 
   // print a number in mathjax format
   var printNumInBase = function(num, base) {
-    var blank = createBlankText(base);
-    if (blank)
-      return blank;
-
     var obj = parseBaseNum(num);
+
+    // no base means base 10, but do not add any subscript
     if (typeof base == 'undefined')
-      return String(obj.value);
+      return blankify( String(obj.value) );
+
+    // figure out which style to use for the base subscript
+    var basetxt;
+    if (gBaseFormat == 'simple')
+      basetxt = '_{' + base + '}';
+    else if (gBaseFormat == 'alpha')
+      basetxt = '_{' + gNumberAlphas[base] + '}';
     else
-      return valuetoBase(obj.value, base) + '_{(' + base + ')}';
+      basetxt = '_{(' + base + ')}';
+
+    return blankify( valuetoBase(obj.value, base) ) + basetxt;
   }
 
   var printString = function(str) {
-    var blank = createBlankText();
-    if (blank)
-      return blank;
-
-    return str;
+    return blankify(str);
   }
 
   var printWithSubstitution = function(str, n) {
-    var blank = createBlankText();
-    if (blank)
-      return blank;
-
-    return str.replace('$', n);
+    return blankify( str.replace('$', n) );
   }
 
   var printLongAddition = function(numbers, base) {
