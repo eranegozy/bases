@@ -1,0 +1,43 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League 2015: Meet 2</h1>
+<table class="student-info"></table>
+
+<div class="content main">
+  <p>1) \( 3232_{(four)} = \text{__________}_{six} \) </p>
+  <p class="vspace3"></p>
+
+  <p> 2) Evaluate:  \( 567_9 \times 876_9 \) </p>
+  <p class="vspace3"></p>
+
+  <p> 3) Evaluate the following and express your solution in base ten.</p>
+  <p>  \[ (11_2 + 21_3)^2 - 11_4 \times 21_5  \over{
+           21_6 + 21_7 + 21_8 }  \] </p>
+  <p class="vspace2"></p>
+
+</div>
+
+<div class="meet-answers main">
+  <strong>Answers:</strong>
+  <ol>
+    <li class="expression" blank=8 baseFormat=alpha exp="_prn( '3232_4', 6 )"></li>
+    <li class="expression" blank=8 exp="_prn( val('567_9') * val('876_9') , 9)"></li>
+    <li class="expression" blank=8 baseFormat=alpha 
+    exp="_prn( ( (val('11_2') + val('21_3'))**2 - val('11_4') * val('21_5')) / (val('21_6') + val('21_7') + val('21_8')), 10)"></li>
+  </ol>
+</div>
+
+</body>
+</html>
