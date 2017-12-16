@@ -86,6 +86,11 @@ body {
   margin-top: 150px;  
 }
 
+.hang {
+  text-indent: -1.1em;
+  margin-left: 1.1em;
+}
+
 .meet-answers {
   margin-bottom: 30px;
   flex: 0 0 auto; 
