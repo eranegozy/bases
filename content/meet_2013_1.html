@@ -1,0 +1,40 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League 2013: Meet 1</h1>
+<table class="student-info"></table>
+
+<div class="content main">
+  <p>1) How many times bigger is \( 100_6 \) than \( 20_9 \) ?</p>
+  <p class="vspace3">
+
+  <p> 2) Evaluate:  \( 1010101_{(2)} - 1001010_{(2)} \) </p>
+  <p class="vspace3">
+
+  <p> 3) Convert to base 5: \( 4321_{(eight)} \) </p>
+  <p class="vspace2">
+
+</div>
+
+<div class="meet-answers main">
+  <strong>Answers:</strong>
+  <ol>
+    <li class="expression" blank=8 exp="_prn( val('100_6') / val('20_9') )"></li>
+    <li class="expression" blank=8 exp="_prn( val('1010101_2') - val('1001010_2') , 2)"></li>
+    <li class="expression" blank=8 exp="_prn( val('4321_8') , 5)"></li>
+  </ol>
+</div>
+
+</body>
+</html>
