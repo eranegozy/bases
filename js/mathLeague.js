@@ -8,6 +8,7 @@ var val;
 var echo;
 var sub;
 var longadd;
+var longsub;
 
 var ml = function () {
 
@@ -488,18 +489,22 @@ var ml = function () {
     return blankify( str.replace('$', n) );
   }
 
-  var printLongAddition = function(numbers, base) {
+  var printLongAddition = function(numbers, base, sign) {
     var txt = '';
     var sum = 0;
 
     for (var i = 0; i < numbers.length; i++) {
       var value = parseBaseNum(numbers[i]).value;
-      sum += value;
+
+      if (i == 0 || sign == '+')
+        sum += value;
+      else if (i != 0 && sign == '-')
+        sum -= value;
 
       if (i < numbers.length - 1)
         txt += printNumInBase(value, base) + ' \\\\ ';        
       else
-        txt += '\\underline{+ \\quad ' + printNumInBase(value, base) + '} \\\\ ';
+        txt += '\\underline{' + sign + ' \\quad ' + printNumInBase(value, base) + '} \\\\ ';
     };
 
     if (gShowSolutions)
@@ -540,7 +545,8 @@ var ml = function () {
   prn = printNumInBase;
   echo = printString;
   sub = printWithSubstitution;
-  longadd = printLongAddition;
+  longadd = function(numbers, base) { return printLongAddition(numbers, base, '+'); }
+  longsub = function(numbers, base) { return printLongAddition(numbers, base, '-'); }
   val = valueOfNum;
 
   return { init:init }
