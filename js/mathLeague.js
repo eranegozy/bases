@@ -509,9 +509,11 @@ var ml = function () {
 
     if (gShowSolutions)
       txt += printNumInBase(sum, base) + ' ';
-    else
-      txt += '{} '; // or maybe '{}_{(' + base + ')} ';
-
+    else if (base)
+      txt +=  '{}_{(' + base + ')} ';
+    else 
+      txt += '{}'
+    
     txt = '\\begin{align} ' + txt + ' \\end{align}';
     return txt;
   }
