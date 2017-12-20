@@ -12,7 +12,7 @@
 
 <body>
 
-<h1>Devotion Math League Bases: Addition and Subtraction</h1>
+<h1>Devotion Math League Bases 6: Addition and Subtraction</h1>
 
 <table class="student-info"></table>
 <div class="main">
@@ -27,7 +27,7 @@
 
 <h2>Adding in Other Bases</h2>
 
-In other Bases, the easy problems are exactly the same:
+<p>In other Bases, the easy problems are exactly the same:</p>
 <p class="expression indent1" exp="longadd(['12_4', '21_4'], 4)"></p>
 <p class="expression indent1" exp="longadd(['31_8', '123_8', '410_8'], 8)"></p>
 
@@ -110,18 +110,51 @@ In other Bases, the easy problems are exactly the same:
 <p class="expression vspace2" vars="x=50; y=35; z=18; b=6;" 
    exp="prn(x,b) + prn(y,b) + prn(z,b) = _prn(x+y+z,b)"></p>
 
+<h2>Review</h2>
+<ol>
+
+<p>Calculate the exponents:</p>
+<li class="expression series vspace1" len=7  exp="sub('{2}^$', n) = _prn(2**n)" ></li>
+<li class="expression series vspace1" len=4  exp="sub('{2}^{$}', n+7) = _prn(2**(n+7))" ></li>
+<li class="expression series vspace1" len=7  exp="sub('{3}^$', n) = _prn(3**n)" ></li>
+<li class="expression series vspace1" len=5  exp="sub('{5}^$', n) = _prn(5**n)" ></li>
+<li class="expression series vspace1" len=4  exp="sub('{9}^$', n) = _prn(9**n)" ></li>
+
+<p>Fill in the series:</p>
+<li class="expression series vspace1" len=5 exp="_prn(2*n+1, 4)" hints=[0,1,2] ></li> 
+<li class="expression series vspace1" len=5 exp="_prn(3*n+1, 8)" hints=[0,1,2] ></li> 
+<li class="expression series vspace1" len=5 exp="_prn(5*n+5, 4)" hints=[0,1,2] ></li> 
+
+<p class="page-break">Convert:</p>
+<li class="expression vspace2" vars="x=300" exp="prn(x, 7) = _prn(x, 10)" blank=8 ></li>
+<li class="expression vspace2" vars="x=200" exp="prn(x, 6) = _prn(x, 10)" blank=8 ></li>
+
+<li class="expression vspace2" vars="x=100" exp="prn(x, 10) = _prn(x, 2)" blank=8 ></li>
+<li class="expression vspace2" vars="x=200" exp="prn(x, 10) = _prn(x, 9)" blank=8 ></li>
+</ol>
+
+
 <h2>Challenge Problems</h2>
+<ol>
+
+<li class="expression vspace2" baseFormat=alpha blank=8 
+    vars="x='2001_5'" exp="prn(x, 5) = _prn(x, 6)" ></li>
+<li class="expression vspace2" baseFormat=alpha blank=8 
+    vars="x='1234_7'" exp="prn(x, 7) = _prn(x, 9)" ></li>
 
 <table style='width:100%'><tr>
-<td><p class="expression" exp="longadd([17, 43, 67], 6)"></p></td>
-<td><p class="expression" exp="longadd([20, 40, 60], 7)"></p></td>
-<td><p class="expression" exp="longadd([17, 29, 34, 48], 9)"></p></td>
-</tr><tr>
-<td><p class="expression" exp="longadd([15, 17, 29, 30], 2)"></p></td>
-<td><p class="expression" exp="longsub([97, 55], 2)"></p></td>
-<td><p class="expression" exp="longsub([916, 530], 9)"></p></td>
+<td><li class="expression" exp="longadd([17, 29, 35, 47], 4)"></li></td>
+<td><li class="expression" exp="longsub([97, 55], 2)"></li></td>
+<td><li class="expression" exp="longsub([916, 530], 9)"></li></td>
 </tr></table>
 
+<li class="expression vspace2" vars="x=300; y=200; z=100;" 
+    exp="prn(x, 7) + prn(y, 8) + prn(z, 9)= _prn(x+y+z, 10)" blank=8 ></li>
+
+<li class="expression vspace2" vars="x=222; y=333; z=444;" 
+    exp="prn(x, 6) + prn(y, 5) + prn(z, 4)= _prn(x+y+z, 10)" blank=8 ></li>
+
+</ol>
 
 
 </div>
