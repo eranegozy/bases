@@ -101,6 +101,9 @@ body {
   margin-left: 0px;  
 }
 
+.top-align {
+  vertical-align: top;
+}
 /*table, td, th, tr {
     border: 2px solid black;
 }

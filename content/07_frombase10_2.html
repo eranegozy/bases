@@ -1,0 +1,61 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League Bases 7: Converting from Base 10, Type 2</h1>
+
+<table class="student-info"></table>
+<div class="main">
+
+<p>There is a second way to convert from Base 10 to any base. This method only uses <strong>Long Division</strong>. It is called "Right-to-Left" because you first find the rightmost digit and then move to the left. </p>
+<p>The original method is called "Left-to-Right".</p>
+
+<h2>Steps for Converting a Number from <em>Base 10</em> to a <em>Different Base</em>, Type 2.</h2>
+
+<p> Example: Convert \( 678_{(10)} \) to Base 7.</p>
+
+<p><strong>Step1:</strong> Divide 678 by 7:
+<span class="expression top-align" exp="longdiv(678, 7)"></span></p>
+
+<p class="indent1">The quotient is <span class="expression" exp="_prn(96)"></span> and the remainder is <span class="expression" exp="_prn(6)"></span>. This remainder is the first digit of the answer: ___\( 6_{(7)} \)</p>
+
+<p><strong>Step2:</strong> Use the quotient from the previous step (96) and divide by 7:
+<span class="expression top-align" exp="longdiv(96, 7)"></span></p>
+
+<p class="indent1">The quotient is <span class="expression" exp="_prn(13)"></span> and the remainder is <span class="expression" exp="_prn(5)"></span>. This remainder is the next digit of the answer: __\( 56_{(7)} \)</p>
+
+<p><strong>Step3:</strong> Use the quotient from the previous step (13) and divide by 7:
+<span class="expression top-align" exp="longdiv(13, 7)"></span></p>
+
+<p class="indent1">The quotient is <span class="expression" exp="_prn(1)"></span> and the remainder is <span class="expression" exp="_prn(6)"></span>. This remainder is the next digit of the answer: _\( 656_{(7)} \)</p>
+
+<p><strong>Step4:</strong> Use the quotient from the previous step (1) and divide by 7: 
+<span class="expression top-align" exp="longdiv(1, 7)"></span></p>
+
+<p class="indent1">The quotient is <span class="expression" exp="_prn(0)"></span> and the remainder is <span class="expression" exp="_prn(1)"></span>. This is the final digit of the answer: \( 1656_{(7)} \)</p>
+
+<p>When the quotient is 0, you are done. The answer is 
+<span class="expression" exp="prn(678,10) = prn(678,7)">.</span></p>
+
+<h2 class="page-break">Practice</h2>
+<ol>
+<li class="expression" vars="x=117" exp="prn(x,10) = _prn(x,5)"></li>
+<p class="indent1 from10type2" num=117 base=5></p>
+
+<li class="expression" vars="x=538" exp="prn(x,10) = _prn(x,8)"><li>
+<p class="indent1 from10type2" num=538 base=8 hideNumer=true></p>
+</li>
+
+</div>
+</body>
+</html>

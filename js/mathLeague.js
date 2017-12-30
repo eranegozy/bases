@@ -9,6 +9,7 @@ var echo;
 var sub;
 var longadd;
 var longsub;
+var longdiv;
 
 var ml = function () {
 
@@ -49,6 +50,7 @@ var ml = function () {
     processClass('base-chart', processBaseChart);
     processClass('grids', processGrids);
     processClass('calendar', processCalendar);
+    processClass('from10type2', processFrom10Type2);
   }
 
   var setupStudentInfo = function(elem) {
@@ -347,6 +349,37 @@ var ml = function () {
     elem.innerHTML = html;
   }
 
+
+  // Show process of converting from base 10 to another base using method 2.
+  // Essentially, a series of long-divisions where reminders build the answer
+  // and quotients are used for the next division step.
+  var processFrom10Type2 = function(elem) {
+    var num = Number( elem.getAttribute("num") );
+    var base = Number( elem.getAttribute("base") );
+    var hideNumer = elem.getAttribute("hideNumer") || false;
+
+    var html = "<table style='width:100%'><tr>";
+
+    gIsBlank = true;
+    var hideNumerator = false;
+
+    var quotient = num;
+    while (true) {
+      html += "<td style='vertical-align:top'> \\( ";
+      html += printLongDivide(quotient, base, hideNumerator);
+      hideNumerator = hideNumer;
+      html += " \\)  </td>";
+      quotient = Math.floor(quotient/base);
+      if (quotient == 0)
+        break;
+    }
+    gIsBlank = false;
+
+    html += "</tr></table>";
+
+    elem.innerHTML = html;  
+  }
+
   // Parse a number in some base into a dictionary that describes what is going on.
   // 17
   // '17'
@@ -513,8 +546,67 @@ var ml = function () {
       txt +=  '{}_{(' + base + ')} ';
     else 
       txt += '{}'
-    
+
     txt = '\\begin{align} ' + txt + ' \\end{align}';
+    return txt;
+  }
+
+
+  // long division
+  var printLongDivide = function(numerator, denominator, hideNumerator) {
+    var txt = '';
+    var newline = '\\\\[-3pt]'
+    var blank = gIsBlank && !gShowSolutions;
+
+    // get answer initially. Loop through quotient digits to get the 
+    // multiplicaiton/subtraction math
+    var quotient = Math.floor(numerator/denominator);
+
+    // start by requiring enclose and setting up right-justified array
+    txt = '\\require{enclose} \n \\begin{array}{r}'
+    
+    if (!blank)
+      txt += quotient;
+    txt += newline;
+    txt += denominator;
+    if (hideNumerator && !gShowSolutions)
+      txt += '\\enclose{longdiv}{ \\phantom{' + numerator + '}} ' + newline;
+    else
+      txt += '\\enclose{longdiv}{' + numerator + '} ' + newline;
+
+    var numer = String(numerator);
+    var quo = String(quotient);
+
+    var delta = numer.length - quo.length;
+    var acc = Number( numer.substr(0,delta+1) );
+
+    for (var i = 0; i < quo.length; i++) {
+      var q = Number(quo[i]);
+      var prod = q * denominator;
+      var rspace = quo.length - i - 1;
+
+      if (!blank)
+        txt += '\\underline{' + prod + '}' + '\\phantom{' + '0'.repeat(rspace) + '}'
+      txt += newline;
+
+      var diff = acc - prod;
+      var spacing = '';
+
+      if (i < quo.length - 1) {
+        acc = diff * 10 + Number(numer[i+1+delta]);
+        spacing = '\\phantom{' + '0'.repeat(rspace-1) + '}' 
+      } 
+      else {
+        acc = '\\textbf{' + diff + '} ';
+      }
+      
+      if (!blank)
+        txt += acc + spacing 
+      txt += newline;
+    };
+
+    txt += '\\end{array}\n'
+
     return txt;
   }
 
@@ -549,6 +641,7 @@ var ml = function () {
   sub = printWithSubstitution;
   longadd = function(numbers, base) { return printLongAddition(numbers, base, '+'); }
   longsub = function(numbers, base) { return printLongAddition(numbers, base, '-'); }
+  longdiv = printLongDivide;
   val = valueOfNum;
 
   return { init:init }
