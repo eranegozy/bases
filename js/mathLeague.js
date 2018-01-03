@@ -354,7 +354,7 @@ var ml = function () {
   // Essentially, a series of long-divisions where reminders build the answer
   // and quotients are used for the next division step.
   var processFrom10Type2 = function(elem) {
-    var num = Number( elem.getAttribute("num") );
+    var num = valueOfNum( elem.getAttribute("num") );
     var base = Number( elem.getAttribute("base") );
     var hideNumer = elem.getAttribute("hideNumer") || false;
 
@@ -508,6 +508,10 @@ var ml = function () {
       basetxt = '_{' + base + '}';
     else if (gBaseFormat == 'alpha')
       basetxt = '_{' + gNumberAlphas[base] + '}';
+    else if (gBaseFormat == 'question')
+      basetxt = '_{(?)}';
+    else if (gBaseFormat == 'none')
+      basetxt = '';
     else
       basetxt = '_{(' + base + ')}';
 

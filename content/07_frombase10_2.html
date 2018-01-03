@@ -27,34 +27,105 @@
 <p><strong>Step1:</strong> Divide 678 by 7:
 <span class="expression top-align" exp="longdiv(678, 7)"></span></p>
 
-<p class="indent1">The quotient is <span class="expression" exp="_prn(96)"></span> and the remainder is <span class="expression" exp="_prn(6)"></span>. This remainder is the first digit of the answer: ___\( 6_{(7)} \)</p>
+<p class="indent1">The quotient is <span class="expression" exp="_prn(96)"></span>. The remainder is <span class="expression" exp="_prn(6)"></span>. This remainder is the last digit of the answer: ___\( 6_{(7)} \)</p>
 
 <p><strong>Step2:</strong> Use the quotient from the previous step (96) and divide by 7:
 <span class="expression top-align" exp="longdiv(96, 7)"></span></p>
 
-<p class="indent1">The quotient is <span class="expression" exp="_prn(13)"></span> and the remainder is <span class="expression" exp="_prn(5)"></span>. This remainder is the next digit of the answer: __\( 56_{(7)} \)</p>
+<p class="indent1">The quotient is <span class="expression" exp="_prn(13)"></span>. The remainder is <span class="expression" exp="_prn(5)"></span>. This remainder is the next digit to the left: __\( 56_{(7)} \)</p>
 
 <p><strong>Step3:</strong> Use the quotient from the previous step (13) and divide by 7:
 <span class="expression top-align" exp="longdiv(13, 7)"></span></p>
 
-<p class="indent1">The quotient is <span class="expression" exp="_prn(1)"></span> and the remainder is <span class="expression" exp="_prn(6)"></span>. This remainder is the next digit of the answer: _\( 656_{(7)} \)</p>
+<p class="indent1">The quotient is <span class="expression" exp="_prn(1)"></span>. The remainder is <span class="expression" exp="_prn(6)"></span>. This remainder is the next digit to the left: _\( 656_{(7)} \)</p>
 
 <p><strong>Step4:</strong> Use the quotient from the previous step (1) and divide by 7: 
 <span class="expression top-align" exp="longdiv(1, 7)"></span></p>
 
-<p class="indent1">The quotient is <span class="expression" exp="_prn(0)"></span> and the remainder is <span class="expression" exp="_prn(1)"></span>. This is the final digit of the answer: \( 1656_{(7)} \)</p>
+<p class="indent1">The quotient is <span class="expression" exp="_prn(0)"></span>. The remainder is <span class="expression" exp="_prn(1)"></span>. This is the first digit of the answer: \( 1656_{(7)} \)</p>
 
 <p>When the quotient is 0, you are done. The answer is 
 <span class="expression" exp="prn(678,10) = prn(678,7)">.</span></p>
 
 <h2 class="page-break">Practice</h2>
 <ol>
-<li class="expression" vars="x=117" exp="prn(x,10) = _prn(x,5)"></li>
-<p class="indent1 from10type2" num=117 base=5></p>
+<li class="expression" blank=8 vars="x='321_5'" exp="prn(x,10) = _prn(x,5)"></li>
+<p class="indent1 from10type2" num=321_5 base=5></p>
 
-<li class="expression" vars="x=538" exp="prn(x,10) = _prn(x,8)"><li>
-<p class="indent1 from10type2" num=538 base=8 hideNumer=true></p>
-</li>
+<li class="expression" blank=8 vars="x='6543_8'" exp="prn(x,10) = _prn(x,8)"></li>
+<p class="indent1 from10type2" num=6543_8 base=8 hideNumer=true></p>
+
+<li class="expression" blank=8 vars="x='12301_4'" exp="prn(x,10) = _prn(x,4)"></li>
+<p class="indent1 from10type2" num=12301_4 base=4 hideNumer=true></p>
+
+<p>Solve with Type 2 (Long Division, Right-to-Left). Then check your answer with Type 1 (Base Chart, Left-to-Right):</p>
+
+<li class="expression" blank=8 vars="x=777" exp="prn(x,10) = _prn(x,7)"></li>
+<li class="expression vspace2" blank=8 vars="x=9090" exp="prn(x,10) = _prn(x,9)"></li>
+<li class="expression vspace2" blank=8 vars="x='10201_6'" exp="prn(x,10) = _prn(x,6)"></li>
+
+</ol>
+
+<h2 class="page-break">"Find the Base" Problems</h2>
+
+<p>Some problems ask for the correct base of a math statement. For example:</p>
+
+<p>What Base is this problem in:
+   <span class="expression" baseFormat=question vars="x=val('103_5'); y=val('113_5'); b=5;" 
+        exp="prn(x,b) + prn(y,b) = prn(x+y,b)"></span>.</p>
+
+<p><strong>Step 1:</strong> The base must be greater than any digit you see. So the base must be at least <span class="expression" exp="_prn(4)"></span>.</p>
+
+<p><strong>Step 2:</strong> Add the one's place digits: 
+    <span class="expression" exp="3+3=_prn(6,10)"></span>.</p>
+
+<p><strong>Step 3:</strong> The one's place answer is 1. What base is needed for \( 6_{(10)} \) to end in a 1?
+    <span class="expression" exp="_prn(5)"></span>.</p>
+
+<p><strong>Step 4:</strong> Finally, check your answer:
+    <span class="expression" vars="x=val('103_5'); y=val('113_5'); b=5;"
+        exp="prn(x,b) + prn(y,b) = _prn(x+y,b)"></span>.</p>
+
+<p>If the one's place does not give a clue, move onto the 10's place. For example:</p>
+   <p class="expression indent1" baseFormat=question vars="x=val('242_5'); y=val('132_5'); b=5;" 
+        exp="prn(x,b) + prn(y,b) = prn(x+y,b)">.</p>
+
+<p><strong>Step 2:</strong> One's place digits: \( 2 + 2 = 4\). But the answer in the one's place digit is 4. There is no good clue here. Move on to the 10's place.</p>
+
+<p><strong>Step 3:</strong> 10's place digits: \( 4 + 3 = 7\). The answer in the 10's place digit is 2. This gives us the clue. The base must be: <span class="expression" exp="_prn(5)"></span>.</p>
+
+
+<h2>Practice</h2>
+
+<ol>
+<li class="expression" baseFormat=none 
+    vars="x=val('123_7'); y=val('234_7'); b=7;" 
+    exp="prn(x,b) + prn(y,b) = prn(x + y, b). \text{ Base is } _prn(b)"></li>
+
+<li class="expression vspace2" baseFormat=none 
+    vars="x=val('333_6'); y=val('232_6'); b=6;" 
+    exp="prn(x,b) + prn(y,b) = prn(x + y, b). \text{ Base is } _prn(b)"></li>
+
+<li class="expression vspace2" baseFormat=none 
+    vars="x=val('433_8'); y=val('532_8'); b=8;" 
+    exp="prn(x,b) + prn(y,b) = prn(x + y, b). \text{ Base is } _prn(b)"></li>
+
+<li class="expression vspace2" baseFormat=none
+    vars="x=val('433_9'); y=val('342_9'); z=val('441_9'); b=9;" 
+    exp="prn(x,b) + prn(y,b) + prn(z,b) = prn(x + y + z, b). \text{ Base is } _prn(b)"></li>
+
+<li class="expression vspace2" baseFormat=none
+    vars="x=val('433_5'); y=val('342_5'); z=val('411_5'); b=5;" 
+    exp="prn(x,b) + prn(y,b) - prn(z,b) = prn(x + y - z, b). \text{ Base is } _prn(b)"></li>
+
+<li class="expression vspace2" baseFormat=none
+    vars="x=val('532_8'); y=val('334_8'); b=8;" 
+    exp="prn(x,b) - prn(y,b) = prn(x - y, b). \text{ Base is } _prn(b)"></li>
+
+<li class="expression vspace2" baseFormat=none
+    vars="x=val('2434_5'); y=val('342_5'); z=val('11_5'); b=5;" 
+    exp="prn(x,b) - prn(y,b) - prn(z,b) = prn(x - y - z, b). \text{ Base is } _prn(b)"></li>
+</ol>
 
 </div>
 </body>
