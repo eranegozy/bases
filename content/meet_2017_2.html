@@ -1,0 +1,47 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League 2017: Meet 2</h1>
+<table class="student-info"></table>
+
+<div class="content main">
+  <p>1) In what base is this problem solved?<p>
+  <p class="indent1"> \( 4012 - 3615 = 175 \) </p>
+  <p class="vspace3"></p>
+
+  <p> 2) Evaluate the following:</p>
+  <p class="indent1"> \( 781_{(9)} \times 187_{(9)} \times 2_{(9)} \)  </p>
+    
+  <p class="vspace3"></p>
+
+  <p> 3) Evaluate the following and express your solution in base ten.</p>
+  <p>  \[ (100_3 + 100_6)^2 - (100_5 - 121_4)  \over{
+           22_9 + 11_8 + 22_7 }  \] </p>
+  <p class="vspace2"></p>
+</div>
+
+<div class="meet-answers main">
+  <strong>Answers:</strong>
+  <ol>
+    <li class="expression" blank=8 baseFormat=alpha exp="\text{ base } _prn(8)"></li>
+    <li class="expression" blank=8 exp="_prn( val('781_9') * val('187_9') * 2 , 9)"></li>
+    <li class="expression" blank=8 
+      vars="a=val('100_3'); b=val('100_6'); c=val('100_5'); d=val('121_4'); 
+            e=val('22_9'); f=val('11_8'); g=val('22_7');"
+    exp="_prn( ((a+b)**2 - (c-d)) / (e+f+g), 10)"></li>
+  </ol>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League 2016: Meet 2</h1>
+<table class="student-info"></table>
+
+<div class="content main">
+  <p>1) What number comes next in this pattern: 
+    <span class="expression series" len=5 hints=[0,1,2,3] exp="_prn((n+3)**2,8)"></span><p>
+  <p class="vspace3"></p>
+
+  <p>2) In what base is this problem solved?<p>
+  <p class="expression indent1" vars="b=7; x=val('21_'+b); y=val('25_'+b);" 
+     baseFormat=none exp="prn(x,b) \times prn(y,b) = prn(x*y,b)"></p>
+  <p class="vspace3"></p>
+    
+  <p class="vspace3"></p>
+
+  <p> 3) Evaluate the following and express your solution in base ten.</p>
+  <p>  \[ (100_6 + 120_4)^2 - 40_5 \times 120_3 \over{
+           12_9 + 12_8 + 12_7 }  \] </p>
+  <p class="vspace2"></p>
+</div>
+
+<div class="meet-answers main">
+  <strong>Answers:</strong>
+  <ol>
+    <li class="expression" blank=8 exp="_prn(49,8)"></li>
+    <li class="expression" blank=8 baseFormat=alpha exp="\text{ base } _prn(7)"></li>
+    <li class="expression" blank=8 
+      vars="a=val('100_6'); b=val('120_4'); c=val('40_5'); d=val('120_3'); 
+            e=val('12_9'); f=val('12_8'); g=val('12_7');"
+    exp="_prn( ((a+b)**2 - c*d) / (e+f+g), 10)"></li>
+  </ol>
+</div>
+
+</body>
+</html>
