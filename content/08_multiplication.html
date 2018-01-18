@@ -1,0 +1,159 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League Bases 8: Multiplication and Operations</h1>
+
+<table class="student-info"></table>
+<div class="main">
+
+<h2>Single-Digit Multiplication</h2>
+
+<p>To multiply single digits in some Base, multiply the digits normally, then convert to the Base. For example:</p>
+<p class="expression" vars="x=4; y=2; b=5"
+    exp="prn(x,b) \times prn(y,b) = ???"></p>
+<p><strong>Step1:</strong> Multiply digits normally: 
+    <span class="expression" exp="4 \times 2 = _prn(4*2)"></span></p>
+
+<p><strong>Step2:</strong> Convert the answer to Base 5: 
+    <span class="expression" exp="prn(8,10) = _prn(8,5)"></span></p>
+
+<p>So the answer is: <span class="expression" vars="x=4; y=2; b=5"
+    exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></span></p>
+
+<h2>Practice</h2>
+<ol>
+<li class="expression" vars="x=3; y=2; b=7" exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></li>
+<li class="expression" vars="x=2; y=2; b=3" exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></li>
+<li class="expression" vars="x=4; y=7; b=8" exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></li>
+<li class="expression" vars="x=3; y=4; b=6" exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></li>
+<li class="expression" vars="x=8; y=8; b=9" exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></li>
+</ol>
+
+<h2>Multi-Digit Multiplication</h2>
+
+<p>To multiply multi-digit numbers, use the <em>partial products</em> method, but multiply and add in the proper Base.</p>
+
+<p>For Example, let's solve this: \( 24_{(5)} \times 32_{(5)} \)</p>
+
+<p><strong>Step1:</strong> Multiply to create the 4 partial products. The zeros have been placed for you. Remember to multiply in Base 5:</p>
+<p class="expression indent2" exp="_longmult('24_5', '32_5', 5, 'noSum')"></p>
+
+<p class="page-break"><strong>Step2:</strong> Add the 4 partial products. Remember to add in Base 5:</p>
+<p class="expression indent2" exp="longadd(['13_5', '40_5', '220_5', '1100_5'], 5)"></p>
+
+<p>The answer you should get is: \( 1423_{(5)} \)  </p>
+
+<h2>Practice</h2>
+
+<ol>
+<table style='width:100%'>
+<tr>
+<td><li class="expression" blank=6 exp="_longmult('12_6', '13_6', 6, 'noPartials')"></li></td>
+<td><li class="expression" blank=6 exp="_longmult('22_4', '33_4', 4, 'noPartials')"></li></td>
+</tr><tr>
+<td><li class="expression" blank=6 exp="_longmult('12_3', '212_3', 3, 'noPartials')"></li></td>
+<td><li class="expression" blank=6 exp="_longmult('45_8', '317_8', 8, 'noPartials')"></li></td>
+</tr><tr>
+<td><li class="expression" blank=6 exp="_longmult('452_7', '604_7', 7, 'noPartials')"></li></td>
+<td><li class="expression" blank=6 exp="_longmult('314_5', '413_5', 5, 'noPartials')"></li></td>
+</tr>
+</table>
+</ol>
+
+<h2 class="page-break">Operations</h2>
+
+<p>For these operation problems:
+<ul>
+    <li class="tight">Convert everything to Base 10</li>
+    <li class="tight">Remember the Order of Operations: PEMDAS: Parentheses, Exponents, Multiplication, Division, Addition, Subtraction</li>
+</ul></p>
+
+<p class="tight">For Example:</p>
+
+<p class="expression indent1" vars="a=20; b=10; c=5; d=11; e=9" 
+    exp="\cfrac{ ( prn(a,5) - prn(b,6) ) ^ 2 - prn(c,3) \times prn(d,4) }{ prn(e,2) } = ???"></p>
+
+<p><strong>Step1:</strong> Convert all numbers to Base 10:</p>
+<p class="expression indent1" vars="a=20; b=10; c=5; d=11; e=9" 
+    exp="\cfrac{ ( _prn(a) - _prn(b) ) ^ 2 - _prn(c) \times _prn(d) }{ _prn(e) }"></p>
+
+<p><strong>Step2:</strong> Solve in PEMDAS order:</p>
+<p class="expression indent1" vars="a=20; b=10; c=5; d=11; e=9" 
+    exp="\cfrac{  _prn(a - b) ^ 2 - _prn(c*d) }{ _prn(e) } = \cfrac{ _prn((a-b)**2 - (c*d)) }{ _prn(e) } = prn( ((a-b)**2 - (c*d)) / e )"></p>
+
+<h2>Practice</h2>
+
+<p>Express all answers in Base 10:</p>
+<ol>
+<li class="expression indent1 vspace2" vars="a=10; b=9; c=8; d=7" 
+    exp="prn(a,9) \times prn(b,8) - prn(c,7) \times prn(d,6)"
+    operations="a*b - c*d"></li>
+
+<li class="expression indent1 vspace2" vars="a=50; b=25; c=5; d=100; e=4" 
+    exp="prn(a,6) + prn(b,8) \times prn(c,3) - prn(d, 9) \div prn(e,2)"
+    operations="a+b*c-d/e"></li>
+
+<li class="expression indent1 vspace2" vars="a=4; b=21; c=18; d=5" 
+    exp="\cfrac{ prn(a,2) ^ 2 + ( prn(b,3) - prn(c,4) ) ^ 2 }{ prn(d,5) }"
+    operations="(a**2 + (b-c)**2) / d"></li>
+
+<li class="expression indent1 vspace2" vars="a=20; b=10; c=5; d=11; e=9" 
+    exp="\cfrac{ ( prn(a,5) - prn(b,6) ) ^ 2 - prn(c,3) \times prn(d,4) }{ prn(e,2) }"
+    operations="((a-b)**2 - (c*d)) / e"></li>
+
+<li class="expression indent1 vspace2" vars="a=40; b=3; c=30; d=8; e=6; f=5" 
+    exp="prn(a,6) \times prn(b,2) - prn(c,7) \times prn(d,5) + prn(e,3)^2 \times prn(f,4)"
+    operations="a*b-c*d+e**2*f"></li>
+</ol>
+
+<h2>Review</h2>
+
+<ol>
+
+<li class="vspace2">What is the difference in Base 10 between 
+    \( 100_{(7)} \) and \( 100_{(5)} \)?
+    <span class="expression" exp="_prn(49-25, 10)"></span></li>
+
+<li class="expression vspace2" vars="x=val('5_6'); y=val('55_6'); z=val('555_6'); b=6;"
+    exp="prn(x,b) + prn(y,b) + prn(z,b) = _prn(x+y+z,b)"></li>
+
+<li class="expression vspace2" blank=8
+    vars="x=val('5555_6')" exp="prn(x, 10) = _prn(x, 6)" ></li>
+
+<li class="vspace2">Circle the two numbers that are equal:
+    <span class="expression" exp="prn(64, 8), prn(48, 6), prn(64, 4), prn(81, 3)"></span></li>
+
+<li class="expression series vspace2" len=5
+    exp="_prn(3*n+40, 4)" hints=[0,1,2] ></li>
+
+<li class="expression vspace2" blank=8
+    vars="x=2222" exp="prn(x, 7) = _prn(x, 10)" ></li>
+
+<li class="expression vspace2" baseFormat=none
+    vars="x=val('231_7'); y=val('342_7'); z=val('441_7'); b=7;" 
+    exp="prn(x,b) + prn(y,b) + prn(z,b) = prn(x + y + z, b). \text{ This equation is in Base } _prn(b)"></li>
+
+<li class="expression vspace2" vars="x=213; y=76; z=99; b=6;" 
+    exp="prn(x,b) - prn(y,b) + prn(z,b) = _prn(x-y+z,b)"></li>
+
+<li class="vspace2">What is the difference in Base 10 between 
+    \( 444_{(5)} \) and \( 333_{(4)} \)?
+    <span class="expression" exp="_prn(val('444_5')-val('333_4'), 10)"></span></li>
+
+</ol>
+
+
+</div>
+</body>
+</html>

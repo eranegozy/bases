@@ -10,6 +10,7 @@ var sub;
 var longadd;
 var longsub;
 var longdiv;
+var longmult;
 
 var ml = function () {
 
@@ -21,6 +22,7 @@ var ml = function () {
   var gDefaultBlankLength = 4;
   var gBlankLength = gDefaultBlankLength;
   var gBaseFormat = 'normal'; // 'normal', 'simple', 'alpha'
+  var gForcePrintValue = false; // hack - cause printNumInBase to only print value
 
   var init = function() {
 
@@ -78,6 +80,7 @@ var ml = function () {
     var hints = JSON.parse( elem.getAttribute("hints") ) || [];
     var txt = elem.getAttribute("exp");
     var vars = elem.getAttribute("vars") || '';
+    var operations = elem.getAttribute("operations") || false;
     gBlankLength = elem.getAttribute("blank") || gDefaultBlankLength;
     gBaseFormat = elem.getAttribute("baseFormat") || "normal";
 
@@ -96,6 +99,15 @@ var ml = function () {
       if (n < len - 1)
         output += ', ';
     }
+
+    if (operations && gShowSolutions) {
+      gForcePrintValue = true;
+      var sln = callFunction(operations, vars);
+      output += ' = ' + renderExpression(txt, vars + "; ") + ' = ' + sln;
+      gForcePrintValue = false;
+    }
+
+
     elem.innerHTML = output;
 
     // restore globals to default values
@@ -126,6 +138,20 @@ var ml = function () {
     }
     // console.log(out);
     return out;
+  }
+
+  // construct environment to evaluate function:
+  // setup variables and return value.
+  var callFunction = function(functxt, vars) {
+    var ftxt = vars + "; return " + functxt;
+    try { 
+      var result = new Function(ftxt)();
+      return result;
+    }
+    catch(err) {
+      console.log("Error in funciton", ftxt);
+      console.log(err);
+    }
   }
 
   // tokenize and process txt, handling funtions inside txt.
@@ -176,16 +202,8 @@ var ml = function () {
             functxt = functxt.substring(1);
           }
 
-          // construct environment to evaluate function:
-          // setup variables and return value.
-          var ftxt = vars + " return " + functxt;
-          try { 
-            var result = new Function(ftxt)(); 
-          }
-          catch(err) {
-            console.log("Error in funciton", ftxt);
-            console.log(err);
-          }
+          var result = callFunction(functxt, vars);
+
           gIsBlank = false;
 
           newtxt += result;
@@ -197,6 +215,7 @@ var ml = function () {
         newtxt += token;
       }
     }
+    // make the whole thing mathjax:
     var html = '\\( ' + newtxt + ' \\)';
     return html;
   }
@@ -493,16 +512,8 @@ var ml = function () {
     return ' \\text{' + blankTxt + '}';
   }
 
-
-  // print a number in mathjax format
-  var printNumInBase = function(num, base) {
-    var obj = parseBaseNum(num);
-
-    // no base means base 10, but do not add any subscript
-    if (typeof base == 'undefined')
-      return blankify( String(obj.value) );
-
-    // figure out which style to use for the base subscript
+  // figure out which style to use for the base subscript
+  var formatBaseSubscript = function(base) {
     var basetxt;
     if (gBaseFormat == 'simple')
       basetxt = '_{' + base + '}';
@@ -514,7 +525,18 @@ var ml = function () {
       basetxt = '';
     else
       basetxt = '_{(' + base + ')}';
+    return basetxt;
+  }
 
+  // print a number in with the proper base formatting.
+  var printNumInBase = function(num, base) {
+    var obj = parseBaseNum(num);
+
+    // no base means base 10, but do not add any subscript
+    if (typeof base == 'undefined' || gForcePrintValue)
+      return blankify( String(obj.value) );
+
+    var basetxt = formatBaseSubscript(base);
     return blankify( valuetoBase(obj.value, base) ) + basetxt;
   }
 
@@ -526,12 +548,13 @@ var ml = function () {
     return blankify( str.replace('$', n) );
   }
 
+  // long addition and subtraction
   var printLongAddition = function(numbers, base, sign) {
     var txt = '';
     var sum = 0;
 
     for (var i = 0; i < numbers.length; i++) {
-      var value = parseBaseNum(numbers[i]).value;
+      var value = valueOfNum(numbers[i]);
 
       if (i == 0 || sign == '+')
         sum += value;
@@ -555,6 +578,59 @@ var ml = function () {
     return txt;
   }
 
+  // long multiplication
+  var printLongMultiplication = function(n1, n2, base, mode) {
+    var txt = '';
+
+    var basetxt = formatBaseSubscript(base);
+    var emptyBasetxt = '\\phantom{' + basetxt + '}';
+
+    var v1 = valueOfNum(n1);
+    var v2 = valueOfNum(n2);
+
+    txt += valuetoBase(v1, base) + basetxt + ' \\\\';
+    txt += '\\underline{ \\times \\quad ' + valuetoBase(v2, base) + basetxt + '} \\\\ ';
+
+    // begin partial products method
+    if (mode != 'compact') {
+      var digits1 = valuetoBase(v1, base);
+      var digits2 = valuetoBase(v2, base);
+
+      var numLines = digits2.length * digits1.length;
+
+      for (var i = 0; i < digits2.length; i++) {
+        var d2 = Number( digits2[digits2.length - i - 1] );
+        for (var j = 0; j < digits1.length; j++) {
+          var d1 = Number( digits1[digits1.length - j - 1] );
+          var p = d1 * d2;
+
+          if (mode == 'noPartials' && !gShowSolutions) {
+            txt += '\\\\';
+          }
+          else {
+            var zeros = '0'.repeat(i+j);
+            var prod = valuetoBase(p, base);
+            if (!gShowSolutions)
+              prod = '\\text{__}';
+            prod += zeros + basetxt
+
+            if ((i+1) * (j+1) == numLines && mode != 'noSum')
+              txt += '\\underline{' + prod + '} \\\\';
+            else
+              txt += prod + ' \\\\';
+          }
+        }
+      }
+    }
+
+    if (mode != 'noSum') {
+      if (mode != 'compact' || gShowSolutions)
+        txt += printNumInBase(v1*v2, base);
+  }
+
+    txt = '\\begin{align} ' + txt + ' \\end{align}';
+    return txt;
+  }
 
   // long division
   var printLongDivide = function(numerator, denominator, hideNumerator) {
@@ -646,6 +722,7 @@ var ml = function () {
   longadd = function(numbers, base) { return printLongAddition(numbers, base, '+'); }
   longsub = function(numbers, base) { return printLongAddition(numbers, base, '-'); }
   longdiv = printLongDivide;
+  longmult = printLongMultiplication;
   val = valueOfNum;
 
   return { init:init }
