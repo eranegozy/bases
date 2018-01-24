@@ -81,6 +81,8 @@ var ml = function () {
     var txt = elem.getAttribute("exp");
     var vars = elem.getAttribute("vars") || '';
     var operations = elem.getAttribute("operations") || false;
+    var mathjax = elem.getAttribute("mathjax") || 'all'; // mathjax delimiter options
+
     gBlankLength = elem.getAttribute("blank") || gDefaultBlankLength;
     gBaseFormat = elem.getAttribute("baseFormat") || "normal";
 
@@ -91,7 +93,7 @@ var ml = function () {
       gShowSolutions = (hints.includes(n) || gShowSolutions);
 
       var vars2 = vars + "; n=" + n + "; ";
-      var html = renderExpression(txt, vars2);
+      var html = renderExpression(txt, vars2, mathjax);
       gShowSolutions = oldShowSolutions;
 
       output += html;
@@ -103,7 +105,7 @@ var ml = function () {
     if (operations && gShowSolutions) {
       gForcePrintValue = true;
       var sln = callFunction(operations, vars);
-      output += ' = ' + renderExpression(txt, vars + "; ") + ' = ' + sln;
+      output += ' = ' + renderExpression(txt, vars + "; ", 'all') + ' = ' + sln;
       gForcePrintValue = false;
     }
 
@@ -156,7 +158,7 @@ var ml = function () {
 
   // tokenize and process txt, handling funtions inside txt.
   // evaluate found functions with vars as context for the function.
-  var renderExpression = function(txt, vars) {
+  var renderExpression = function(txt, vars, mathjax) {
     var tokens = tokenizeExpression(txt);
 
     var inFunction = false;
@@ -206,7 +208,11 @@ var ml = function () {
 
           gIsBlank = false;
 
-          newtxt += result;
+          // if true, just wrap function results in mathjax delims
+          if (mathjax == 'functions')
+            newtxt += '\\( ' + result + ' \\)';
+          else
+            newtxt += result;
           functxt = '';
         }
       }
@@ -215,9 +221,11 @@ var ml = function () {
         newtxt += token;
       }
     }
-    // make the whole thing mathjax:
-    var html = '\\( ' + newtxt + ' \\)';
-    return html;
+    // wrap the whole of the text in mathjax, or not.
+    if (mathjax == 'all')
+      return '\\( ' + newtxt + ' \\)';
+    else
+      return newtxt;
   }
 
 
