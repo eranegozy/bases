@@ -1,0 +1,146 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League Bases 9: Word Problems, Calculators</h1>
+
+<table class="student-info"></table>
+<div class="main">
+
+<p>Word problems in Bases have two parts. Convert the numbers to Base 10, then do some operation based on the problem. For example:</p>
+
+<p class="indent1">Alitza worked \( 15_6 \) hours and was paid \( 110_8 \) cents per hour. What were Alitza's total earnings (in cents)?</p>
+
+<p><strong>Step 1:</strong> Convert.</p>
+<p class="expression indent1" vars="x='15_6'" exp="prn(x, 6) = _prn(x,10)"></p>
+<p class="expression indent1" vars="x='110_8'" exp="prn(x, 8) = _prn(x,10)"></p>
+
+<p><strong>Step 2:</strong> Translate word problem to a math operation.</p>
+<p class="expression indent1" vars="x=val('15_6'); y=val('110_8');" 
+    exp="prn(x,10) \times prn(y,10) = _prn( x*y, 10) \text{ cents}"></p>
+
+<h2>Practice</h2>
+<ol>
+
+<li class="expression vspace1" mathjax=functions vars="a=5; b=25;" 
+    exp="Melaine's bookcase has prn(a,3) shelves. Each shelf can hold up to prn(b, 7) books. What is the largest number of books that her bookcase can hold?<br><br>
+    Answer: _prn( a*b )">
+</li> 
+
+<li class="expression vspace1" mathjax=functions vars="a=750; b=30;" 
+    exp="Aarush bought a box of cookies that has a total of prn(a,3) grams of sugar. There are prn(b,7) cookies in the box. How many grams of sugar are in one cookie?<br><br>
+    Answer: _prn( a/b )">
+</li> 
+
+<li class="expression vspace1" mathjax=functions vars="a=12; b=20; c=16; d=24;" blank=12
+    exp="Eurkia Games just got a collection Pokemon figures. Hadley, who just got her first job at Eurkia, must arrange them on the shelf from shortest to tallest. Pikachu is prn(c,6) inches tall, Rattata is prn(a,4) inches tall, Snivy is prn(d,5) inches tall and Oshawott is prn(b,3) inches tall. In what order does Hadley arrange the Pokemon?<br><br>
+    Answer: _echo('Rattata'), _echo('Oshawott'), _echo('Pikachu'), _echo('Snivy')">
+</li>
+
+<li class="expression vspace1" mathjax=functions vars="a=9; b=13; c=10;" 
+    exp="Zoe shoveled snow from her neighbors' sidewalk to make some extra money. She averaged $prn(a,7) per sidewalk. She shoveled prn(b,3) sidewalks after one snowstorm and prn(c,5) sidewalks after another snowstorm. How much money did Zoe make?<br><br>
+    Answer: $_prn( a * (b+c) ) ">
+</li> 
+
+<h2 class="page-break">More Practice</h2>
+<p>Sometimes, the problem asks you to give the answer in a different base:</p>
+<ol>
+
+<li class="expression vspace1" mathjax=functions vars="a=105; b=21;"
+    exp="Eric had a Lego spaceship set with prn(a,6) pieces. Every day, he added prn(b,8) pieces to the spaceship. How many days did it take Eric to finsh? Express your answer in Base 2.<br><br>
+    Answer: _prn(a/b, 2)">
+</li>
+
+<li class="expression vspace1" mathjax=functions vars="a=13; b=18; c=40"
+    exp="Booksmith had a problem with their registers one day. They only worked in Base 4. David wanted to buy books costing $prn(a,4) and $prn(b,4). He paid with two twenty dollar bills. How much change did David get? Express you answer in Base 5.<br><br>
+    Answer: $_prn( c - (a+b),5 )">
+</li> 
+
+<li class="expression vspace1" mathjax=functions vars="a=225; b=9; c=4;" 
+    exp="Sophia's family drove from Brookline, Massachusets to Okemo, Vermont to go skiing. Google Maps says the distance is prn(a, 5) miles. Their Prius showed prn(b,3) gallons of gas at the start of the trip and prn(c,2) gallons of gas at the end of the trip. What milleage (miles per gallon) did their car get in Base 8? <br><br> 
+    Answer: _prn(a / (b-c),8) miles per gallon.">
+</li>
+</ol>
+
+<h2>Using a Calculator</h2>
+
+<p>In the Math League tests, you are allowed to use a calculator for Bases. This will let you solve hard problems faster. </p>
+
+<h3>To Base 10</h3>
+<p>For large numbers, use the calculator to set up the exponent chart, multiply, and add.</p>
+<p class="expression indent1 vspace2" blank=8 vars="a=9999;" exp="prn(a,7) = _prn(a,10)">
+<p class="expression indent1 vspace2" blank=8 vars="a=9999;" exp="prn(a,6) = _prn(a,10)">
+
+<h3 class="page-break">From Base 10, Type 1 (Left-to-Right)</h3>
+<p>Use the calculator to set up the exponent chart. Use divide to see how many times an exponent value fits. Use subtract calculate the difference and move to the next place value.</p>
+
+<p class="expression indent1 vspace2" blank=8 vars="a=9999;" exp="prn(a,10) = _prn(a,5)">
+<p class="expression indent1 vspace2" blank=8 vars="a='12345_6';" exp="prn(a,10) = _prn(a,6)">
+
+<h3>From Base 10, Type 2 (Right-to-Left)</h3>
+<p>For Type 2, use a calculator to divide by the target Base. The tricky part is converting the remainder from a decimal to a remainder:</p>
+
+<p class="expression indent1" vars="a=8*217+2;" exp="prn(a) \div 8 = _echo(a/8)"></p>
+<p class="expression indent1" mathjax=functions exp="The integer part is _echo(217) and the decimal part is _echo(0.25)"></p>
+<p class="indent1">To convert the decimal part to a remainder, multiply only the decimal part by the Base:
+    <span class="expression" exp="0.25 \times _prn(8) = _prn(4)"></span></p>
+
+<p>Try these:</p>
+<p class="expression indent1" blank=7 vars="b=5; r=3; a=b*217+r;" 
+    exp="prn(a) \div prn(b) = _echo(a/b). \text{ Decimal is: } _echo(r/b). \text{ Remainder is } _echo(r)."></p>
+
+<p class="expression indent1" blank=7 vars="b=7; r=4; a=b*217+r;" 
+    exp="prn(a) \div prn(b) = _echo(a/b). \text{ Decimal is: } _echo(r/b). \text{ Remainder is } _echo(r)."></p>
+
+<p class="expression indent1" blank=7 vars="b=9; r=7; a=b*217+r;" 
+    exp="prn(a) \div prn(b) = _echo(a/b). \text{ Decimal is: } _echo(r/b). \text{ Remainder is } _echo(r)."></p>
+
+<p>Use a calculator for Type 2 conversion:</p>
+
+<p class="expression indent1 vspace2" blank=8 vars="a=9999;" exp="prn(a,10) = _prn(a,5)">
+<p class="expression indent1 vspace2" blank=8 vars="a='12345_6';" exp="prn(a,10) = _prn(a,6)">
+
+<h2 class="page-break">Review</h2>
+<ol>
+
+<li class="expression vspace2" vars="a=100; b=5; c=11; d=30; e=6" 
+    exp="prn(a,9) - prn(b,8) \times prn(c,7) + prn(d,6) \div prn(e,3)"
+    operations="a - b * c + d / e"></li>
+
+<li class="expression vspace2" mathjax=functions vars="a=81; b=64;"
+    exp="What is the difference in Base 10 between prn(a, 9) and prn(b, 4)? _prn(a-b)"></li>
+
+<li class="expression series vspace2" len=6
+    exp="_prn((1+n)**2, 4)" hints=[0,1,2,3] ></li>
+
+<li class="expression vspace2" blank=8
+    vars="x=val('4321_7')" exp="prn(x, 10) = _prn(x, 7)" ></li>
+
+<li class="expression vspace2" vars="x=val('5243_6'); y=val('2231_6'); z=val('555_6'); b=6;"
+    exp="prn(x,b) - prn(y,b) + prn(z,b) = _prn(x-y+z,b)"></li>
+
+<li class="expression vspace2" blank=8
+    vars="x=2222" exp="prn(x, 9) = _prn(x, 10)" ></li>
+
+<li class="expression vspace2" baseFormat=none
+    vars="x=val('231_8'); y=val('302_8'); z=val('441_8'); b=8;" 
+    exp="prn(x,b) + prn(y,b) + prn(z,b) = prn(x + y + z, b). \text{ This equation is in Base } _prn(b)"></li>
+
+<li class="expression vspace2" blank=6 vars="x=val('45_7'); y=val('314_7'); b=7"; 
+    exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></li>
+
+</ol>
+
+</div>
+</body>
+</html>
