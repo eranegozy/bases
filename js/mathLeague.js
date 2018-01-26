@@ -545,7 +545,10 @@ var ml = function () {
       return blankify( String(obj.value) );
 
     var basetxt = formatBaseSubscript(base);
-    return blankify( valuetoBase(obj.value, base) ) + basetxt;
+    var numtxt = valuetoBase(obj.value, base);
+    if (base > 10)
+      numtxt = '\\text{' + numtxt + '}';
+    return blankify( numtxt ) + basetxt;
   }
 
   var printString = function(str) {
