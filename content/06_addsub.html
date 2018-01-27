@@ -20,16 +20,16 @@
 <h2>Adding in Base 10</h2>
 
 <p>Adding in Bases is like adding in Base 10. For example, try this:</p>
-<p class="expression indent1" exp="longadd([345, 142])"></p>
+<p class="expression indent1" exp="_longadd([345, 142])"></p>
 
 <p>That was easy. The next one a bit harded. You need to "carry the one":</p>
-<p class="expression indent1" exp="longadd([374, 768])"></p>
+<p class="expression indent1" exp="_longadd([374, 768])"></p>
 
 <h2>Adding in Other Bases</h2>
 
 <p>In other Bases, the easy problems are exactly the same:</p>
-<p class="expression indent1" exp="longadd(['12_4', '21_4'], 4)"></p>
-<p class="expression indent1" exp="longadd(['31_8', '123_8', '410_8'], 8)"></p>
+<p class="expression indent1" exp="_longadd(['12_4', '21_4'], 4)"></p>
+<p class="expression indent1" exp="_longadd(['31_8', '123_8', '410_8'], 8)"></p>
 
 <p>The "carry one" rule happens in other bases too. How do you solve this:</p>
 <p class="expression indent1" exp="prn(3, 5) + prn(3, 5) = _prn(6, 5)"></p>
@@ -42,40 +42,40 @@
 </p>
 
 <p class="page-break">Try one yourself. This one has two carries.</p>
-<p class="expression indent1" exp="longadd(['123_5', '124_5'], 5)"></p>
+<p class="expression indent1" exp="_longadd(['123_5', '124_5'], 5)"></p>
 
 <h2>Practice</h2>
 
 <p>Some basic addition problems</p>
 
 <table style='width:100%'><tr>
-<td><p class="expression" exp="longadd([13, 6], 5)"></p></td>
-<td><p class="expression" exp="longadd([15, 9], 6)"></p></td>
-<td><p class="expression" exp="longadd([53, 265], 7)"></p></td>
-<td><p class="expression" exp="longadd([53, 378], 8)"></p></td>
+<td><p class="expression" exp="_longadd([13, 6], 5)"></p></td>
+<td><p class="expression" exp="_longadd([15, 9], 6)"></p></td>
+<td><p class="expression" exp="_longadd([53, 265], 7)"></p></td>
+<td><p class="expression" exp="_longadd([53, 378], 8)"></p></td>
 </tr><tr>
-<td><p class="expression" exp="longadd([15, 10], 4)"></p></td>
-<td><p class="expression" exp="longadd([24, 14], 5)"></p></td>
-<td><p class="expression" exp="longadd([55, 97], 6)"></p></td>
-<td><p class="expression" exp="longadd([159, 244], 7)"></p></td>
+<td><p class="expression" exp="_longadd([15, 10], 4)"></p></td>
+<td><p class="expression" exp="_longadd([24, 14], 5)"></p></td>
+<td><p class="expression" exp="_longadd([55, 97], 6)"></p></td>
+<td><p class="expression" exp="_longadd([159, 244], 7)"></p></td>
 </tr></table>
 
 <p>Lots of digits in low bases</p>
 
 <table style='width:100%'><tr>
-<td><p class="expression" exp="longadd([6, 13], 2)"></p></td>
-<td><p class="expression" exp="longadd([26, 26], 3)"></p></td>
-<td><p class="expression" exp="longadd([15, 13], 2)"></p></td>
-<td><p class="expression" exp="longadd([89, 147], 3)"></p></td>
+<td><p class="expression" exp="_longadd([6, 13], 2)"></p></td>
+<td><p class="expression" exp="_longadd([26, 26], 3)"></p></td>
+<td><p class="expression" exp="_longadd([15, 13], 2)"></p></td>
+<td><p class="expression" exp="_longadd([89, 147], 3)"></p></td>
 </tr></table>
 
 <h2>Subtraction</h2>
 
 <p>In subtraction, it can also be easy:</p>
-<td><p class="expression" exp="longsub([13, 6], 5)"></p></td>
+<td><p class="expression" exp="_longsub([13, 6], 5)"></p></td>
 
 <p>But sometimes you have to "borrow a one" from the next digit. Example:</p>
-<td><p class="expression" exp="longsub([11, 8], 5)"></p></td>
+<td><p class="expression" exp="_longsub([11, 8], 5)"></p></td>
 
 <p>You "borrow a one" from the 2, which is worth 5 (since we are in Base 5).</p>
 <p>Then, \(5 + 1 = 6\). And \(6 - 3 = 3\).</p>
@@ -84,15 +84,15 @@
 <h2>Subtraction Practice</h2>
 
 <table style='width:100%'><tr>
-<td><p class="expression" exp="longsub([13, 6], 4)"></p></td>
-<td><p class="expression" exp="longsub([15, 9], 6)"></p></td>
-<td><p class="expression" exp="longsub([265, 53], 8)"></p></td>
-<td><p class="expression" exp="longsub([378, 62], 9)"></p></td>
+<td><p class="expression" exp="_longsub([13, 6], 4)"></p></td>
+<td><p class="expression" exp="_longsub([15, 9], 6)"></p></td>
+<td><p class="expression" exp="_longsub([265, 53], 8)"></p></td>
+<td><p class="expression" exp="_longsub([378, 62], 9)"></p></td>
 </tr><tr>
-<td><p class="expression" exp="longsub([25, 10], 5)"></p></td>
-<td><p class="expression" exp="longsub([25, 10], 4)"></p></td>
-<td><p class="expression" exp="longsub([30, 14], 3)"></p></td>
-<td><p class="expression" exp="longsub([29, 18], 2)"></p></td>
+<td><p class="expression" exp="_longsub([25, 10], 5)"></p></td>
+<td><p class="expression" exp="_longsub([25, 10], 4)"></p></td>
+<td><p class="expression" exp="_longsub([30, 14], 3)"></p></td>
+<td><p class="expression" exp="_longsub([29, 18], 2)"></p></td>
 </tr></table>
 
 
@@ -143,9 +143,9 @@
     vars="x='1234_7'" exp="prn(x, 7) = _prn(x, 9)" ></li>
 
 <table style='width:100%'><tr>
-<td><li class="expression" exp="longadd([17, 29, 35, 47], 4)"></li></td>
-<td><li class="expression" exp="longsub([97, 55], 2)"></li></td>
-<td><li class="expression" exp="longsub([916, 530], 9)"></li></td>
+<td><li class="expression" exp="_longadd([17, 29, 35, 47], 4)"></li></td>
+<td><li class="expression" exp="_longsub([97, 55], 2)"></li></td>
+<td><li class="expression" exp="_longsub([916, 530], 9)"></li></td>
 </tr></table>
 
 <li class="expression vspace2" vars="x=300; y=200; z=100;" 

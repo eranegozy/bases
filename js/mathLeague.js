@@ -564,6 +564,9 @@ var ml = function () {
     var txt = '';
     var sum = 0;
 
+    var oldisBlank = gIsBlank;
+    gIsBlank = false;
+
     for (var i = 0; i < numbers.length; i++) {
       var value = valueOfNum(numbers[i]);
 
@@ -577,8 +580,9 @@ var ml = function () {
       else
         txt += '\\underline{' + sign + ' \\quad ' + printNumInBase(value, base) + '} \\\\ ';
     };
+    gIsBlank = oldisBlank;
 
-    if (gShowSolutions)
+    if (gShowSolutions || !gIsBlank)
       txt += printNumInBase(sum, base) + ' ';
     else if (base)
       txt +=  '{}_{(' + base + ')} ';
