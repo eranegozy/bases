@@ -1,0 +1,45 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League 2015: Meet 3</h1>
+<table class="student-info"></table>
+
+<div class="content main">
+  <p class="indent2">1) <span class="expression" blank=8 vars="x=2748;"
+      exp="prn(x,10) = _prn(x,16)"></span></p>
+  <p class="vspace3"></p>
+
+  <p class="indent2">2) In what base would the following be true?</p>
+  <p class="expression indent2" baseFormat=none vars="b=15; x=val('ABC_' + b);"
+    exp="longadd([x,x,x],b)"></p>
+  <p class="vspace3"></p>
+
+  <p class="indent2">3) Evaluate:
+    <span class="expression" blank=8 vars="x=val('123_12'); y=val('456_12');"
+      exp="prn(x,12) \times prn(y,12) = _prn(x*y,12)"></span></p>
+  <p class="vspace2"></p>
+</div>
+
+<div class="meet-answers main">
+  <strong>Answers:</strong>
+  <ol>
+    <li class="expression" blank=8 vars="x=2748;" exp="_prn(x,16)"></li>
+    <li class="expression" blank=8 mathjax=functions exp="Base _echo(15)"> </li>
+    <li class="expression" blank=8 vars="x=val('123_12'); y=val('456_12');"
+      exp="_prn( x*y , 12)"></li>
+  </ol>
+</div>
+
+</body>
+</html>

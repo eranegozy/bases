@@ -1,0 +1,45 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League 2016: Meet 3</h1>
+<table class="student-info"></table>
+
+<div class="content main">
+  <p class="indent2">1) What is the value of the largest 3-digit <em>base eleven</em> number in base 10?</p>
+  <p class="vspace3"></p>
+
+  <p class="indent2">2) Evaluate:</p>
+  <p class="expression indent2" baseFormat=alpha blank=8 vars="x=val('A2B_12'); y=val('A2B_13');"
+    exp="prn(x,12) + prn(y,13) = _prn(x+y, 14)"></p>
+  <p class="vspace3"></p>
+
+  <p class="indent2">3) Evaluate:
+    <span class="expression" blank=8 vars="x=val('ACE_15'); y=val('123_15');"
+      exp="prn(x,15) \times prn(y,15) = _prn(x*y,15)"></span></p>
+  <p class="vspace2"></p>
+</div>
+
+<div class="meet-answers main">
+  <strong>Answers:</strong>
+  <ol>
+    <li class="expression" blank=8 exp="_prn('AAA_11', 10)"></li>
+    <li class="expression" blank=8 baseFormat=alpha vars="x=val('A2B_12'); y=val('A2B_13');"
+        exp="_prn(x+y, 14)"></li>
+    <li class="expression" blank=8 vars="x=val('ACE_15'); y=val('123_15');"
+      exp="_prn( x*y , 15)"></li>
+  </ol>
+</div>
+
+</body>
+</html>
