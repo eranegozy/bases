@@ -254,8 +254,8 @@ var ml = function () {
     for (var i = 0; i < len; i++) {
       var exp = len - i - 1;
       var val = base ** exp;
-      var digit = digits[i];
-      var prod = Number(digit) * val;
+      var digit = digitValue(digits[i]);
+      var prod = digit * val;
       sum += prod;
 
       // top part: exponent
@@ -447,6 +447,16 @@ var ml = function () {
 
     out.value = base10Value(out.digits, out.base);    
     return out;
+  }
+
+  // return numerical value of digit (ie, for 'A' = 10, 'B' = 11, etc...)
+  var digitValue = function(digit) {
+    var d = String(digit).charCodeAt(0);
+    if (48 <= d && d <= 57)
+      d -= 48;
+    else
+      d -= 55;
+    return d;
   }
 
   // convert digits in base base to base 10
