@@ -113,6 +113,21 @@ body {
 }
 */
 
+.basic-table {
+  border-collapse: collapse;
+  border: solid 1px;
+  margin: auto;
+}
+
+.basic-table td {
+  border: solid 1px;
+  text-align: center
+}
+
+.basic-table tr:nth-child(1){
+  font-weight: bold;
+}
+
 .grid {
   border-collapse: collapse;
   display: inline-block;
