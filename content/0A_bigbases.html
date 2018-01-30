@@ -84,6 +84,64 @@ Use a Base Chart to convert to Base 10, just like before.
 <li class="expression vspace1" vars="x=11;y=11;b=12" exp="prn(x,b) + prn(y,b) = _prn(x+y,b)"></li>
 </ol>
 
+<p>Some Long Addition Problems:</p>
+
+<table class="vspace1" style='width:100%'><tr>
+<td><p class="expression" exp="_longadd([26, 26], 15)"></p></td>
+<td><p class="expression" exp="_longadd([30, 13], 11)"></p></td>
+</tr></table>
+
+<table class="vspace1" style='width:100%'><tr>
+<td><p class="expression" exp="_longadd([89, 147], 13)"></p></td>
+<td><p class="expression" exp="_longadd([111, 139], 12)"></p></td>
+</tr></table>
+
+<h2>Multiplying with a Calculator</h2>
+
+<p>Solve \( 876_9 \times 543_9 \) with a calculator using these steps.</p>
+
+<p><strong>Step 1</strong>: First, convert each number to Base 10.</p>
+<p class="expression indent1 vspace2" blank=8 vars="x=val('876_9')" exp="prn(x,9) = _prn(x, 10)"></p>
+<p class="expression indent1 vspace2" blank=8 vars="y=val('543_9')" exp="prn(y,9) = _prn(y, 10)"></p>
+
+<p><strong>Step 2</strong>: Multiply the two 3-digit Base 10 numbers with a calculator.</p>
+<p class="expression indent1 vspace2" blank=8 vars="x=val('876_9'); y=val('543_9');" 
+    exp="_prn(x,10) \times _prn(y,10) = _prn(x*y,10)"></p>
+
+<p><strong>Step 3</strong>: Convert this 6-digit Base 10 number to Base 9. Use Type 1 or Type 2. Use a calculator to speed up your calculations.</p>
+<p class="expression indent1 vspace2" blank=8 vars="x=val('876_9'); y=val('543_9');" 
+    exp="prn(x*y,10) = _prn(x*y,9)"></p>
+
+
+
+<h2 class="page-break">Review</h2>
+
+<ol>
+<li> In the following problem, \( \Sigma \Omega \) is a two-digit number.
+<br><br>  
+\( (\Sigma \Omega)_3 +  (\Sigma \Omega)_3 = (\Sigma \Omega)_8 \) 
+<br><br> 
+What digit can go in for each symbol to make the above problem work? </li>
+<p class="expression indent1" blank=5 exp="\Sigma = _prn(1) \; \Omega = _prn(2)"></p>
+
+
+<li class="expression vspace2" vars="a=5; b=45; c=33; d=13" 
+    exp="\cfrac{ prn(a,3) ^ 2 + ( prn(b,11) - prn(c,13) ) ^ 2 }{ prn(d,16) }"
+    operations="(a**2 + (b-c)**2) / d"></li>
+
+
+<li class="expression series vspace2" len=7 blank=5
+    exp="sub('$^2',10+n) = _prn((10+n)**2)" ></li>
+
+
+<li class="expression vspace2" baseFormat=none
+    vars="x=val('234_8'); y=val('21_8'); b=8;" 
+    exp="prn(x,b) \times prn(y,b) = prn(x * y, b). \text{ This equation is in Base } _prn(b)"></li>
+
+
+<li class="expression vspace2" blank=6 vars="x=val('45_8'); y=val('314_8'); b=8"; 
+    exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></li>
+
 
 </div>
 </body>
