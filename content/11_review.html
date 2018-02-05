@@ -1,0 +1,46 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League Bases B: Review</h1>
+
+<table class="student-info"></table>
+<div class="main">
+
+<h2>Some Review Problems</h2>
+<ol>
+
+<li class="expression vspace2" vars="a=5; b=45; c=33; d=13" 
+    exp="\cfrac{ prn(a,3) ^ 2 + ( prn(b,4) - prn(c,5) ) ^ 2 }{ prn(d,6) }"
+    operations="(a**2 + (b-c)**2) / d"></li>
+
+<li class="expression vspace2" baseFormat=none
+    vars="x=val('234_7'); y=val('21_7'); b=7;" 
+    exp="prn(x,b) \times prn(y,b) = prn(x * y, b). \text{ This equation is in Base } _prn(b)"></li>
+
+<li class="expression series vspace2" len=6 hints=[0,1,2,3] exp="_prn((1+n)**2,4)"></li>
+
+<li class="expression vspace2" blank=8 vars="x=555" exp="prn(x,5) = _prn(x,7)"></li>
+
+<li class="expression vspace2" mathjax=functions vars="a=45; b=5; c=3"
+    exp="Flour Bakery sells rolls for prn(a,9) cents each. Bea wants to buy prn(b,5) rolls and she pays with prn(c,2) dollars. How much change does she get? Express your answer in Base 7.<br><br>
+    Answer: _prn( 100*c - a*b ,7) cents">
+</li> 
+
+<li class="expression vspace2" blank=10 vars="x=val('234_8'); y=val('345_8'); b=8"; 
+    exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></li>
+
+</ol>
+</div>
+</body>
+</html>
