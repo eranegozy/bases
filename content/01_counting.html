@@ -24,7 +24,7 @@
 <li>Fill in this sequence: 
   <span class="expression series" len=10 exp="_sub('$',n)" hints=[0,1,2,9] ></span></li>
 
-<p>It is called "Base 10" because there are TEN symbols, or TEN different digit "shapes".</p>
+<p class="indent1">It is called "Base 10" because there are TEN symbols, or TEN different digit "shapes".</p>
 <li>Here are five symbols (or "shapes") in Base 10:
   <span class="expression series" len=5 exp="sub('$', [2,3,9,7,6][n])" ></span>
 
@@ -93,11 +93,14 @@
   <span class="expression" exp="_prn('20_5', 5)" ></span>.</li>
 
 <li>Fill in this sequence using Base 5:</li>
-<p class="expression series" len=11 exp="_prn(8+n,5)", hints=[1,4,5,9] ></p> 
+<p class="expression series" len=11 exp="_prn(8+n,5)", hints=[0,1,4,5,9] ></p> 
 
-<li>What comes after \( 44_{(5)} \)?
-  <span class="expression" exp="_prn('100_5', 5)" ></span>. 
-  Hint: think about what happens after \( 99_{(10)} \).</li>
+<li>In Base 10, What comes after \( 99_{(10)} \)? This is Easy!
+  <span class="expression" exp="_prn('100_10', 10)" ></span>.</li>
+
+<li>In Base 5, What comes after \( 44_{(5)} \)? This is Tricky!
+  <span class="expression" exp="_prn('100_5', 5)" ></span>.</li> 
+
 </ol>
 
 <h2>Practice</h2>
@@ -105,28 +108,28 @@
 
 <ol>
 <li>Fill in this sequence using Base 3:</li>
-<p class="expression series" len=12 exp="_prn(n,3)" hints=[0,4,7] ></p> 
+<p class="expression series" len=12 exp="_prn(n,3)" hints=[0,1,3,7] ></p> 
 
 <li>Fill in this sequence using Base 7:</li>
-<p class="expression series" len=12 exp="_prn(n+9,7)" hints=[2,5,9] ></p> 
-
-<li>Fill in this sequence using Base 2:</li>
-<p class="expression series" len=12 exp="_prn(n,2)" hints=[1,5,8] ></p> 
+<p class="expression series" len=12 exp="_prn(n,7)" hints=[0,2,5,9] ></p> 
 
 <li>Fill in this sequence using Base 6:</li>
-<p class="expression series" len=12 exp="_prn(n+5,6)" hints=[1,5,8] ></p> 
+<p class="expression series" len=12 exp="_prn(n+4,6)" hints=[0,1,5,8] ></p> 
+
+<li>Fill in this sequence using Base 2:</li>
+<p class="expression series" len=12 exp="_prn(n,2)" hints=[0,1,2,5,8] ></p> 
 
 <li>Fill in this sequence using Base 4:</li>
-<p class="expression series" len=12 exp="_prn(n+15,4)" hints=[5,10] ></p> 
+<p class="expression series" len=12 exp="_prn(n+15,4)" hints=[0,1,5,10] ></p> 
 
 <li>Fill in this sequence using Base 8:</li>
-<p class="expression series" len=12 exp="_prn(n+45,8)" hints=[2,10] ></p> 
+<p class="expression series" len=12 exp="_prn(n+45,8)" hints=[0,1,2,10] ></p> 
 
 <li>Fill in this sequence using Base 5:</li>
-<p class="expression series" len=12 exp="_prn(n+29,5)" hints=[2,6] ></p> 
+<p class="expression series" len=12 exp="_prn(n+29,5)" hints=[0,1,2,6] ></p> 
 </ol>
 
-<h2 class="page-break">More Practice</h2>
+<h2>More Practice</h2>
 <p>Now things get a bit harder. These sequences increment by more than 1.</p>
 
 <ol>
