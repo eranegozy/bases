@@ -1,6 +1,25 @@
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font-size: 15px;
+}
+
+p {
+  padding-top: 13px;
+  padding-bottom: 0px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 100px;
+}
+
 h1 {
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 h2 {
@@ -24,17 +43,10 @@ ol li:before {
 }
 
 li {
-  padding-top: 20px;
-  margin-left: 20px;
+  padding-top: 13px;
+  margin-left: 15px;
 }
 
-p {
-  padding-top: 20px;
-  padding-bottom: 0px;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  margin-right: 100px;
-}
 
 @media print {
   .page-break { 
@@ -42,48 +54,38 @@ p {
   }
 }
 
-html {
-  height: 100%;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
 .content {
   flex: 1 0 auto;
 }
 
 .main {
-  margin-left: 30px;
+  margin-left: 25px;
 }
 
 .student-info {
   width: 100%;
-  height: 80px;
+  height: 60px;
   text-align: center;
 }
 
 .indent1 {
-  margin-left: 30px;
+  margin-left: 25px;
 }
 
 .indent2 {
-  margin-left: 60px;
+  margin-left: 50px;
 }
 
 .vspace1 {
-  margin-top: 18px;  
+  margin-top: 14px;  
 }
 
 .vspace2 {
-  margin-top: 50px;  
+  margin-top: 40px;  
 }
 
 .vspace3 {
-  margin-top: 150px;  
+  margin-top: 120px;  
 }
 
 .tight {
@@ -96,7 +98,7 @@ body {
 }
 
 .meet-answers {
-  margin-bottom: 30px;
+  margin-bottom: 25px;
   flex: 0 0 auto; 
 }
 
