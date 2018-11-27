@@ -1,0 +1,75 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League Bases D: Review</h1>
+
+<table class="student-info"></table>
+<div class="main">
+
+<h2>Review Problems</h2>
+
+<p>Hint: Remember to draw a letter-to-number chart to help you remember how to convert big base digits</p>
+
+<ol>
+
+<li class="expression vspace3" vars="x=777" exp="prn(x,13) = _prn(x,10)"></li>
+
+<li class="expression vspace3" vars="x=555" exp="prn(x,10) = _prn(x,15)"></li>
+
+<li class="expression vspace3" vars="b=11; x=val('A0A_' + b); y=val('456_' + b); z=val('739_' + b);"
+  blank=8 exp="prn(x,b) + prn(y,b) + prn(z,b) = _prn(x+y+z,b)"></li>
+
+<li class="expression vspace3" mathjax=functions
+  exp="What is largest 2-digit base sixteen number in base ten? _prn('FF_16', 10)"></li>
+
+<li class="expression vspace3" vars="x=val('18_12'); y=val('18_14');"
+  blank=8 exp="prn(x,12) + prn(y,14) = _prn(x+y,16)"></li>
+
+<li class="expression vspace3" mathjax=functions
+  exp="What is the smallest 5-digit base 3 number in base 11? _prn('10000_3', 11)"></li>
+
+<li class="expression vspace3" mathjax=functions baseFormat=none
+    vars="b=14; x=val('334_'+b); y=val('551_'+b); z=val('6622_'+b)" 
+    exp="In what base is this equation: prn(x,b) + prn(y,b) + prn(z,b) = prn(x+y+z, b). Base: _prn(b)"></li>
+
+<li class="expression series vspace3" len=5 exp="_prn(100+n*6, 12)" hints=[0,1,2]></li>
+
+</ol>
+
+<h2>Challenge Problems</h2>
+
+<ol>
+
+<li class="expression vspace3" vars="x='BB8_13'" exp="prn(x,10) = _prn(x,13)"></li>
+
+<li class="expression vspace3" vars="x=4000" exp="prn(x,16) = _prn(x,10)"></li>
+
+<li class="expression vspace3" vars="b=12; x=val('A1_' + b); y=val('22_' + b); z=val('A13_' + b);"
+  blank=8 exp="prn(x,b) \times prn(y,b) - prn(z,b) = _prn(x*y-z,b)"></li>
+
+<li class="expression vspace3" vars="x=val('A1A_15'); y=val('B2B_14');"
+  blank=8 exp="prn(x,15) + prn(y,14) = _prn(x+y,10)"></li>
+
+<li class="expression vspace3" mathjax=functions baseFormat=none
+    vars="b=13; x=val('281_'+b); y=val('33_'+b);" 
+    exp="In what base is this equation: prn(x,b) \(\times\) prn(y,b) = prn(x*y, b). Base: _prn(b)"></li>
+
+<li class="expression series vspace3" len=5 exp="_prn((n+4)**2, n+10)" hints=[0,1,2]></li>
+
+
+</ol>
+
+</div>
+</body>
+</html>

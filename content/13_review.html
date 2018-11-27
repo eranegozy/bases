@@ -1,0 +1,105 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Devotion Math League Bases C: Review</h1>
+
+<table class="student-info"></table>
+<div class="main">
+
+<h2>Big Bases Chart</h2>
+
+<p>Keep this chart handy. 
+  It is a good idea to write it down on your paper, to help with the problems.</p>
+<br>
+<table class="basic-table">
+<tr><td>symbol</td> <td>value</td></tr>
+<tr><td> A </td><td> 10 </td></tr>
+<tr><td> B </td><td> 11 </td></tr>
+<tr><td> C </td><td> 12 </td></tr>
+<tr><td> D </td><td> 13 </td></tr>
+<tr><td> E </td><td> 14 </td></tr>
+<tr><td> F </td><td> 15 </td></tr>
+</table>
+
+<h2>Multiplication Strategy</h2>
+
+<p>Which multiplicaiton strategy should you use: 
+  <em>Stay in Base 14</em>? or <em>Convert to Base 10, Multiply, and Convert Back to Base 14</em>?
+</p>
+
+<p class="expression vspace3" blank=8 vars="b=14; x=val('121_'+b); y=val('ABC_'+b)" 
+  exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></p>
+
+<p class="expression vspace3" blank=8 vars="b=14; x=val('789_'+b); y=val('ABC_'+b)" 
+  exp="prn(x,b) \times prn(y,b) = _prn(x*y,b)"></p>
+
+<p class="page-break">
+<h2>Review Problems</h2>
+
+<ol>
+
+<li class="expression vspace3" vars="x=456" exp="prn(x,12) = _prn(x,10)"></li>
+
+<li class="expression vspace3" vars="x=456" exp="prn(x,10) = _prn(x,14)"></li>
+
+<li class="expression vspace3" vars="b=16; x=val('ABC_' + b); y=val('123_' + b); z=val('321_' + b);"
+  blank=8 exp="prn(x,b) + prn(y,b) + prn(z,b) = _prn(x+y+z,b)"></li>
+
+<li class="expression vspace3" mathjax=functions
+  exp="What is largest 2-digit base fourteen number in base ten? _prn('DD_14', 10)"></li>
+
+<li class="expression vspace3" vars="x=val('AA_11'); y=val('BB_12');"
+  blank=8 exp="prn(x,11) + prn(y,12) = _prn(x+y,13)"></li>
+
+<li class="expression vspace3" mathjax=functions
+  exp="What is the smallest 4-digit base 8 number in base 16? _prn('1000_8', 16)"></li>
+
+<li class="expression vspace3" mathjax=functions baseFormat=none
+    vars="b=13; x=val('334_'+b); y=val('351_'+b); z=val('662_'+b)" 
+    exp="In what base is this equation: prn(x,b) + prn(y,b) + prn(z,b) = prn(x+y+z, b) Base: _prn(b)"></li>
+
+<li class="expression series vspace3" len=5 exp="_prn(20+n*10, 13)" hints=[0,1,2]></li>
+
+</ol>
+
+<h2>Challenge Problems</h2>
+
+<ol>
+
+<li class="expression vspace3" vars="x=12345" exp="prn(x,15) = _prn(x,10)"></li>
+
+<li class="expression vspace3" vars="x='ABC99_13'" exp="prn(x,10) = _prn(x,13)"></li>
+
+<li class="expression vspace3" vars="b=11; x=val('A0_' + b); y=val('22_' + b); z=val('A022_' + b);"
+  blank=8 exp="prn(x,b) \times prn(y,b) + prn(z,b) = _prn(x*y+z,b)"></li>
+
+<li class="expression vspace3" mathjax=functions
+  exp="What base should 1234 be so that it is greater than prn(2000,10) but less than prn(2500,10)? Base: _prn(12)"></li>
+
+
+<li class="expression vspace3" vars="x=val('A1A_14'); y=val('B2B_15');"
+  blank=8 exp="prn(x,14) + prn(y,15) = _prn(x+y,10)"></li>
+
+<li class="expression vspace3" mathjax=functions baseFormat=none
+    vars="b=14; x=val('981_'+b); y=val('22_'+b);" 
+    exp="In what base is this equation: prn(x,b) \(\times\) prn(y,b) = prn(x*y, b) Base: _prn(b)"></li>
+
+<li class="expression series vspace3" len=5 exp="_prn(10+n*5, n+10)" hints=[0,1,2]></li>
+
+
+</ol>
+
+</div>
+</body>
+</html>
