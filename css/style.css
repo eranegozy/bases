@@ -7,6 +7,8 @@ body {
   flex-direction: column;
   height: 100%;
   font-size: 20px;
+  margin-left: 25px;
+  margin-right: 25px;
 }
 
 p {
@@ -19,7 +21,8 @@ p {
 
 h1 {
   text-align: center;
-  font-size: 40px;
+  font-size: 30px;
+  margin: 5px 0px 15px 0px;
 }
 
 h2 {
@@ -81,7 +84,7 @@ li {
 }
 
 .vspace2 {
-  margin-top: 40px;  
+  margin-top: 35px;  
 }
 
 .vspace3 {
