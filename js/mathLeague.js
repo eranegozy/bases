@@ -61,8 +61,8 @@ var ml = function () {
     else
       elem.innerHTML = 
       `<tr>
-         <td>____________________________________________<br>Last Name, First Name</td>
-         <td>_____________________<br>Grade</td>
+         <td>________________________________<br>Last Name, First Name</td>
+         <td>________________<br>Grade</td>
          <td>_____________________<br>School</td>
        </tr>`;
   }
