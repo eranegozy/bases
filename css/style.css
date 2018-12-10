@@ -132,7 +132,7 @@ li {
 .grid {
   border-collapse: collapse;
   display: inline-block;
-  margin: 10px;
+  margin: 8px;
   vertical-align: middle;
 }
 
@@ -145,8 +145,8 @@ li {
   border-left: solid 1px;
   border-right: solid 1px;
   padding: 0px;
-  width: 20px;
-  height: 20px;
+  width: 17px;
+  height: 17px;
 }
 
 .base-chart 
