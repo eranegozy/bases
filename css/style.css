@@ -98,7 +98,8 @@ li {
 }
 
 .meet-answers {
-  margin-bottom: 25px;
+  position: absolute;
+  bottom: 15px;
 }
 
 .meet-answers li {
