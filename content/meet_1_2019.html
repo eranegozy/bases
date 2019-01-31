@@ -1,0 +1,40 @@
+<!DOCTYPE html>  
+<html>
+<head>
+  <link rel="stylesheet" href="../css/style.css">
+  <script type="text/javascript" src="../js/mathLeague.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <script type="text/x-mathjax-config">
+    ml.init();
+    MathJax.Hub.Config();
+  </script>
+</head>
+
+<body>
+
+<h1>Math League 2019: Bases Meet 1</h1>
+<table class="student-info"></table>
+
+<div class="content main">
+  <p>1) What number comes after 777 in base 8?</p>
+  <p class="vspace3"></p>
+
+  <p> 2) \( 2019_{(ten)} = \text{______________}_{(five)} \) </p>
+  <p class="vspace3"></p>
+
+  <p> 3) In what base is this problem solved? </p>
+  <p> \( 42210 - 3260 + 5320 = 44250 \) </p>
+  <p class="vspace3"></p>
+</div>
+
+<div class="meet-answers main">
+  <strong>Answers:</strong>
+  <ol>
+    <li class="expression" blank=12 exp="_prn( val('777_8') + 1 , 8)"></li>
+    <li class="expression" blank=12 baseFormat=alpha exp="_prn( 2019 , 5)"></li>
+    <li> base <span class="expression" blank=12 exp="_prn(8)"></span></li>
+  </ol>
+</div>
+
+</body>
+</html>
